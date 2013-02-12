@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igman.Web", "Igman.Web\Igman.Web.csproj", "{ABA297E1-BD91-44CA-A096-0986F8322133}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igman.DB", "Igman.DB\Igman.DB.csproj", "{79C30F6F-C7DE-4F17-BB62-1ABB8184A4C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igman.Infrastructure", "Igman.Infrastructure\Igman.Infrastructure.csproj", "{7D36FA03-F765-4720-A221-CB76B9F24DEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABA297E1-BD91-44CA-A096-0986F8322133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA297E1-BD91-44CA-A096-0986F8322133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA297E1-BD91-44CA-A096-0986F8322133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA297E1-BD91-44CA-A096-0986F8322133}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C30F6F-C7DE-4F17-BB62-1ABB8184A4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C30F6F-C7DE-4F17-BB62-1ABB8184A4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C30F6F-C7DE-4F17-BB62-1ABB8184A4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C30F6F-C7DE-4F17-BB62-1ABB8184A4C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D36FA03-F765-4720-A221-CB76B9F24DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D36FA03-F765-4720-A221-CB76B9F24DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D36FA03-F765-4720-A221-CB76B9F24DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D36FA03-F765-4720-A221-CB76B9F24DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
