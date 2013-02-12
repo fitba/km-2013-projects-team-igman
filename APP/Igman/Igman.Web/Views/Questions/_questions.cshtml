@@ -1,0 +1,106 @@
+﻿@using Igman.Infrastructure.Extend;
+@model IPagedList<Question>
+@{var tockice = ".......";}
+<div class="fl">
+    <div class="questions">
+
+        @foreach (var item in Model)
+        {
+            <div class="question-summary">
+                <div class="statscontainer">
+                    <div class="statsarrow"></div>
+                    <div class="stats">
+                        <div class="vote">
+                            <div class="votes">
+                                <span class="vote-count-post"><strong><span id="@item.QuestionID">@item.Likes</span></strong></span>
+                                <div class="viewcount">likes</div>
+                            </div>
+                        </div>
+                        @if (item.Answers.Count != 0)
+                        {
+                            <div class="status answered">
+                                <strong>@item.Answers.Count</strong>answers
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="status unanswered">
+                                <strong>@item.Answers.Count</strong>answers
+                            </div>
+                        }
+                    </div>
+                    <div class="views " title="@item.NumOfViews views">
+                        Views  @item.NumOfViews
+                    </div>
+                </div>
+                <div class="summary">
+
+                    <h3>@Html.ActionLink(@item.QuestionTitle, "Details", new { id = item.QuestionID })</h3>
+                    @foreach (var kat in item.Categories)
+                    {
+                        <a href="#">@kat.Name :: </a> 
+                    }
+                    <div class="excerpt">
+
+                        <div title="@Html.Raw(item.QuestionBody.OcistiHtml())">
+                            @if (item.QuestionBody.ToString().Length > 200)
+                            {@Html.Raw(item.QuestionBody.Substring(0, 200).OcistiHtml()) @tockice}
+                            else
+                            { @Html.Raw(@item.QuestionBody.OcistiHtml())}
+                        </div>
+
+                    </div>
+
+                    <div class="tags">
+                        @foreach (var tag in item.Tags)
+                        {
+                            <a href="#" class="post-tag">@tag.Name</a>
+                        }
+                    </div>
+                    <div id="like">
+                        <a href="/Questions/Like?id=@item.QuestionID">
+                            <img class="fr" id="like_btn" src="~/Content/Template/images/icons/like.jpg" /></a>
+                    </div>
+                    <div class="started fr">
+                        <div class="user-info ">
+                            <div class="user-action-time">
+                                Kreirano 
+                 <a href="#" class="started-link">
+                     <span title="@item.CreatedDate" class="relativetime">@ExtendMethod.ToRelativeDateString(item.CreatedDate.Value,true)</span>
+                 </a>
+
+                            </div>
+                            <div class="user-gravatar32">
+                                <a href="#">
+                                    <div>
+                                       @if(item.User.PhotoLocation==null){ <img src="~/Content/Template/images/avatars/default_avatar.jpg" alt="" width="32" height="32">}
+                                        else{<img src="~/Content/Template/images/avatars/@item.User.PhotoLocation" alt="" width="32" height="32">}
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="user-details">
+                                <a href="/users/490114/shtolik">@item.User.FirstName  @item.User.LastName</a><br>
+                               <span title="(@item.User.Questions.Count) questions asked">(@item.User.Questions.Count)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+
+
+        <div class="clear"></div>
+
+        <div id="pagedList" data-wiki-target=".questions">
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+﻿@model List<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel>  
+@using Igman.Infrastructure.Extend   
+<div class="Wiki-Result">
+            
+            <ul id="result-wiki-list">
+                @foreach (var wiki in Model)
+                {
+                    <li>
+                        <div class="Content-Name">
+                            <a href="/Wiki-Show/@wiki.ArticlesID"> @Html.Raw(wiki.Name.OcistiHtml())</a>
+                        </div>
+                        <div class="Content-Prew">
+                            @Html.Raw((wiki.Content.OcistiHtml().Count()>350?wiki.Content.OcistiHtml().Substring(0,345)+"...":wiki.Content.OcistiHtml()))
+                        </div>
+                        <div class="Content-Sett">
+                            Vole [@wiki.Likes] · Pogleda [@wiki.Views] ·  Datum objave [@wiki.DatePublish.Value.ToLongDateString()]
+                        </div>
+                    </li>
+                }
+            </ul>
+    @if (Model.Count>0)
+    {
+            <div class="pag-result @(Model[0].BrojRedova > 2 ? "" : "hide")">
+                @Html.Pager(Model[0].BrojRedova, 2, long.Parse((ViewContext.RouteData.Values["strana"] != null ? ViewContext.RouteData.Values["strana"].ToString() : "1")), 10, "/Wiki-Show-Util/" + (ViewContext.RouteData.Values["id"] != null ? ViewContext.RouteData.Values["id"].ToString() : "1"))
+            </div>
+    }
+    else
+    {
+        <div>Strana je prazna, želim <a href="/Wellcome">nazad</a></div>
+    }
+    </div>

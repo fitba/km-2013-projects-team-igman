@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Wiki";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@using Igman.Infrastructure.Extend
+@{
+    var wikis = TempData["wiki"] as Igman.DB.DAL.Article;
+    var tags = TempData["tags"] as List<Igman.DB.DAL.Tag>;
+    var grupa = TempData["grup"] as List<Igman.DB.DAL.Category>;
+    var komentari = TempData["Kom"] as List<Igman.DB.DAL.Comment>;
+    var preporuka = TempData["RecWiki"] as List<Igman.Infrastructure.Recommender.ItemBase.ArticleRecommender>;
+}
+@Html.Hidden("rat-wiki", (int)TempData["rating"])
+<div id="content-body-first">
+    <div class="left-side-wiki-w">
+        <div class="Box">
+            <div class="Body-Box p-15">
+                <div class="Wiki-Naslov-W">@Html.Raw(@wikis.Name)</div>
+                <div class="Wiki-Content-W">
+                    @Html.Raw(wikis.Content)
+                </div>
+            </div>
+
+        </div>
+
+        <div class="Box Komentari">
+            <div class="Body-Box p-15">
+                <div class="Wiki-Naslov-W">
+                    <img class="imgKoment" src="~/Content/Template/images/icons/appbar.chat.png" />
+                    Komentariši članak
+                </div>
+                <div class="Wiki-Content-W">
+                    <div class="O-F-W Komenat-Box-W">
+                        @using (Html.BeginForm("AddKoment", "Articles", FormMethod.Post, new { id = "frmKoment" }))
+                        {@Html.AntiForgeryToken()
+                            @Html.Hidden("aid", wikis.ArticlesID)
+                            <textarea id="txtKomenatarBox" name="Komenatar" placeholder="Napiši komentar ..." cols="20" rows="2"></textarea>
+                            <input id="btnPostKomentar" class="btn btn-success w-wiki-like pull-right" type="button" value="POŠALJI" />
+                        }
+                    </div>
+                    <div id="lista-komentara">
+                        <ul id="Komenatari-Wiki">
+                            @foreach (var kom in komentari)
+                            {
+                                <li>
+                                    <div><span><strong>@kom.CreatorName </strong>kaže: </span><span class="K-W-Date">@kom.Created.Value.ToRelativeDateString(true)</span></div>
+                                    <div>@kom.Body</div>
+                                </li>
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="right-side-wiki-w">
+        <div class="Box">
+
+            <div class="Body-Box O-F-W">
+                <div class="rating">
+                    <div id="star" data-wiki-id ="@wikis.ArticlesID">
+                    </div>
+                </div>
+                <div class="wiki-stat">
+                    <div class="img-static-wiki-w">
+                        <img src="~/Content/Template/images/icons/appbar.heart.png" />
+                    </div>
+                    <div class="Statstic-Wiki-W" id="likes-wiki-num" data-id="@wikis.ArticlesID">@TempData["likes"]</div>
+                </div>
+                <div class="wiki-stat">
+                    <div class="img-static-wiki-w">
+                        <img src="~/Content/Template/images/icons/appbar.eye.png" />
+                    </div>
+                    <div class="Statstic-Wiki-W">@wikis.Views</div>
+                </div>
+                <div class="wiki-stat wiki-stat-date">
+                    <div class="img-static-wiki-w">
+                        <img src="~/Content/Template/images/icons/appbar.calendar.png" />
+                    </div>
+                    <div class="Statstic-Wiki-W">@wikis.DatePublish.Value.ToString("MMMM, dd. yyyy")</div>
+                </div>
+
+                <div class="btn-like-w">
+
+                    <button id="btn-wiki-like" class="btn btn-info w-wiki-like" type="button"><i class="icon-heart icon-white"></i>SVIĐA MI SE</button>
+
+
+                </div>
+                <div class="btn-group btn-sett-wiki-w ">
+                    <button onclick="GetLink('/Articles/Search')" class="btn btn-success w-wiki-like"><i class=" icon-search icon-white"></i></button>
+                    <button onclick="GetLink('/Articles')" class="btn btn-success w-wiki-like"><i class=" icon-pencil icon-white"></i></button>
+                    <button class="btn btn-success w-wiki-like" type="button" onclick="GetLink('/Wiki-Edit/@wikis.ArticlesID')"><i class="icon-edit icon-white"></i></button>
+                </div>
+              
+            </div>
+
+        </div>
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.tag.png" />
+                </div>
+                <div class="Opis">TAG</div>
+            </div>
+            <div class="Body-Box">
+                <div class="O-F-W">
+
+                    <ul id="tag-wiki">
+                        @foreach (var tag in tags)
+                        {
+                            <li onclick="GetLink('/Wiki-Show-Util/@tag.TagID')">@tag.Name</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">KATEGORIJE</div>
+            </div>
+            <div class="Body-Box">
+                <div class="O-F-W">
+
+                    <ul id="grupa-wiki">
+                        @foreach (var gr in grupa)
+                        {
+                            <li>@gr.Name</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">PREORUKA ČLANAKA</div>
+            </div>
+            <div class="Body-Box">
+                <ul id="Preporuka-wikis">
+                    @foreach (var wiki in preporuka)
+                    {
+                        <li onclick='GetLink("/Wiki-Show/@wiki.WikiID")' rel="tooltip" title="Sličnost: @wiki.Score.ToString("0%")">» @Html.Raw(wiki.Name)</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

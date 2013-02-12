@@ -1,0 +1,31 @@
+﻿@model IPagedList<Question>
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.Partial("_questionsMenu")
+
+
+
+@Html.Partial("_questions_subMenu")
+
+@Html.Partial("_questions",Model)
+
+
+<div class="fl" id="RelatedQuestions-Wrap">
+    <div class="relatedQuestionHeading">Related questions</div>
+    <div id="related_answers">
+<ul>
+  @foreach (var item in Model)
+  {
+     <li><a href="/questions/details?id=@item.QuestionID">@Html.Raw(HttpUtility.HtmlDecode(item.QuestionTitle))</a></li>
+  }
+
+</ul>
+  </div>
+</div>
+<div style="clear: both;"></div>
+
+
+        
+

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Tag";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<div class="Box ">
+
+
+    <div class="Body-Box">
+
+        @Html.Partial("_WikiByUtil", (List<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel>)TempData["artcles"])
+
+    </div>
+
+</div>

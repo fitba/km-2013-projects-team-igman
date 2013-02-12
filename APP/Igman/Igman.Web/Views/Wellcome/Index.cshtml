@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Wellcome";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@if (TempData["user"]==null)
+{
+    <div class="Upozorenje-Plavo alert-block ">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4>Dobrodošli!</h4>
+        <p>Dobrodošli na wiki igman, rad studenata II ciklusa Fakulteta informacijski tehnologija. Molimo Vas da sve prijedloge i pohvale šaljete na admir.mujkic@edu.fit.ba ili ivan.boban@edu.fit.ba</p>
+    </div>
+}
+<div id="content-body-first">
+    <div class="left-side">
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">KATEGORIJE</div>
+            </div>
+            <div class="Body-Box">
+                <span>Kategorije</span>
+            </div>
+            <div class="Footer-Box">
+                <ul>
+                    <li>
+                        <div class="Opis">
+                            ČLANAKA
+                        </div>
+                        <div class="Br">
+                            @TempData["br_Wiki"]
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Opis">
+                         PITANJA
+                        </div>
+                        <div class="Br">
+                            @TempData["br_QA"]
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Opis">
+                            KORISNIKA
+                        </div>
+                        <div class="Br">
+                            @TempData["br_User"]
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.tag.png" />
+                </div>
+                <div class="Opis">TAG</div>
+            </div>
+            <div class="Body-Box">
+                <span>TAGOVI</span>
+            </div>
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.question.png" />
+                </div>
+                <div class="Opis">@Html.ActionLink("PITANJA", "Index", "Questions")</div>
+            </div>
+            <div class="Body-Box" id="pitanja-box">
+                <span>
+                    
+                 PITANJA
+                            
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

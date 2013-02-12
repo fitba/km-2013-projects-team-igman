@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div id="content-body-first">
+    <div class="Menu-content">
+        <ul>
+            <li onclick="GetLink('/Articles')" class="active-link-wiki">
+                
+                <img src="~/Content/Template/images/icons/QuestionAdd.png" />
+                 
+            </li>
+            <li onclick="GetLink('/Articles/Search')">
+                <img src="~/Content/Template/images/icons/WikiPretraga.png" />
+            </li>
+        </ul>
+    </div>
+
+    <div class="full-widht">
+        @using (Html.BeginForm("Create", "Questions", FormMethod.Post, new { @class = "Box", id = "frmAddNewQuestion" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("jsonTagQuestion")
+            @Html.Hidden("jsonKatQuestion")
+            <div class="Body-Box">
+                <div class="frm-naziv-clanka">
+                    <input id="txtNaslovPitanja" class="NazivClanka" type="text" placeholder="Unesite naslov pitanja ..."  name="Naslov" />
+                </div>
+                <textarea class="textarea" id="questions-content" placeholder="Vaše pitanje pište na ovom mjestu ..." name="Content"></textarea>
+                <div class="BoxWiki" id="Wiki-Questions">
+
+                    <div class="BoxWiki-Content pull-left">
+                        <ul id="selektovaneKategorije">
+                            <li class="kat-box-desc">Molimo Vas da odaberete kategorije za postavljeno pitanje</li>
+                        </ul>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn F-11" id="AddKategorije" type="button" onclick="ShowDialog('#KategorijeAdd')"><i class="icon-plus-sign"></i></button>
+                    </div>
+                </div>
+                <div class="BoxWiki" id="Wiki-Tagovi">
+
+                    <div class="Tag-Content pull-left">
+                        <ul id="selektovaniTagovi" class="O-F-W">
+
+                            <li id="txtBoxTags">
+                                <input class="tagTextBox" id="txtTags" type="text" placeholder="Molimo unesite tagove" /></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="Footer-Box ">
+                <div class="pull-right">
+                    <button class="btn F-11" type="button" onclick="ResetQuestionsClanak()">Reset</button>
+                    <button class="btn btn-info F-11" type="button" onclick="SaveQuestions()">Snimi pitanje</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@Html.Partial("_Kategorije", (List<Igman.DB.DAL.Category>)ViewBag.Kategorije)
+
+

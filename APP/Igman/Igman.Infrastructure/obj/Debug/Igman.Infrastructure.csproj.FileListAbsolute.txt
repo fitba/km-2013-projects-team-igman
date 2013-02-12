@@ -1,0 +1,50 @@
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.3\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.3\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.3\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.3\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.3\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.4\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.4\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.4\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.4\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.4\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.5\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.xml
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.pdb
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.xml
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\Verzije\UZ-Projekat-2013_v1.7\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.dll
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.dll
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.pdb
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.xml
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\Ivan\Desktop\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.Infrastructure.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\Igman.DB.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Debug\EntityFramework.xml
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v1.8\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Debug\Igman.Infrastructure.pdb
