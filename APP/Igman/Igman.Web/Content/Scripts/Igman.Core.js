@@ -82,6 +82,30 @@ $(document).ready(function () {
     };
     $("#content-body").on("click", "#pagedList a", getPage);
 
+
+    var getPageSearched = function () {
+        $a = $(this);
+        var link = $a.attr("href");
+        
+
+        var options = {
+            url: link,
+            type: "GET"
+        };
+        $.ajax(options).done(function (data) {
+
+            var target = $a.parents("div#pagedListSearched").attr("data-questions-target");
+           console.log(target);
+            $(target).html(data);
+            
+
+        });
+        return false;
+
+    };
+    $("#content-body").on("click", "#pagedListSearched a", getPageSearched);
+
+
     $("#tabs a").click(function () {
         $a = $(this);
         var options = {

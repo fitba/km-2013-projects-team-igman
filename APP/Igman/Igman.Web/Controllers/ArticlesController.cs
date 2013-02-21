@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Preporuke = Igman.Infrastructure.Recommender.ItemBase;
 using Igman.DB.DalHelpClass;
 using Igman.Infrastructure.Recommender.ItemBase;
+using Igman.Infrastructure.Recommender.ExtrenalBase;
 
 namespace Igman.Web.Controllers
 {
@@ -271,6 +272,11 @@ namespace Igman.Web.Controllers
                         TempData["likes"] = a.ArticlesLikes.ToList().Count;
                         TempData["rating"] = rating;
                         TempData["Kom"] = a.Comments.OrderByDescending(x => x.CommentID).ToList();
+
+                        ExteranlBase eb = new ExteranlBase(a.Tags.ToList());
+                        
+                        TempData["ExteranlWiki"] = eb.Preporuci();
+
                         Baza.IncremenViews(a.ArticlesID);
 
 
@@ -311,7 +317,7 @@ namespace Igman.Web.Controllers
             if (!strana.HasValue)
                 strana = 1;
             args = Formatiraj(args);
-
+           
             LuceneEngine.LuceneDbEngine ldbe = new LuceneEngine.LuceneDbEngine();
 
             List<Rezultat> ids = ldbe.GetArticleIDByArg(args, false);
@@ -334,6 +340,7 @@ namespace Igman.Web.Controllers
                 {
                     List<Igman.DB.DAL.Tag> mislilac = Baza.GetDaliSteMilili(args);
                     TempData["mislilac"] = mislilac;
+                    
                 }
             }
             return View();

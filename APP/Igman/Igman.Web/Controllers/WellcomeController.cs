@@ -52,5 +52,7 @@ namespace Igman.Web.Controllers
             return s.Remove(s.Count() - 1);
         }
 
+     
+
     }
 }

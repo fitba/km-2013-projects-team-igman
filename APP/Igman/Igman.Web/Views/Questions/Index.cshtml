@@ -3,29 +3,50 @@
     ViewBag.Title = "Index";
 }
 
-@Html.Partial("_questionsMenu")
-
+@Html.Partial("_questionsMenu", Model)
 
 
 @Html.Partial("_questions_subMenu")
 
+
+
+
+<div>
+    
 @Html.Partial("_questions",Model)
+</div>
 
+<div class="fr" id="Right-collumn-Wrap">
 
-<div class="fl" id="RelatedQuestions-Wrap">
-    <div class="relatedQuestionHeading">Related questions</div>
-    <div id="related_answers">
-<ul>
-  @foreach (var item in Model)
+                <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">RELATED QUESTIONS</div>
+            </div>
+            <div class="Body-Box">
+                <div class="O-F-W">
+
+                    <ul class="grupa-wiki">
+
+   
+                 @foreach (var item in Model)
   {
      <li><a href="/questions/details?id=@item.QuestionID">@Html.Raw(HttpUtility.HtmlDecode(item.QuestionTitle))</a></li>
   }
 
-</ul>
-  </div>
+                      
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
 </div>
-<div style="clear: both;"></div>
 
-
-        
-
+<div class="clear"></div>

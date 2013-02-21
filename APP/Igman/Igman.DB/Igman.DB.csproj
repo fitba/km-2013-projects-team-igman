@@ -39,15 +39,19 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\DBBL.cs" />
     <Compile Include="DalHelpClass\ArticleSerch.cs" />
+    <Compile Include="DalHelpClass\QuestionsExternal.cs" />
+    <Compile Include="DalHelpClass\WikiExtrenal.cs" />
     <Compile Include="DAL\Answer.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

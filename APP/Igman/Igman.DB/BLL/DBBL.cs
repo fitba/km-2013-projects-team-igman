@@ -232,5 +232,10 @@ namespace Igman.DB.BLL
 
         }
 
+
+        public IEnumerable<Question> GetPitanja(string args)
+        {
+            return context.Questions.Where(q=>q.QuestionBody.Contains(args)).ToList();
+        }
     }
 }

@@ -9,6 +9,7 @@
     var grupa = TempData["grup"] as List<Igman.DB.DAL.Category>;
     var komentari = TempData["Kom"] as List<Igman.DB.DAL.Comment>;
     var preporuka = TempData["RecWiki"] as List<Igman.Infrastructure.Recommender.ItemBase.ArticleRecommender>;
+    var exteranlWiki = TempData["ExteranlWiki"] as List<Igman.DB.DalHelpClass.WikiExtrenal>;
 }
 @Html.Hidden("rat-wiki", (int)TempData["rating"])
 <div id="content-body-first">
@@ -130,7 +131,7 @@
             <div class="Body-Box">
                 <div class="O-F-W">
 
-                    <ul id="grupa-wiki">
+                    <ul class="grupa-wiki">
                         @foreach (var gr in grupa)
                         {
                             <li>@gr.Name</li>
@@ -149,10 +150,27 @@
                 <div class="Opis">PREORUKA ČLANAKA</div>
             </div>
             <div class="Body-Box">
-                <ul id="Preporuka-wikis">
+                <ul class="Preporuka-wikis">
                     @foreach (var wiki in preporuka)
                     {
                         <li onclick='GetLink("/Wiki-Show/@wiki.WikiID")' rel="tooltip" title="Sličnost: @wiki.Score.ToString("0%")">» @Html.Raw(wiki.Name)</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+           <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">PREORUKA ČLANAKA Externi</div>
+            </div>
+            <div class="Body-Box">
+                <ul class="Preporuka-wikis">
+                    @foreach (var wiki in exteranlWiki)
+                    {
+                        <li onclick='GetLink("@wiki.Url")'>» @wiki.Naziv</li>
                     }
                 </ul>
             </div>

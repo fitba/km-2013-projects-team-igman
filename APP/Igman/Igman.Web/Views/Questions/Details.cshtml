@@ -2,6 +2,7 @@
 @using Igman.Infrastructure.Extend;
 @{
     ViewBag.Title = "Details";
+    var exteranlQuestions = TempData["ExteranlQuestions"] as List<Igman.DB.DalHelpClass.QuestionsExternal>;
 }
 @Html.Partial("_questionsMenu")
 
@@ -42,13 +43,10 @@
             <div class="summary">
 
                 <h3><a href="/questions/details?id=@Model.QuestionID">@Model.QuestionTitle</a></h3>
-                @foreach (var kat in Model.Categories)
-                {
-                    <a href="#">@kat.Name :: </a> 
-                }
+
                 <div class="excerpt">
 
-                    <div title="@Model.QuestionBody">
+                    <div>
 
                         @Html.Raw(Model.QuestionBody.OcistiHtml())
 
@@ -62,16 +60,13 @@
                         <a href="#" class="post-tag">@tag.Name</a>
                     }
                 </div>
-                <div id="like">
-                    <a href="/Questions/Like?id=@Model.QuestionID">
-                        <img class="fr" id="like_btn" src="~/Content/Template/images/icons/like.jpg" /></a>
-                </div>
+            
                 <div class="started fr">
                     <div class="user-info ">
                         <div class="user-action-time">
                             Kreirano prije
                  <a href="#" class="started-link">
-                     <span title="@Model.CreatedDate" class="relativetime">@ExtendMethod.ToRelativeDateString(Model.CreatedDate.Value,true)</span>
+                     <span title="@Model.CreatedDate" class="relativetime">@ExtendMethod.ToRelativeDateString(Model.CreatedDate.Value, true)</span>
                  </a>
 
                         </div>
@@ -85,33 +80,26 @@
                                 </div>
                             </a>
                         </div>
+                         
+
                         <div class="user-details">
                             <a href="/users/490114/shtolik">@Model.User.FirstName  @Model.User.LastName</a><br>
                             <span title="(@Model.User.Questions.Count) questions asked">(@Model.User.Questions.Count)</span>
                         </div>
+                         
+
                     </div>
+                        <div id="like">
+                    <a href="/Questions/Like?id=@Model.QuestionID">
+                        <img class="fr" id="like_btn" src="~/Content/Template/images/icons/like.jpg" /></a>
+                </div>
+                
 
                 </div>
             </div>
 
-        </div>
 
-        <div class="fl" id="RelatedQuestions-Wrap">
-            <div class="relatedQuestionHeading">Related questions</div>
-            <div id="related_questions">
-                <ul>
-                    @foreach (var item in ViewBag.RelatedQuestios)
-                    {
-                        <li><a href="/questions/details?id=@item.QuestionID">@item.QuestionTitle</a></li>
-                    }
-
-                </ul>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="answers-submenu">
+   <div id="answers-submenu">
         <div class="subheader">
             <div id="h-top-questions">
                 (@Model.Answers.Count) Answers  
@@ -124,12 +112,13 @@
             </div>
         </div>
     </div>
-    <div id="answers-wrap">
+
+   <div id="answers-wrap">
 
         @Html.Partial("_odgovori", Model.Answers)
 
     </div>
-    
+
     <div id="content-body-first">
 
 
@@ -151,6 +140,93 @@
         </form>
 
     </div>
+
+        </div>
+
+        <div class="fl" id="Right-collumn-Wrap">
+
+
+
+            <div class="Box">
+                <div class="Header-Box">
+                    <div class="Img pull-left">
+                        <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                    </div>
+                    <div class="Opis">RELATED QUESTIONS</div>
+                </div>
+                <div class="Body-Box">
+                    <div class="O-F-W">
+
+                        <ul class="grupa-wiki">
+
+
+                            @foreach (var item in ViewBag.RelatedQuestios)
+                            {
+                                <li><a href="/questions/details?id=@item.QuestionID">@item.QuestionTitle</a></li>
+                            }
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="Box">
+                <div class="Header-Box">
+                    <div class="Img pull-left">
+                        <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                    </div>
+                    <div class="Opis">KATEGORIJE</div>
+                </div>
+                <div class="Body-Box">
+                    <div class="O-F-W">
+
+                        <ul class="grupa-wiki">
+
+
+                            @foreach (var kat in Model.Categories)
+                            {
+                                <li>@kat.Name</li> 
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="Box">
+                <div class="Header-Box">
+                    <div class="Img pull-left">
+                        <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                    </div>
+                    <div class="Opis">PREORUKA PITANJA Externi</div>
+                </div>
+                <div class="Body-Box">
+                    <ul class="Preporuka-wikis">
+                        @foreach (var wiki in exteranlQuestions)
+                        {
+                            <li onclick='GetLink("http://stackoverflow.com/@wiki.question_timeline_url")'>» @wiki.title</li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+ <div class="clear"></div>
+
+    </div>
+
+ 
+ 
 </div>
 
 

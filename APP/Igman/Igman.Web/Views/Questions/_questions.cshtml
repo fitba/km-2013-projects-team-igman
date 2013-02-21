@@ -1,10 +1,8 @@
 ﻿@using Igman.Infrastructure.Extend;
 @model IPagedList<Question>
 @{var tockice = ".......";}
-<div class="fl">
-    <div class="questions">
-
-        @foreach (var item in Model)
+<div class="questions">
+            @foreach (var item in Model)
         {
             <div class="question-summary">
                 <div class="statscontainer">
@@ -43,8 +41,8 @@
                     <div class="excerpt">
 
                         <div title="@Html.Raw(item.QuestionBody.OcistiHtml())">
-                            @if (item.QuestionBody.ToString().Length > 200)
-                            {@Html.Raw(item.QuestionBody.Substring(0, 200).OcistiHtml()) @tockice}
+                            @if (item.QuestionBody.OcistiHtml().Length>200)
+                            {@Html.Raw(item.QuestionBody.OcistiHtml().Substring(0, 200)) @tockice}
                             else
                             { @Html.Raw(@item.QuestionBody.OcistiHtml())}
                         </div>
@@ -89,7 +87,7 @@
 
             </div>
         }
-
+   
 
         <div class="clear"></div>
 
@@ -100,7 +98,4 @@
 
 
         </div>
-
-    </div>
-
-</div>
+ </div>

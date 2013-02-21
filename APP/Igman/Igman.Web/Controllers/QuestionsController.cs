@@ -9,6 +9,9 @@ using Igman.DB.BLL;
 using PagedList;
 using System.Data.Entity;
 using Igman.Infrastructure.Extend;
+using System.Diagnostics;
+using Igman.Infrastructure.Recommender.ExtrenalBase;
+using Igman.Web.Models.Json;
 
 
 namespace Igman.Web.Controllers
@@ -20,16 +23,14 @@ namespace Igman.Web.Controllers
         public ActionResult Index(string tab, int page = 1)
         {
 
-
-
             User a = Autorizacija.Autorizacija.GetCurrentUser(this.HttpContext);
             if (a != null)
                 TempData["user"] = a;
 
-
             if (tab == "TopRated")
             {
                 var questions = _db.context.Questions.Include(q => q.Categories).Include(q => q.User).Include(q => q.Tags).Include(q => q.Answers).OrderByDescending(q => q.Likes);
+                ViewBag.brojKomentara = questions.Count();
                 if (Request.IsAjaxRequest())
                 {
                     return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
@@ -42,11 +43,12 @@ namespace Igman.Web.Controllers
             {
 
                 var questions = _db.context.Questions.Include(q => q.Categories).Include(q => q.User).Include(q => q.Tags).OrderByDescending(q => q.NumOfViews);
+               
                 if (Request.IsAjaxRequest())
                 {
                     return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
                 }
-
+                ViewBag.brojKomentara = questions.Count();
                 return View(questions.ToList().ToPagedList(page, 5));
             }
 
@@ -58,7 +60,7 @@ namespace Igman.Web.Controllers
                 {
                     return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
                 }
-
+                ViewBag.brojKomentara = questions.Count();
                 return View(questions.ToList().ToPagedList(page, 5));
             }
             else if (tab == "Week")
@@ -69,7 +71,7 @@ namespace Igman.Web.Controllers
                 {
                     return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
                 }
-
+                ViewBag.brojKomentara = questions.Count();
                 return View(questions.ToList().ToPagedList(page, 5));
             }
             else if (tab == "Month")
@@ -80,6 +82,18 @@ namespace Igman.Web.Controllers
                 {
                     return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
                 }
+                ViewBag.brojKomentara = questions.Count();
+                return View(questions.ToList().ToPagedList(page, 5));
+            }
+            else if (tab == "UnAnswered")
+            {
+
+                var questions = _db.context.Questions.Where(q => q.Answers.Count==0);
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
+                }
+                ViewBag.brojKomentara = questions.Count();
 
                 return View(questions.ToList().ToPagedList(page, 5));
             }
@@ -93,6 +107,7 @@ namespace Igman.Web.Controllers
                 {
                     return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
                 }
+                ViewBag.brojKomentara = questions.Count();
 
                 return View(questions.ToList().ToPagedList(page, 5));
             }
@@ -134,6 +149,11 @@ namespace Igman.Web.Controllers
             {
                 return HttpNotFound();
             }
+            QuestionExteranlBase eb = new QuestionExteranlBase(question.Tags.ToList());
+
+            TempData["ExteranlQuestions"] = eb.PreporuciPitanja();
+
+
             var views = question.NumOfViews;
             var views_new = views + 1;
             question.NumOfViews = views_new;
@@ -176,7 +196,7 @@ namespace Igman.Web.Controllers
             var ListaTagova = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Json.Tag>>(jsonTagQuestion);
             var ListaKategorija = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Json.Kategorija>>(jsonKatQuestion);
 
-            List<Tag> listTempTag = SinhronyzeWithDB(ListaTagova.Where(x => x.TagID == "-1").ToList(), ListaTagova.Where(x => x.TagID != "-1").ToList());
+            List<Igman.DB.DAL.Tag> listTempTag = SinhronyzeWithDB(ListaTagova.Where(x => x.TagID == "-1").ToList(), ListaTagova.Where(x => x.TagID != "-1").ToList());
             List<Category> listaKategorija = SinhronyzeWithDB(ListaKategorija);
 
             pitanje.Categories = listaKategorija;
@@ -200,13 +220,13 @@ namespace Igman.Web.Controllers
             return ltl;
         }
 
-        private List<Tag> SinhronyzeWithDB(List<Models.Json.Tag> list, List<Models.Json.Tag> insideList)
+        private List<Igman.DB.DAL.Tag> SinhronyzeWithDB(List<Models.Json.Tag> list, List<Models.Json.Tag> insideList)
         {
-            var lTag = new List<Tag>();
+            var lTag = new List<Igman.DB.DAL.Tag>();
 
             foreach (var tag in list)
             {
-                Tag t = new Tag();
+                Igman.DB.DAL.Tag t = new Igman.DB.DAL.Tag();
                 t.Name = tag.Naziv;
                 t.GUID = Guid.NewGuid();
                 lTag.Add(_db.AddTag(t));
@@ -214,7 +234,7 @@ namespace Igman.Web.Controllers
 
             foreach (var tag in insideList)
             {
-                Tag t = new Tag();
+                Igman.DB.DAL.Tag t = new Igman.DB.DAL.Tag();
                 t.Name = tag.Naziv;
                 t.GUID = Guid.NewGuid();
                 t.TagID = tag.TagID.ToInt();
@@ -295,7 +315,110 @@ namespace Igman.Web.Controllers
         }
 
 
+        public ActionResult Search(string args, int page=1)
+        {
+            CheckUser();
+            Stopwatch st = new Stopwatch();
+            st.Start();
+            if (string.IsNullOrEmpty(args) || string.IsNullOrWhiteSpace(args))
+            {
+                return View();
+            }
+            if (args.Count() > 35)
+            {
+                TempData["err"] = "Maximalan upit do 35 karaktera";
+                return View();
+            }
+            args = Formatiraj(args);
+            
+            #region Lucine
+            //if (!strana.HasValue)
+            //    strana = 1;
+            //args = Formatiraj(args);
+            //LuceneEngine.LuceneDbEngine ldbe = new LuceneEngine.LuceneDbEngine();
+            //List<Rezultat> ids = ldbe.GetArticleIDByArg(args, false);
+            //string idsParams = GetIds(ids);
+            //string scores = GetScore(ids);
+            //List<DB.DalHelpClass.ArticleSerch.ArticleSerchModel> listaNadjenih;
+            #endregion
+            using (DBBL Baza = new DBBL())
+            {
+               var listaNadjenih = Baza.GetPitanja(args);
 
+                st.Stop();
+                var br_rez = listaNadjenih.Count();
+                if (br_rez > 0)
+                {
+                    TempData["stat"] = st.ElapsedMilliseconds / (double)1000;
+                    TempData["lp"] = listaNadjenih;
+                    TempData["args"] = args;
+                    TempData["br_rez"] = br_rez;
+
+                }
+
+                else
+                {
+                    List<Igman.DB.DAL.Tag> mislilac = Baza.GetDaliSteMilili(args);
+                    TempData["args"] = args;
+                    TempData["mislilac"] = mislilac;
+
+              
+                }
+
+                if (Request.IsAjaxRequest()) {
+
+                    return PartialView("_QAPretraga", listaNadjenih.ToPagedList(page, 5));
+                }
+                return View(listaNadjenih.ToPagedList(page,5));
+            }
+           
+         
+
+        }
+
+        #region Help
+        internal string Formatiraj(string args)
+        {
+            string[] a = args.Split(" "[0]);
+            args = "";
+            foreach (var str in a)
+            {
+                if (str != "")
+                    args += " " + str.Trim();
+            }
+            return args.Trim();
+        }
+        internal string GetIds(List<Rezultat> a)
+        {
+
+            if (a.Count == 0)
+                return "";
+            string s = "";
+            foreach (var item in a)
+            {
+                s += string.Format("{0},", item.Id);
+            }
+            return s.Remove(s.Count() - 1);
+        }
+        internal string GetScore(List<Rezultat> a)
+        {
+
+            if (a.Count == 0)
+                return "";
+            string s = "";
+            foreach (var item in a)
+            {
+                s += string.Format("{0},", item.Score);
+            }
+            return s.Remove(s.Count() - 1);
+        }
+        private void CheckUser()
+        {
+            DB.DAL.User a = Autorizacija.Autorizacija.GetCurrentUser(this.HttpContext);
+            if (a != null)
+                TempData["user"] = a;
+        }
+        #endregion
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
