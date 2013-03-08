@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="UZDBModelStoreContainer" CdmEntityContainer="DBEntities">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
     <EntitySetMapping Name="Answers">
-      <EntityTypeMapping TypeName="UZDBModel.Answer">
+      <EntityTypeMapping TypeName="DBModel.Answer">
         <MappingFragment StoreEntitySet="Answer">
           <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
           <ScalarProperty Name="AnswerBody" ColumnName="AnswerBody" />
@@ -16,7 +16,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Articles">
-      <EntityTypeMapping TypeName="UZDBModel.Article">
+      <EntityTypeMapping TypeName="DBModel.Article">
         <MappingFragment StoreEntitySet="Article">
           <ScalarProperty Name="ArticlesID" ColumnName="ArticlesID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -36,7 +36,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ArticlesLikes">
-      <EntityTypeMapping TypeName="UZDBModel.ArticlesLike">
+      <EntityTypeMapping TypeName="DBModel.ArticlesLike">
         <MappingFragment StoreEntitySet="ArticlesLikes">
           <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -47,7 +47,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ArticlesRatings">
-      <EntityTypeMapping TypeName="UZDBModel.ArticlesRating">
+      <EntityTypeMapping TypeName="DBModel.ArticlesRating">
         <MappingFragment StoreEntitySet="ArticlesRating">
           <ScalarProperty Name="ArticlesID" ColumnName="ArticlesID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -59,7 +59,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="UZDBModel.Category">
+      <EntityTypeMapping TypeName="DBModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -69,7 +69,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cities">
-      <EntityTypeMapping TypeName="UZDBModel.City">
+      <EntityTypeMapping TypeName="DBModel.City">
         <MappingFragment StoreEntitySet="City">
           <ScalarProperty Name="CityID" ColumnName="CityID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -80,7 +80,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Comments">
-      <EntityTypeMapping TypeName="UZDBModel.Comment">
+      <EntityTypeMapping TypeName="DBModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
           <ScalarProperty Name="CommentID" ColumnName="CommentID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -102,7 +102,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Countries">
-      <EntityTypeMapping TypeName="UZDBModel.Country">
+      <EntityTypeMapping TypeName="DBModel.Country">
         <MappingFragment StoreEntitySet="Country">
           <ScalarProperty Name="CountryID" ColumnName="CountryID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -111,7 +111,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Questions">
-      <EntityTypeMapping TypeName="UZDBModel.Question">
+      <EntityTypeMapping TypeName="DBModel.Question">
         <MappingFragment StoreEntitySet="Question">
           <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
           <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
@@ -124,8 +124,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="QuestionLikes">
+      <EntityTypeMapping TypeName="DBModel.QuestionLike">
+        <MappingFragment StoreEntitySet="QuestionLikes">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateLike" ColumnName="DateLike" />
+          <ScalarProperty Name="CreatorIP" ColumnName="CreatorIP" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionsRatings">
+      <EntityTypeMapping TypeName="DBModel.QuestionsRating">
+        <MappingFragment StoreEntitySet="QuestionsRating">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateRating" ColumnName="DateRating" />
+          <ScalarProperty Name="CreatorIP" ColumnName="CreatorIP" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="UZDBModel.Role">
+      <EntityTypeMapping TypeName="DBModel.Role">
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -134,8 +157,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Tags">
-      <EntityTypeMapping TypeName="UZDBModel.Tag">
+      <EntityTypeMapping TypeName="DBModel.Tag">
         <MappingFragment StoreEntitySet="Tag">
           <ScalarProperty Name="TagID" ColumnName="TagID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -144,7 +178,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="UZDBModel.User">
+      <EntityTypeMapping TypeName="DBModel.User">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -178,7 +212,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ArticlesInCategory" TypeName="UZDBModel.ArticlesInCategory" StoreEntitySet="ArticlesInCategory">
+    <AssociationSetMapping Name="ArticlesInCategory" TypeName="DBModel.ArticlesInCategory" StoreEntitySet="ArticlesInCategory">
       <EndProperty Name="Article">
         <ScalarProperty Name="ArticlesID" ColumnName="ArticleID" />
       </EndProperty>
@@ -186,7 +220,7 @@
         <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="QuestionInCategory" TypeName="UZDBModel.QuestionInCategory" StoreEntitySet="QuestionInCategory">
+    <AssociationSetMapping Name="QuestionInCategory" TypeName="DBModel.QuestionInCategory" StoreEntitySet="QuestionInCategory">
       <EndProperty Name="Category">
         <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
       </EndProperty>
@@ -194,7 +228,7 @@
         <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="TagInArticle" TypeName="UZDBModel.TagInArticle" StoreEntitySet="TagInArticle">
+    <AssociationSetMapping Name="TagInArticle" TypeName="DBModel.TagInArticle" StoreEntitySet="TagInArticle">
       <EndProperty Name="Article">
         <ScalarProperty Name="ArticlesID" ColumnName="Articles_ArticlesID" />
       </EndProperty>
@@ -202,7 +236,7 @@
         <ScalarProperty Name="TagID" ColumnName="Tag_TagID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="TagInQuestion" TypeName="UZDBModel.TagInQuestion" StoreEntitySet="TagInQuestion">
+    <AssociationSetMapping Name="TagInQuestion" TypeName="DBModel.TagInQuestion" StoreEntitySet="TagInQuestion">
       <EndProperty Name="Question">
         <ScalarProperty Name="QuestionID" ColumnName="Questions_QuestionID" />
       </EndProperty>
@@ -210,7 +244,7 @@
         <ScalarProperty Name="TagID" ColumnName="Tag_TagID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="UserRole" TypeName="UZDBModel.UserRole" StoreEntitySet="UserRole">
+    <AssociationSetMapping Name="UserRole" TypeName="DBModel.UserRole" StoreEntitySet="UserRole">
       <EndProperty Name="Role">
         <ScalarProperty Name="RoleID" ColumnName="Role_RoleID" />
       </EndProperty>

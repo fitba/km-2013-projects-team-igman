@@ -12,6 +12,7 @@ using Igman.Infrastructure.Extend;
 using System.Diagnostics;
 using Igman.Infrastructure.Recommender.ExtrenalBase;
 using Igman.Web.Models.Json;
+using Igman.Infrastructure.Recommender.ItemBase;
 
 
 namespace Igman.Web.Controllers
@@ -22,114 +23,74 @@ namespace Igman.Web.Controllers
 
         public ActionResult Index(string tab, int page = 1)
         {
-
             User a = Autorizacija.Autorizacija.GetCurrentUser(this.HttpContext);
+            if (a != null)
+            {
+                TempData["user"] = a;
+                #region ColaborativeRecommended
+             
+                Question pitanjeVirtualno = _db.GetQuestionZaPreporuku(a);
+                var listaPreporucenihPitanja = GetPreporukaPitanja(pitanjeVirtualno);
+                List<Question> lista_pitanja = CollaborativeRecommenderLista(listaPreporucenihPitanja,a);
+                TempData["RecommenderLista"] = lista_pitanja;
+
+                #endregion
+            }
+            TempData["TopLista"] = _db.context.Questions.OrderByDescending(q => q.Likes).Take(8).ToList();
+
+
+            var listaPitanja = _db.UzmiPitanja(tab);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_questions", listaPitanja.ToPagedList(page, 5));
+            }
+            ViewBag.brojKomentara = listaPitanja.Count();
+            return View(listaPitanja.ToPagedList(page, 5));
+        }
+
+       
+
+
+        public ActionResult Like(int? id)
+        {
+            DB.DAL.User a = Autorizacija.Autorizacija.GetCurrentUser(this.HttpContext);
             if (a != null)
                 TempData["user"] = a;
 
-            if (tab == "TopRated")
+            Question q = null;
+            int Uid = Autorizacija.Autorizacija.GetCurrentUser(this.HttpContext).UserID;
+            string likes_new = "";
+            if (id.HasValue)
             {
-                var questions = _db.context.Questions.Include(q => q.Categories).Include(q => q.User).Include(q => q.Tags).Include(q => q.Answers).OrderByDescending(q => q.Likes);
-                ViewBag.brojKomentara = questions.Count();
-                if (Request.IsAjaxRequest())
+                using (DBBL Baza = new DBBL())
                 {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
+
+                    QuestionLike ql = new QuestionLike()
+                    {
+                        QuestionID = id.Value,
+                        UserID = Uid,
+                        GUID = Guid.NewGuid(),
+                        DateLike = DateTime.Now,
+                        CreatorIP = this.Request.GetIpAdresa()
+                    };
+                    try
+                    {
+                        Baza.IncetrementLikesQuestion(ql);
+                    }
+                    catch (Exception)
+                    {
+
+                        return Content("False");
+                    }
+
+                    q = Baza.GetQuestionByID(id.Value);
+                    likes_new = q.QuestionLikes.Count.ToString();
                 }
 
-                return View(questions.ToList().ToPagedList(page, 5));
-            }
-
-            else if (tab == "MostViewed")
-            {
-
-                var questions = _db.context.Questions.Include(q => q.Categories).Include(q => q.User).Include(q => q.Tags).OrderByDescending(q => q.NumOfViews);
-               
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
-                }
-                ViewBag.brojKomentara = questions.Count();
-                return View(questions.ToList().ToPagedList(page, 5));
-            }
-
-            else if (tab == "MostAnswered")
-            {
-
-                var questions = _db.context.Questions.Include(q => q.Categories).Include(q => q.User).Include(q => q.Tags).OrderByDescending(q => q.Answers.Count);
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
-                }
-                ViewBag.brojKomentara = questions.Count();
-                return View(questions.ToList().ToPagedList(page, 5));
-            }
-            else if (tab == "Week")
-            {
-
-                var questions = _db.context.Questions.Where(q => q.CreatedDate.Value > System.Data.Objects.EntityFunctions.AddDays(DateTime.Now, -7));
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
-                }
-                ViewBag.brojKomentara = questions.Count();
-                return View(questions.ToList().ToPagedList(page, 5));
-            }
-            else if (tab == "Month")
-            {
-
-                var questions = _db.context.Questions.Where(q => q.CreatedDate.Value > System.Data.Objects.EntityFunctions.AddDays(DateTime.Now, -30));
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
-                }
-                ViewBag.brojKomentara = questions.Count();
-                return View(questions.ToList().ToPagedList(page, 5));
-            }
-            else if (tab == "UnAnswered")
-            {
-
-                var questions = _db.context.Questions.Where(q => q.Answers.Count==0);
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
-                }
-                ViewBag.brojKomentara = questions.Count();
-
-                return View(questions.ToList().ToPagedList(page, 5));
-            }
-
-            else
-            {
-
-
-                var questions = _db.context.Questions.OrderByDescending(q => q.QuestionID);
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("_questions", questions.ToList().ToPagedList(page, 5));
-                }
-                ViewBag.brojKomentara = questions.Count();
-
-                return View(questions.ToList().ToPagedList(page, 5));
             }
 
 
-
-
-
-
-        }
-
-
-        public ActionResult Like(int id)
-        {
-
-            Question question = _db.context.Questions.Find(id);
-            var like = question.Likes;
-            var like_new = like + 1;
-            question.Likes = like_new;
-            _db.Update_Question(question);
-
-            return Json(new { likes = like_new, id = id }, JsonRequestBehavior.AllowGet);
+            return Json(new { likes = likes_new, id = id }, JsonRequestBehavior.AllowGet);
         }
         //
         // GET: /Questions/Details/5
@@ -143,7 +104,7 @@ namespace Igman.Web.Controllers
 
             ViewBag.ListaKomentara = _db.GetComments(id);
             ViewBag.RelatedQuestios = _db.context.Questions.Take(5).OrderByDescending(q => q.CreatedDate);
-
+            TempData["TopListaDetails"] = _db.context.Questions.OrderByDescending(q => q.Likes).Take(8).ToList();
             var question = _db.context.Questions.Find(id);
             if (question == null)
             {
@@ -153,6 +114,7 @@ namespace Igman.Web.Controllers
 
             TempData["ExteranlQuestions"] = eb.PreporuciPitanja();
 
+            TempData["RecQuestions"] = GetPreporukaPitanja(question);
 
             var views = question.NumOfViews;
             var views_new = views + 1;
@@ -161,10 +123,15 @@ namespace Igman.Web.Controllers
             ViewBag.QuestionID = question.QuestionID;
             return View(question);
         }
+        private List<QuestionRecommender> GetPreporukaPitanja(Question q)
+        {
+            ItemPreporuka ip = new ItemPreporuka(q);
+            return ip.GetQuestionsPreporke();
+        }
 
         //
         // GET: /Questions/Create
-        //[Autorizacija.Autorizacija]
+        [Autorizacija.Autorizacija]
         public ActionResult Create()
         {
 
@@ -315,7 +282,7 @@ namespace Igman.Web.Controllers
         }
 
 
-        public ActionResult Search(string args, int page=1)
+        public ActionResult Search(string args, int page = 1)
         {
             CheckUser();
             Stopwatch st = new Stopwatch();
@@ -330,7 +297,7 @@ namespace Igman.Web.Controllers
                 return View();
             }
             args = Formatiraj(args);
-            
+
             #region Lucine
             //if (!strana.HasValue)
             //    strana = 1;
@@ -343,7 +310,7 @@ namespace Igman.Web.Controllers
             #endregion
             using (DBBL Baza = new DBBL())
             {
-               var listaNadjenih = Baza.GetPitanja(args);
+                var listaNadjenih = Baza.GetPitanja(args);
 
                 st.Stop();
                 var br_rez = listaNadjenih.Count();
@@ -362,17 +329,18 @@ namespace Igman.Web.Controllers
                     TempData["args"] = args;
                     TempData["mislilac"] = mislilac;
 
-              
+
                 }
 
-                if (Request.IsAjaxRequest()) {
+                if (Request.IsAjaxRequest())
+                {
 
                     return PartialView("_QAPretraga", listaNadjenih.ToPagedList(page, 5));
                 }
-                return View(listaNadjenih.ToPagedList(page,5));
+                return View(listaNadjenih.ToPagedList(page, 5));
             }
-           
-         
+
+
 
         }
 
@@ -417,6 +385,30 @@ namespace Igman.Web.Controllers
             DB.DAL.User a = Autorizacija.Autorizacija.GetCurrentUser(this.HttpContext);
             if (a != null)
                 TempData["user"] = a;
+        }
+
+     
+        private List<Question> CollaborativeRecommenderLista(List<QuestionRecommender> ls,User a)
+        {
+            List<Question> lista_pitanja = new List<Question>();
+            List<User> lista_usera = new List<User>();
+            foreach (var item in ls)
+            {
+                if (a.UserID != item.CreatorID)
+                {
+                    var user = _db.context.Users.Where(u => u.UserID == item.CreatorID).SingleOrDefault();
+                    if (!lista_usera.Contains(user))
+                    {
+                        lista_usera.Add(user);
+                    }
+                }
+            }
+            foreach (var item in lista_usera)
+            {
+                var pitanja = _db.context.Questions.Where(q => q.CreatorID == item.UserID).OrderByDescending(q => q.QuestionID).First();
+                lista_pitanja.Add(pitanja);
+            }
+            return lista_pitanja;
         }
         #endregion
         protected override void Dispose(bool disposing)

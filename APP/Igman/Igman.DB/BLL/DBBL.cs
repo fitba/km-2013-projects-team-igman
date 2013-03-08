@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Igman.DB.BLL
 {
     public class DBBL : IDisposable
@@ -71,7 +72,7 @@ namespace Igman.DB.BLL
 
         public List<Tag> GetTags(string query)
         {
-            return context.Database.SqlQuery<Tag>("EXEC dbo.GetTags '"+query+"'").ToList();
+            return context.Database.SqlQuery<Tag>("EXEC dbo.GetTags '" + query + "'").ToList();
         }
 
         public Tag AddTag(Tag t)
@@ -89,7 +90,7 @@ namespace Igman.DB.BLL
 
             foreach (var tag in tags)
             {
-                context.Database.ExecuteSqlCommand("EXEC dbo.usp_TagInArticleInsert "+a.ArticlesID+","+tag.TagID);
+                context.Database.ExecuteSqlCommand("EXEC dbo.usp_TagInArticleInsert " + a.ArticlesID + "," + tag.TagID);
             }
             foreach (var cat in kate)
             {
@@ -98,9 +99,9 @@ namespace Igman.DB.BLL
             return a;
         }
 
-        public List<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel> PretragaWiki(string args,string scor,int strana)
+        public List<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel> PretragaWiki(string args, string scor, int strana)
         {
-            string cmd = string.Format("EXEC [dbo].GetPretragaWiki {0},2,'{1}','{2}'",strana,args,scor);
+            string cmd = string.Format("EXEC [dbo].GetPretragaWiki {0},2,'{1}','{2}'", strana, args, scor);
             return context.Database.SqlQuery<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel>(cmd).ToList();
         }
 
@@ -111,7 +112,7 @@ namespace Igman.DB.BLL
 
         public void IncetrementLikes(ArticlesLike al)
         {
-            context.Database.ExecuteSqlCommand(String.Format("EXEC dbo.usp_ArticlesLikesInsert {0},{1},'{2}','{3}','{4}'",al.ArticleID,al.UserID,al.DateLike,al.CreatorIP,al.GUID));
+            context.Database.ExecuteSqlCommand(String.Format("EXEC dbo.usp_ArticlesLikesInsert {0},{1},'{2}','{3}','{4}'", al.ArticleID, al.UserID, al.DateLike.Value.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), al.CreatorIP, al.GUID));
         }
 
         public void IncremenViews(int p)
@@ -121,8 +122,8 @@ namespace Igman.DB.BLL
 
         public List<Tag> GetDaliSteMilili(string args)
         {
-            return context.Database.SqlQuery<Tag>(string.Format("EXEC dbo.PreoprukaTaga '{0}'",args.Replace("'",""))).ToList();
-        
+            return context.Database.SqlQuery<Tag>(string.Format("EXEC dbo.PreoprukaTaga '{0}'", args.Replace("'", ""))).ToList();
+
         }
 
         public Tag GetTagByID(int p)
@@ -130,9 +131,9 @@ namespace Igman.DB.BLL
             return context.Tags.Where(x => x.TagID == p).FirstOrDefault();
         }
 
-        public List<DalHelpClass.ArticleSerch.ArticleSerchModel> GetTagByIDWikis(int strana,int  p)
+        public List<DalHelpClass.ArticleSerch.ArticleSerchModel> GetTagByIDWikis(int strana, int p)
         {
-            string cmd = string.Format("EXEC dbo.PagingTagWiki {0},2,{1}",strana,p);
+            string cmd = string.Format("EXEC dbo.PagingTagWiki {0},2,{1}", strana, p);
             return context.Database.SqlQuery<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel>(cmd).ToList();
         }
 
@@ -143,7 +144,7 @@ namespace Igman.DB.BLL
 
         public void AddRating(ArticlesRating ar)
         {
-            string cmd = string.Format("EXEC [dbo].[usp_ArticlesRatingInsert] {0},{1},'{2}',null,'{3}',{4}", ar.ArticlesID, ar.UserID, ar.DateRating, ar.GUID, ar.Score);
+            string cmd = string.Format("EXEC [dbo].[usp_ArticlesRatingInsert] {0},{1},'{2}',null,'{3}',{4}", ar.ArticlesID, ar.UserID, ar.DateRating.Value.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), ar.GUID, ar.Score);
             context.Database.ExecuteSqlCommand(cmd);
         }
 
@@ -176,8 +177,9 @@ namespace Igman.DB.BLL
             context.Database.ExecuteSqlCommand("EXEC dbo.DeleteTagInCategory " + a.ArticlesID);
             context.Database.ExecuteSqlCommand("EXEC dbo.DeleteTagInArticles " + a.ArticlesID);
             context.Database.ExecuteSqlCommand("EXEC  dbo.DeleteRating " + a.ArticlesID);
+            context.Database.ExecuteSqlCommand("EXEC  dbo.DeleteArticleComments " + a.ArticlesID);
             context.Database.ExecuteSqlCommand("EXEC [dbo].[usp_ArticlesDelete] " + a.ArticlesID);
-           
+
             return AddWiki(a);
         }
 
@@ -235,7 +237,112 @@ namespace Igman.DB.BLL
 
         public IEnumerable<Question> GetPitanja(string args)
         {
-            return context.Questions.Where(q=>q.QuestionBody.Contains(args)).ToList();
+            return context.Questions.Where(q => q.QuestionBody.Contains(args) || q.QuestionTitle.Contains(args)).ToList();
+        }
+
+        public Question GetQuestionZaPreporuku(User a)
+        {
+            List<Tag> listaTagovaLoginUsera = new List<Tag>();
+            List<Category> listaKategorijaLoginUsera = new List<Category>();
+            List<QuestionsRating> listaQuesionRatingLoginUsera = new List<QuestionsRating>();
+
+            List<Question> questionsOfUser = context.Questions.Where(q => q.CreatorID == a.UserID).ToList();
+            foreach (var item in questionsOfUser)
+            {
+                foreach (var i in item.Tags)
+                {
+                    listaTagovaLoginUsera.Add(i);
+                }
+            }
+            foreach (var item in questionsOfUser)
+            {
+                foreach (var i in item.Categories)
+                {
+                    listaKategorijaLoginUsera.Add(i);
+                }
+            }
+            foreach (var item in questionsOfUser)
+            {
+                foreach (var i in item.QuestionsRatings)
+                {
+                    listaQuesionRatingLoginUsera.Add(i);
+                }
+            }
+            Question PitanjeVirtualno = new Question();
+            PitanjeVirtualno.QuestionsRatings = listaQuesionRatingLoginUsera;
+            PitanjeVirtualno.Tags = listaTagovaLoginUsera;
+            PitanjeVirtualno.Categories = listaKategorijaLoginUsera;
+
+            return PitanjeVirtualno;
+
+        }
+
+        public List<Question> GetAllQuestios()
+        {
+            return context.Questions.ToList();
+        }
+
+        public Question GetQuestionByID(int id)
+        {
+            return context.Questions.Where(q => q.QuestionID == id).First();
+        }
+
+        public void IncetrementLikesQuestion(QuestionLike q)
+        {
+            context.Database.ExecuteSqlCommand(String.Format("EXEC dbo.[usp_QuestionsLikesInsert] {0},{1},'{2}','{3}','{4}'", q.QuestionID, q.UserID, q.DateLike.Value.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), q.CreatorIP, q.GUID));
+        }
+
+        public IEnumerable<Question> UzmiPitanja(string tab)
+        {
+            switch (tab)
+            {
+                case "TopRated":
+                    return context.Questions.OrderByDescending(q => q.Likes);
+
+                case "MostViewed":
+                    return context.Questions.OrderByDescending(q => q.NumOfViews);
+
+                case "MostAnswered":
+                    return context.Questions.OrderByDescending(q => q.Answers.Count);
+
+                case "Week":
+                    return context.Questions.Where(q => q.CreatedDate.Value > System.Data.Objects.EntityFunctions.AddDays(DateTime.Now, -7)).OrderByDescending(q => q.CreatedDate);
+
+
+                case "Month":
+                    return context.Questions.Where(q => q.CreatedDate.Value > System.Data.Objects.EntityFunctions.AddDays(DateTime.Now, -30)).OrderByDescending(q => q.CreatedDate);
+
+
+                case "UnAnswered":
+                    return context.Questions.Where(q => q.Answers.Count == 0).OrderByDescending(q => q.CreatedDate);
+
+                default:
+                    return context.Questions.OrderByDescending(q => q.QuestionID);
+            }
+        }
+
+        public List<int> get_questionsIDs(int id)
+        {
+            List<Question> lista = new List<Question>();
+
+
+            string cmd = string.Format("EXEC [dbo].[get_question_by_category] {0}", id);
+            List<int> l = context.Database.SqlQuery<int>(cmd).ToList();
+            return l;
+        }
+
+        public List<int> get_questionsIDsTags(int id)
+        {
+            List<Question> lista = new List<Question>();
+
+
+            string cmd = string.Format("EXEC [dbo].[get_question_by_tag] {0}", id);
+            List<int> l = context.Database.SqlQuery<int>(cmd).ToList();
+            return l;
         }
     }
 }
+
+
+
+

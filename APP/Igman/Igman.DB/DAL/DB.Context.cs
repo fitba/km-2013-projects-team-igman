@@ -34,7 +34,10 @@ namespace Igman.DB.DAL
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<QuestionLike> QuestionLikes { get; set; }
+        public DbSet<QuestionsRating> QuestionsRatings { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
     }

@@ -23,6 +23,8 @@ namespace Igman.DB.DAL
             this.Comments = new HashSet<Comment>();
             this.Comments1 = new HashSet<Comment>();
             this.Questions = new HashSet<Question>();
+            this.QuestionLikes = new HashSet<QuestionLike>();
+            this.QuestionsRatings = new HashSet<QuestionsRating>();
             this.Roles = new HashSet<Role>();
         }
     
@@ -64,6 +66,8 @@ namespace Igman.DB.DAL
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Comment> Comments1 { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<QuestionLike> QuestionLikes { get; set; }
+        public virtual ICollection<QuestionsRating> QuestionsRatings { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
     }
 }

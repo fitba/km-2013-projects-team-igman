@@ -1,4 +1,10 @@
-﻿<div id="Over-footer">
+﻿@{
+    var TopQuestions = HttpContext.Current.Cache.Get("TopListaPitanja") as List<Question>;
+
+    var TopWiki = HttpContext.Current.Cache.Get("TopListaWiki") as List<Article>;
+   
+}
+<div id="Over-footer">
     <ul id="Info-footer">
         <li>
             <div>
@@ -16,20 +22,19 @@
                 </div>
             </div>
             <div class="f-content clearfix">
-
-                <div>
-                    ...
-                </div>
-                <div>
-                    ...
-                </div>
-                <div>
-                    ...
-                </div>
+                @if (TopWiki != null)
+                {
+                    foreach (var item in TopWiki)
+                    {
+                    <div>
+                        » <a href="/Wiki-Show/@item.ArticlesID">@item.Name</a>
+                    </div>
+                    }
+                }
             </div>
 
         </li>
-         <li>
+        <li>
             <div class="over-footer">
                 <div class="Img">
                     <img src="~/Content/Template/images/icons/appbar.checkmark.pencil.top.png" />
@@ -40,21 +45,20 @@
             </div>
             <div class="f-content clearfix">
 
-                <div>
-                    ...
-                </div>
-                <div>
-                    ...
-                </div>
-                <div>
-                    ...
-                </div>
+                @foreach (var item in TopQuestions)
+                {
+                    <div>
+                        » <a href="/questions/Details/@item.QuestionID">@item.QuestionTitle</a>
+                    </div>
+                }
+
+
             </div>
 
         </li>
         <li>
             <div>
-© 2013 FIT<div id="copy">Fakultet informacijskih tehnologija ukoliko nije drugačije označeno. Sva prava pridržana.</div>
+                © 2013 FIT<div id="copy">Fakultet informacijskih tehnologija ukoliko nije drugačije označeno. Sva prava pridržana.</div>
             </div>
             <img id="fit" src="~/Content/Template/images/fit.png" />
         </li>

@@ -4,118 +4,137 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UZDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="UZDBModelStoreContainer">
-          <EntitySet Name="Answer" EntityType="UZDBModel.Store.Answer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Article" EntityType="UZDBModel.Store.Article" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ArticlesInCategory" EntityType="UZDBModel.Store.ArticlesInCategory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ArticlesLikes" EntityType="UZDBModel.Store.ArticlesLikes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ArticlesRating" EntityType="UZDBModel.Store.ArticlesRating" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Category" EntityType="UZDBModel.Store.Category" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="City" EntityType="UZDBModel.Store.City" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Comment" EntityType="UZDBModel.Store.Comment" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Country" EntityType="UZDBModel.Store.Country" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Question" EntityType="UZDBModel.Store.Question" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="QuestionInCategory" EntityType="UZDBModel.Store.QuestionInCategory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Role" EntityType="UZDBModel.Store.Role" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Tag" EntityType="UZDBModel.Store.Tag" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TagInArticle" EntityType="UZDBModel.Store.TagInArticle" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TagInQuestion" EntityType="UZDBModel.Store.TagInQuestion" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="User" EntityType="UZDBModel.Store.User" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserRole" EntityType="UZDBModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Answers_Questions" Association="UZDBModel.Store.FK_Answers_Questions">
+      <Schema Namespace="DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Answer" EntityType="DBModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Article" EntityType="DBModel.Store.Article" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ArticlesInCategory" EntityType="DBModel.Store.ArticlesInCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ArticlesLikes" EntityType="DBModel.Store.ArticlesLikes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ArticlesRating" EntityType="DBModel.Store.ArticlesRating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="DBModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="City" EntityType="DBModel.Store.City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="DBModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="DBModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Question" EntityType="DBModel.Store.Question" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QuestionInCategory" EntityType="DBModel.Store.QuestionInCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QuestionLikes" EntityType="DBModel.Store.QuestionLikes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QuestionsRating" EntityType="DBModel.Store.QuestionsRating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="DBModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="DBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tag" EntityType="DBModel.Store.Tag" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TagInArticle" EntityType="DBModel.Store.TagInArticle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TagInQuestion" EntityType="DBModel.Store.TagInQuestion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="DBModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRole" EntityType="DBModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Answers_Questions" Association="DBModel.Store.FK_Answers_Questions">
             <End Role="Question" EntitySet="Question" />
             <End Role="Answer" EntitySet="Answer" />
           </AssociationSet>
-          <AssociationSet Name="FK_Answers_User" Association="UZDBModel.Store.FK_Answers_User">
+          <AssociationSet Name="FK_Answers_User" Association="DBModel.Store.FK_Answers_User">
             <End Role="User" EntitySet="User" />
             <End Role="Answer" EntitySet="Answer" />
           </AssociationSet>
-          <AssociationSet Name="FK_Articles_User" Association="UZDBModel.Store.FK_Articles_User">
+          <AssociationSet Name="FK_Articles_User" Association="DBModel.Store.FK_Articles_User">
             <End Role="User" EntitySet="User" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesInCategory_Articles" Association="UZDBModel.Store.FK_ArticlesInCategory_Articles">
+          <AssociationSet Name="FK_ArticlesInCategory_Articles" Association="DBModel.Store.FK_ArticlesInCategory_Articles">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticlesInCategory" EntitySet="ArticlesInCategory" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesInCategory_Category" Association="UZDBModel.Store.FK_ArticlesInCategory_Category">
+          <AssociationSet Name="FK_ArticlesInCategory_Category" Association="DBModel.Store.FK_ArticlesInCategory_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="ArticlesInCategory" EntitySet="ArticlesInCategory" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesLikes_Articles" Association="UZDBModel.Store.FK_ArticlesLikes_Articles">
+          <AssociationSet Name="FK_ArticlesLikes_Articles" Association="DBModel.Store.FK_ArticlesLikes_Articles">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticlesLikes" EntitySet="ArticlesLikes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesLikes_User" Association="UZDBModel.Store.FK_ArticlesLikes_User">
+          <AssociationSet Name="FK_ArticlesLikes_User" Association="DBModel.Store.FK_ArticlesLikes_User">
             <End Role="User" EntitySet="User" />
             <End Role="ArticlesLikes" EntitySet="ArticlesLikes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesRating_Articles" Association="UZDBModel.Store.FK_ArticlesRating_Articles">
+          <AssociationSet Name="FK_ArticlesRating_Articles" Association="DBModel.Store.FK_ArticlesRating_Articles">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticlesRating" EntitySet="ArticlesRating" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesRating_User" Association="UZDBModel.Store.FK_ArticlesRating_User">
+          <AssociationSet Name="FK_ArticlesRating_User" Association="DBModel.Store.FK_ArticlesRating_User">
             <End Role="User" EntitySet="User" />
             <End Role="ArticlesRating" EntitySet="ArticlesRating" />
           </AssociationSet>
-          <AssociationSet Name="FK_City_Country" Association="UZDBModel.Store.FK_City_Country">
+          <AssociationSet Name="FK_City_Country" Association="DBModel.Store.FK_City_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK_Comment_Answers" Association="UZDBModel.Store.FK_Comment_Answers">
+          <AssociationSet Name="FK_Comment_Answers" Association="DBModel.Store.FK_Comment_Answers">
             <End Role="Answer" EntitySet="Answer" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK_Comment_Articles" Association="UZDBModel.Store.FK_Comment_Articles">
+          <AssociationSet Name="FK_Comment_Articles" Association="DBModel.Store.FK_Comment_Articles">
             <End Role="Article" EntitySet="Article" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK_MerchantComment_User" Association="UZDBModel.Store.FK_MerchantComment_User">
+          <AssociationSet Name="FK_MerchantComment_User" Association="DBModel.Store.FK_MerchantComment_User">
             <End Role="User" EntitySet="User" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK_MerchantComment_User1" Association="UZDBModel.Store.FK_MerchantComment_User1">
+          <AssociationSet Name="FK_MerchantComment_User1" Association="DBModel.Store.FK_MerchantComment_User1">
             <End Role="User" EntitySet="User" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionInCategory_Category" Association="UZDBModel.Store.FK_QuestionInCategory_Category">
+          <AssociationSet Name="FK_QuestionInCategory_Category" Association="DBModel.Store.FK_QuestionInCategory_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="QuestionInCategory" EntitySet="QuestionInCategory" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionInCategory_Questions" Association="UZDBModel.Store.FK_QuestionInCategory_Questions">
+          <AssociationSet Name="FK_QuestionInCategory_Questions" Association="DBModel.Store.FK_QuestionInCategory_Questions">
             <End Role="Question" EntitySet="Question" />
             <End Role="QuestionInCategory" EntitySet="QuestionInCategory" />
           </AssociationSet>
-          <AssociationSet Name="FK_Questions_User" Association="UZDBModel.Store.FK_Questions_User">
+          <AssociationSet Name="FK_QuestionLikes_Question" Association="DBModel.Store.FK_QuestionLikes_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="QuestionLikes" EntitySet="QuestionLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionLikes_User" Association="DBModel.Store.FK_QuestionLikes_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="QuestionLikes" EntitySet="QuestionLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_User" Association="DBModel.Store.FK_Questions_User">
             <End Role="User" EntitySet="User" />
             <End Role="Question" EntitySet="Question" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagInArticle_Articles" Association="UZDBModel.Store.FK_TagInArticle_Articles">
+          <AssociationSet Name="FK_QuestionsRating_Question" Association="DBModel.Store.FK_QuestionsRating_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="QuestionsRating" EntitySet="QuestionsRating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsRating_User" Association="DBModel.Store.FK_QuestionsRating_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="QuestionsRating" EntitySet="QuestionsRating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagInArticle_Articles" Association="DBModel.Store.FK_TagInArticle_Articles">
             <End Role="Article" EntitySet="Article" />
             <End Role="TagInArticle" EntitySet="TagInArticle" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagInArticle_Tag" Association="UZDBModel.Store.FK_TagInArticle_Tag">
+          <AssociationSet Name="FK_TagInArticle_Tag" Association="DBModel.Store.FK_TagInArticle_Tag">
             <End Role="Tag" EntitySet="Tag" />
             <End Role="TagInArticle" EntitySet="TagInArticle" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagInQuestion_Questions" Association="UZDBModel.Store.FK_TagInQuestion_Questions">
+          <AssociationSet Name="FK_TagInQuestion_Questions" Association="DBModel.Store.FK_TagInQuestion_Questions">
             <End Role="Question" EntitySet="Question" />
             <End Role="TagInQuestion" EntitySet="TagInQuestion" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagInQuestion_Tag" Association="UZDBModel.Store.FK_TagInQuestion_Tag">
+          <AssociationSet Name="FK_TagInQuestion_Tag" Association="DBModel.Store.FK_TagInQuestion_Tag">
             <End Role="Tag" EntitySet="Tag" />
             <End Role="TagInQuestion" EntitySet="TagInQuestion" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_City" Association="UZDBModel.Store.FK_User_City">
+          <AssociationSet Name="FK_User_City" Association="DBModel.Store.FK_User_City">
             <End Role="City" EntitySet="City" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserRole_Role" Association="UZDBModel.Store.FK_UserRole_Role">
+          <AssociationSet Name="FK_UserRole_Role" Association="DBModel.Store.FK_UserRole_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserRole_User" Association="UZDBModel.Store.FK_UserRole_User">
+          <AssociationSet Name="FK_UserRole_User" Association="DBModel.Store.FK_UserRole_User">
             <End Role="User" EntitySet="User" />
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
@@ -151,6 +170,7 @@
           <Property Name="CreatorUserAgent" Type="nvarchar(max)" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="UserID" Type="int" />
+          <Property Name="Likes" Type="int" />
         </EntityType>
         <EntityType Name="ArticlesInCategory">
           <Key>
@@ -252,6 +272,29 @@
           <Property Name="QuestionID" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="QuestionLikes">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateLike" Type="datetime" />
+          <Property Name="CreatorIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="QuestionsRating">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateRating" Type="datetime" />
+          <Property Name="CreatorIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" />
+          <Property Name="Score" Type="int" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -260,6 +303,16 @@
           <Property Name="GUID" Type="uniqueidentifier" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -328,8 +381,8 @@
           <Property Name="User_UserID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Answers_Questions">
-          <End Role="Question" Type="UZDBModel.Store.Question" Multiplicity="0..1" />
-          <End Role="Answer" Type="UZDBModel.Store.Answer" Multiplicity="*" />
+          <End Role="Question" Type="DBModel.Store.Question" Multiplicity="0..1" />
+          <End Role="Answer" Type="DBModel.Store.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="QuestionID" />
@@ -340,8 +393,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Answers_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="0..1" />
-          <End Role="Answer" Type="UZDBModel.Store.Answer" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="0..1" />
+          <End Role="Answer" Type="DBModel.Store.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -352,8 +405,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Articles_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="0..1" />
-          <End Role="Article" Type="UZDBModel.Store.Article" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="0..1" />
+          <End Role="Article" Type="DBModel.Store.Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -364,8 +417,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesInCategory_Articles">
-          <End Role="Article" Type="UZDBModel.Store.Article" Multiplicity="1" />
-          <End Role="ArticlesInCategory" Type="UZDBModel.Store.ArticlesInCategory" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Store.Article" Multiplicity="1" />
+          <End Role="ArticlesInCategory" Type="DBModel.Store.ArticlesInCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -376,8 +429,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesInCategory_Category">
-          <End Role="Category" Type="UZDBModel.Store.Category" Multiplicity="1" />
-          <End Role="ArticlesInCategory" Type="UZDBModel.Store.ArticlesInCategory" Multiplicity="*" />
+          <End Role="Category" Type="DBModel.Store.Category" Multiplicity="1" />
+          <End Role="ArticlesInCategory" Type="DBModel.Store.ArticlesInCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryID" />
@@ -388,8 +441,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesLikes_Articles">
-          <End Role="Article" Type="UZDBModel.Store.Article" Multiplicity="1" />
-          <End Role="ArticlesLikes" Type="UZDBModel.Store.ArticlesLikes" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Store.Article" Multiplicity="1" />
+          <End Role="ArticlesLikes" Type="DBModel.Store.ArticlesLikes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -400,8 +453,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesLikes_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="1" />
-          <End Role="ArticlesLikes" Type="UZDBModel.Store.ArticlesLikes" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="1" />
+          <End Role="ArticlesLikes" Type="DBModel.Store.ArticlesLikes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -412,8 +465,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesRating_Articles">
-          <End Role="Article" Type="UZDBModel.Store.Article" Multiplicity="1" />
-          <End Role="ArticlesRating" Type="UZDBModel.Store.ArticlesRating" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Store.Article" Multiplicity="1" />
+          <End Role="ArticlesRating" Type="DBModel.Store.ArticlesRating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -424,8 +477,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesRating_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="1" />
-          <End Role="ArticlesRating" Type="UZDBModel.Store.ArticlesRating" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="1" />
+          <End Role="ArticlesRating" Type="DBModel.Store.ArticlesRating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -436,8 +489,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_City_Country">
-          <End Role="Country" Type="UZDBModel.Store.Country" Multiplicity="0..1" />
-          <End Role="City" Type="UZDBModel.Store.City" Multiplicity="*" />
+          <End Role="Country" Type="DBModel.Store.Country" Multiplicity="0..1" />
+          <End Role="City" Type="DBModel.Store.City" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="CountryID" />
@@ -448,8 +501,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Comment_Answers">
-          <End Role="Answer" Type="UZDBModel.Store.Answer" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Store.Comment" Multiplicity="*" />
+          <End Role="Answer" Type="DBModel.Store.Answer" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Answer">
               <PropertyRef Name="AnswerID" />
@@ -460,8 +513,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Comment_Articles">
-          <End Role="Article" Type="UZDBModel.Store.Article" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Store.Comment" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Store.Article" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -472,8 +525,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MerchantComment_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Store.Comment" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -484,8 +537,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MerchantComment_User1">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Store.Comment" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -496,8 +549,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_QuestionInCategory_Category">
-          <End Role="Category" Type="UZDBModel.Store.Category" Multiplicity="1" />
-          <End Role="QuestionInCategory" Type="UZDBModel.Store.QuestionInCategory" Multiplicity="*" />
+          <End Role="Category" Type="DBModel.Store.Category" Multiplicity="1" />
+          <End Role="QuestionInCategory" Type="DBModel.Store.QuestionInCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryID" />
@@ -508,8 +561,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_QuestionInCategory_Questions">
-          <End Role="Question" Type="UZDBModel.Store.Question" Multiplicity="1" />
-          <End Role="QuestionInCategory" Type="UZDBModel.Store.QuestionInCategory" Multiplicity="*" />
+          <End Role="Question" Type="DBModel.Store.Question" Multiplicity="1" />
+          <End Role="QuestionInCategory" Type="DBModel.Store.QuestionInCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="QuestionID" />
@@ -519,9 +572,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_QuestionLikes_Question">
+          <End Role="Question" Type="DBModel.Store.Question" Multiplicity="1" />
+          <End Role="QuestionLikes" Type="DBModel.Store.QuestionLikes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="QuestionLikes">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionLikes_User">
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="1" />
+          <End Role="QuestionLikes" Type="DBModel.Store.QuestionLikes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="QuestionLikes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Questions_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="0..1" />
-          <End Role="Question" Type="UZDBModel.Store.Question" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="0..1" />
+          <End Role="Question" Type="DBModel.Store.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -531,9 +608,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_QuestionsRating_Question">
+          <End Role="Question" Type="DBModel.Store.Question" Multiplicity="1" />
+          <End Role="QuestionsRating" Type="DBModel.Store.QuestionsRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="QuestionsRating">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsRating_User">
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="1" />
+          <End Role="QuestionsRating" Type="DBModel.Store.QuestionsRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="QuestionsRating">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TagInArticle_Articles">
-          <End Role="Article" Type="UZDBModel.Store.Article" Multiplicity="1" />
-          <End Role="TagInArticle" Type="UZDBModel.Store.TagInArticle" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Store.Article" Multiplicity="1" />
+          <End Role="TagInArticle" Type="DBModel.Store.TagInArticle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -544,8 +645,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TagInArticle_Tag">
-          <End Role="Tag" Type="UZDBModel.Store.Tag" Multiplicity="1" />
-          <End Role="TagInArticle" Type="UZDBModel.Store.TagInArticle" Multiplicity="*" />
+          <End Role="Tag" Type="DBModel.Store.Tag" Multiplicity="1" />
+          <End Role="TagInArticle" Type="DBModel.Store.TagInArticle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
               <PropertyRef Name="TagID" />
@@ -556,8 +657,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TagInQuestion_Questions">
-          <End Role="Question" Type="UZDBModel.Store.Question" Multiplicity="1" />
-          <End Role="TagInQuestion" Type="UZDBModel.Store.TagInQuestion" Multiplicity="*" />
+          <End Role="Question" Type="DBModel.Store.Question" Multiplicity="1" />
+          <End Role="TagInQuestion" Type="DBModel.Store.TagInQuestion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="QuestionID" />
@@ -568,8 +669,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TagInQuestion_Tag">
-          <End Role="Tag" Type="UZDBModel.Store.Tag" Multiplicity="1" />
-          <End Role="TagInQuestion" Type="UZDBModel.Store.TagInQuestion" Multiplicity="*" />
+          <End Role="Tag" Type="DBModel.Store.Tag" Multiplicity="1" />
+          <End Role="TagInQuestion" Type="DBModel.Store.TagInQuestion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
               <PropertyRef Name="TagID" />
@@ -580,8 +681,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_City">
-          <End Role="City" Type="UZDBModel.Store.City" Multiplicity="0..1" />
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="*" />
+          <End Role="City" Type="DBModel.Store.City" Multiplicity="0..1" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="CityID" />
@@ -592,8 +693,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserRole_Role">
-          <End Role="Role" Type="UZDBModel.Store.Role" Multiplicity="1" />
-          <End Role="UserRole" Type="UZDBModel.Store.UserRole" Multiplicity="*" />
+          <End Role="Role" Type="DBModel.Store.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="DBModel.Store.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="RoleID" />
@@ -604,8 +705,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserRole_User">
-          <End Role="User" Type="UZDBModel.Store.User" Multiplicity="1" />
-          <End Role="UserRole" Type="UZDBModel.Store.UserRole" Multiplicity="*" />
+          <End Role="User" Type="DBModel.Store.User" Multiplicity="1" />
+          <End Role="UserRole" Type="DBModel.Store.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -615,96 +716,116 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UZDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Answers" EntityType="UZDBModel.Answer" />
-          <EntitySet Name="Articles" EntityType="UZDBModel.Article" />
-          <EntitySet Name="ArticlesLikes" EntityType="UZDBModel.ArticlesLike" />
-          <EntitySet Name="ArticlesRatings" EntityType="UZDBModel.ArticlesRating" />
-          <EntitySet Name="Categories" EntityType="UZDBModel.Category" />
-          <EntitySet Name="Cities" EntityType="UZDBModel.City" />
-          <EntitySet Name="Comments" EntityType="UZDBModel.Comment" />
-          <EntitySet Name="Countries" EntityType="UZDBModel.Country" />
-          <EntitySet Name="Questions" EntityType="UZDBModel.Question" />
-          <EntitySet Name="Roles" EntityType="UZDBModel.Role" />
-          <EntitySet Name="Tags" EntityType="UZDBModel.Tag" />
-          <EntitySet Name="Users" EntityType="UZDBModel.User" />
-          <AssociationSet Name="FK_Answers_Questions" Association="UZDBModel.FK_Answers_Questions">
+          <EntitySet Name="Answers" EntityType="DBModel.Answer" />
+          <EntitySet Name="Articles" EntityType="DBModel.Article" />
+          <EntitySet Name="ArticlesLikes" EntityType="DBModel.ArticlesLike" />
+          <EntitySet Name="ArticlesRatings" EntityType="DBModel.ArticlesRating" />
+          <EntitySet Name="Categories" EntityType="DBModel.Category" />
+          <EntitySet Name="Cities" EntityType="DBModel.City" />
+          <EntitySet Name="Comments" EntityType="DBModel.Comment" />
+          <EntitySet Name="Countries" EntityType="DBModel.Country" />
+          <EntitySet Name="Questions" EntityType="DBModel.Question" />
+          <EntitySet Name="QuestionLikes" EntityType="DBModel.QuestionLike" />
+          <EntitySet Name="QuestionsRatings" EntityType="DBModel.QuestionsRating" />
+          <EntitySet Name="Roles" EntityType="DBModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="DBModel.sysdiagram" />
+          <EntitySet Name="Tags" EntityType="DBModel.Tag" />
+          <EntitySet Name="Users" EntityType="DBModel.User" />
+          <AssociationSet Name="FK_Answers_Questions" Association="DBModel.FK_Answers_Questions">
             <End Role="Question" EntitySet="Questions" />
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Answers_User" Association="UZDBModel.FK_Answers_User">
+          <AssociationSet Name="FK_Answers_User" Association="DBModel.FK_Answers_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Comment_Answers" Association="UZDBModel.FK_Comment_Answers">
+          <AssociationSet Name="FK_Comment_Answers" Association="DBModel.FK_Comment_Answers">
             <End Role="Answer" EntitySet="Answers" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Articles_User" Association="UZDBModel.FK_Articles_User">
+          <AssociationSet Name="FK_Articles_User" Association="DBModel.FK_Articles_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesLikes_Articles" Association="UZDBModel.FK_ArticlesLikes_Articles">
+          <AssociationSet Name="FK_ArticlesLikes_Articles" Association="DBModel.FK_ArticlesLikes_Articles">
             <End Role="Article" EntitySet="Articles" />
             <End Role="ArticlesLikes" EntitySet="ArticlesLikes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesRating_Articles" Association="UZDBModel.FK_ArticlesRating_Articles">
+          <AssociationSet Name="FK_ArticlesRating_Articles" Association="DBModel.FK_ArticlesRating_Articles">
             <End Role="Article" EntitySet="Articles" />
             <End Role="ArticlesRating" EntitySet="ArticlesRatings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Comment_Articles" Association="UZDBModel.FK_Comment_Articles">
+          <AssociationSet Name="FK_Comment_Articles" Association="DBModel.FK_Comment_Articles">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesLikes_User" Association="UZDBModel.FK_ArticlesLikes_User">
+          <AssociationSet Name="FK_ArticlesLikes_User" Association="DBModel.FK_ArticlesLikes_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ArticlesLikes" EntitySet="ArticlesLikes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticlesRating_User" Association="UZDBModel.FK_ArticlesRating_User">
+          <AssociationSet Name="FK_ArticlesRating_User" Association="DBModel.FK_ArticlesRating_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ArticlesRating" EntitySet="ArticlesRatings" />
           </AssociationSet>
-          <AssociationSet Name="FK_City_Country" Association="UZDBModel.FK_City_Country">
+          <AssociationSet Name="FK_City_Country" Association="DBModel.FK_City_Country">
             <End Role="Country" EntitySet="Countries" />
             <End Role="City" EntitySet="Cities" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_City" Association="UZDBModel.FK_User_City">
+          <AssociationSet Name="FK_User_City" Association="DBModel.FK_User_City">
             <End Role="City" EntitySet="Cities" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_MerchantComment_User" Association="UZDBModel.FK_MerchantComment_User">
+          <AssociationSet Name="FK_MerchantComment_User" Association="DBModel.FK_MerchantComment_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK_MerchantComment_User1" Association="UZDBModel.FK_MerchantComment_User1">
+          <AssociationSet Name="FK_MerchantComment_User1" Association="DBModel.FK_MerchantComment_User1">
             <End Role="User" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Questions_User" Association="UZDBModel.FK_Questions_User">
+          <AssociationSet Name="FK_QuestionLikes_Question" Association="DBModel.FK_QuestionLikes_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="QuestionLikes" EntitySet="QuestionLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_User" Association="DBModel.FK_Questions_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Question" EntitySet="Questions" />
           </AssociationSet>
-          <AssociationSet Name="ArticlesInCategory" Association="UZDBModel.ArticlesInCategory">
+          <AssociationSet Name="FK_QuestionsRating_Question" Association="DBModel.FK_QuestionsRating_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="QuestionsRating" EntitySet="QuestionsRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionLikes_User" Association="DBModel.FK_QuestionLikes_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="QuestionLikes" EntitySet="QuestionLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsRating_User" Association="DBModel.FK_QuestionsRating_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="QuestionsRating" EntitySet="QuestionsRatings" />
+          </AssociationSet>
+          <AssociationSet Name="ArticlesInCategory" Association="DBModel.ArticlesInCategory">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Category" EntitySet="Categories" />
           </AssociationSet>
-          <AssociationSet Name="QuestionInCategory" Association="UZDBModel.QuestionInCategory">
+          <AssociationSet Name="QuestionInCategory" Association="DBModel.QuestionInCategory">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Question" EntitySet="Questions" />
           </AssociationSet>
-          <AssociationSet Name="TagInArticle" Association="UZDBModel.TagInArticle">
+          <AssociationSet Name="TagInArticle" Association="DBModel.TagInArticle">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Tag" EntitySet="Tags" />
           </AssociationSet>
-          <AssociationSet Name="TagInQuestion" Association="UZDBModel.TagInQuestion">
+          <AssociationSet Name="TagInQuestion" Association="DBModel.TagInQuestion">
             <End Role="Question" EntitySet="Questions" />
             <End Role="Tag" EntitySet="Tags" />
           </AssociationSet>
-          <AssociationSet Name="UserRole" Association="UZDBModel.UserRole">
+          <AssociationSet Name="UserRole" Association="DBModel.UserRole">
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
@@ -721,9 +842,9 @@
           <Property Name="QuestionID" Type="Int32" />
           <Property Name="GUID" Type="Guid" />
           <Property Name="Likes" Type="Int32" />
-          <NavigationProperty Name="Question" Relationship="UZDBModel.FK_Answers_Questions" FromRole="Answer" ToRole="Question" />
-          <NavigationProperty Name="User" Relationship="UZDBModel.FK_Answers_User" FromRole="Answer" ToRole="User" />
-          <NavigationProperty Name="Comments" Relationship="UZDBModel.FK_Comment_Answers" FromRole="Answer" ToRole="Comment" />
+          <NavigationProperty Name="Question" Relationship="DBModel.FK_Answers_Questions" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_Answers_User" FromRole="Answer" ToRole="User" />
+          <NavigationProperty Name="Comments" Relationship="DBModel.FK_Comment_Answers" FromRole="Answer" ToRole="Comment" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -743,12 +864,12 @@
           <Property Name="CreatorUserAgent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="UZDBModel.FK_Articles_User" FromRole="Article" ToRole="User" />
-          <NavigationProperty Name="ArticlesLikes" Relationship="UZDBModel.FK_ArticlesLikes_Articles" FromRole="Article" ToRole="ArticlesLikes" />
-          <NavigationProperty Name="ArticlesRatings" Relationship="UZDBModel.FK_ArticlesRating_Articles" FromRole="Article" ToRole="ArticlesRating" />
-          <NavigationProperty Name="Comments" Relationship="UZDBModel.FK_Comment_Articles" FromRole="Article" ToRole="Comment" />
-          <NavigationProperty Name="Categories" Relationship="UZDBModel.ArticlesInCategory" FromRole="Article" ToRole="Category" />
-          <NavigationProperty Name="Tags" Relationship="UZDBModel.TagInArticle" FromRole="Article" ToRole="Tag" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_Articles_User" FromRole="Article" ToRole="User" />
+          <NavigationProperty Name="ArticlesLikes" Relationship="DBModel.FK_ArticlesLikes_Articles" FromRole="Article" ToRole="ArticlesLikes" />
+          <NavigationProperty Name="ArticlesRatings" Relationship="DBModel.FK_ArticlesRating_Articles" FromRole="Article" ToRole="ArticlesRating" />
+          <NavigationProperty Name="Comments" Relationship="DBModel.FK_Comment_Articles" FromRole="Article" ToRole="Comment" />
+          <NavigationProperty Name="Categories" Relationship="DBModel.ArticlesInCategory" FromRole="Article" ToRole="Category" />
+          <NavigationProperty Name="Tags" Relationship="DBModel.TagInArticle" FromRole="Article" ToRole="Tag" />
         </EntityType>
         <EntityType Name="ArticlesLike">
           <Key>
@@ -760,8 +881,8 @@
           <Property Name="DateLike" Type="DateTime" Precision="3" />
           <Property Name="CreatorIP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="GUID" Type="Guid" />
-          <NavigationProperty Name="Article" Relationship="UZDBModel.FK_ArticlesLikes_Articles" FromRole="ArticlesLikes" ToRole="Article" />
-          <NavigationProperty Name="User" Relationship="UZDBModel.FK_ArticlesLikes_User" FromRole="ArticlesLikes" ToRole="User" />
+          <NavigationProperty Name="Article" Relationship="DBModel.FK_ArticlesLikes_Articles" FromRole="ArticlesLikes" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_ArticlesLikes_User" FromRole="ArticlesLikes" ToRole="User" />
         </EntityType>
         <EntityType Name="ArticlesRating">
           <Key>
@@ -774,8 +895,8 @@
           <Property Name="CreatorIP" Type="DateTime" Precision="3" />
           <Property Name="GUID" Type="Guid" />
           <Property Name="Score" Type="Int32" />
-          <NavigationProperty Name="Article" Relationship="UZDBModel.FK_ArticlesRating_Articles" FromRole="ArticlesRating" ToRole="Article" />
-          <NavigationProperty Name="User" Relationship="UZDBModel.FK_ArticlesRating_User" FromRole="ArticlesRating" ToRole="User" />
+          <NavigationProperty Name="Article" Relationship="DBModel.FK_ArticlesRating_Articles" FromRole="ArticlesRating" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_ArticlesRating_User" FromRole="ArticlesRating" ToRole="User" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -785,8 +906,8 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Articles" Relationship="UZDBModel.ArticlesInCategory" FromRole="Category" ToRole="Article" />
-          <NavigationProperty Name="Questions" Relationship="UZDBModel.QuestionInCategory" FromRole="Category" ToRole="Question" />
+          <NavigationProperty Name="Articles" Relationship="DBModel.ArticlesInCategory" FromRole="Category" ToRole="Article" />
+          <NavigationProperty Name="Questions" Relationship="DBModel.QuestionInCategory" FromRole="Category" ToRole="Question" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -797,8 +918,8 @@
           <Property Name="CountryID" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="ZipCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Country" Relationship="UZDBModel.FK_City_Country" FromRole="City" ToRole="Country" />
-          <NavigationProperty Name="Users" Relationship="UZDBModel.FK_User_City" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="Country" Relationship="DBModel.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Users" Relationship="DBModel.FK_User_City" FromRole="City" ToRole="User" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -820,10 +941,10 @@
           <Property Name="ModifiedByUserID" Type="Int32" />
           <Property Name="ArticleID" Type="Int32" />
           <Property Name="AnswerID" Type="Int32" />
-          <NavigationProperty Name="Answer" Relationship="UZDBModel.FK_Comment_Answers" FromRole="Comment" ToRole="Answer" />
-          <NavigationProperty Name="Article" Relationship="UZDBModel.FK_Comment_Articles" FromRole="Comment" ToRole="Article" />
-          <NavigationProperty Name="User" Relationship="UZDBModel.FK_MerchantComment_User" FromRole="Comment" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="UZDBModel.FK_MerchantComment_User1" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="Answer" Relationship="DBModel.FK_Comment_Answers" FromRole="Comment" ToRole="Answer" />
+          <NavigationProperty Name="Article" Relationship="DBModel.FK_Comment_Articles" FromRole="Comment" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_MerchantComment_User" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="DBModel.FK_MerchantComment_User1" FromRole="Comment" ToRole="User" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -832,7 +953,7 @@
           <Property Name="CountryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="GUID" Type="Guid" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Cities" Relationship="UZDBModel.FK_City_Country" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="Cities" Relationship="DBModel.FK_City_Country" FromRole="Country" ToRole="City" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -846,10 +967,39 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="Likes" Type="Int32" />
           <Property Name="NumOfViews" Type="Int32" />
-          <NavigationProperty Name="Answers" Relationship="UZDBModel.FK_Answers_Questions" FromRole="Question" ToRole="Answer" />
-          <NavigationProperty Name="User" Relationship="UZDBModel.FK_Questions_User" FromRole="Question" ToRole="User" />
-          <NavigationProperty Name="Categories" Relationship="UZDBModel.QuestionInCategory" FromRole="Question" ToRole="Category" />
-          <NavigationProperty Name="Tags" Relationship="UZDBModel.TagInQuestion" FromRole="Question" ToRole="Tag" />
+          <NavigationProperty Name="Answers" Relationship="DBModel.FK_Answers_Questions" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="QuestionLikes" Relationship="DBModel.FK_QuestionLikes_Question" FromRole="Question" ToRole="QuestionLikes" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_Questions_User" FromRole="Question" ToRole="User" />
+          <NavigationProperty Name="QuestionsRatings" Relationship="DBModel.FK_QuestionsRating_Question" FromRole="Question" ToRole="QuestionsRating" />
+          <NavigationProperty Name="Categories" Relationship="DBModel.QuestionInCategory" FromRole="Question" ToRole="Category" />
+          <NavigationProperty Name="Tags" Relationship="DBModel.TagInQuestion" FromRole="Question" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="QuestionLike">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateLike" Type="DateTime" Precision="3" />
+          <Property Name="CreatorIP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GUID" Type="Guid" />
+          <NavigationProperty Name="Question" Relationship="DBModel.FK_QuestionLikes_Question" FromRole="QuestionLikes" ToRole="Question" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_QuestionLikes_User" FromRole="QuestionLikes" ToRole="User" />
+        </EntityType>
+        <EntityType Name="QuestionsRating">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateRating" Type="DateTime" Precision="3" />
+          <Property Name="CreatorIP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Score" Type="Int32" />
+          <NavigationProperty Name="Question" Relationship="DBModel.FK_QuestionsRating_Question" FromRole="QuestionsRating" ToRole="Question" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK_QuestionsRating_User" FromRole="QuestionsRating" ToRole="User" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -859,7 +1009,17 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Users" Relationship="UZDBModel.UserRole" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="DBModel.UserRole" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -868,8 +1028,8 @@
           <Property Name="TagID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="GUID" Type="Guid" />
           <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Articles" Relationship="UZDBModel.TagInArticle" FromRole="Tag" ToRole="Article" />
-          <NavigationProperty Name="Questions" Relationship="UZDBModel.TagInQuestion" FromRole="Tag" ToRole="Question" />
+          <NavigationProperty Name="Articles" Relationship="DBModel.TagInArticle" FromRole="Tag" ToRole="Article" />
+          <NavigationProperty Name="Questions" Relationship="DBModel.TagInQuestion" FromRole="Tag" ToRole="Question" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -904,19 +1064,21 @@
           <Property Name="LocationCover" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CoverPostion" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="IsFirst" Type="Boolean" />
-          <NavigationProperty Name="Answers" Relationship="UZDBModel.FK_Answers_User" FromRole="User" ToRole="Answer" />
-          <NavigationProperty Name="Articles" Relationship="UZDBModel.FK_Articles_User" FromRole="User" ToRole="Article" />
-          <NavigationProperty Name="ArticlesLikes" Relationship="UZDBModel.FK_ArticlesLikes_User" FromRole="User" ToRole="ArticlesLikes" />
-          <NavigationProperty Name="ArticlesRatings" Relationship="UZDBModel.FK_ArticlesRating_User" FromRole="User" ToRole="ArticlesRating" />
-          <NavigationProperty Name="City" Relationship="UZDBModel.FK_User_City" FromRole="User" ToRole="City" />
-          <NavigationProperty Name="Comments" Relationship="UZDBModel.FK_MerchantComment_User" FromRole="User" ToRole="Comment" />
-          <NavigationProperty Name="Comments1" Relationship="UZDBModel.FK_MerchantComment_User1" FromRole="User" ToRole="Comment" />
-          <NavigationProperty Name="Questions" Relationship="UZDBModel.FK_Questions_User" FromRole="User" ToRole="Question" />
-          <NavigationProperty Name="Roles" Relationship="UZDBModel.UserRole" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Answers" Relationship="DBModel.FK_Answers_User" FromRole="User" ToRole="Answer" />
+          <NavigationProperty Name="Articles" Relationship="DBModel.FK_Articles_User" FromRole="User" ToRole="Article" />
+          <NavigationProperty Name="ArticlesLikes" Relationship="DBModel.FK_ArticlesLikes_User" FromRole="User" ToRole="ArticlesLikes" />
+          <NavigationProperty Name="ArticlesRatings" Relationship="DBModel.FK_ArticlesRating_User" FromRole="User" ToRole="ArticlesRating" />
+          <NavigationProperty Name="City" Relationship="DBModel.FK_User_City" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Comments" Relationship="DBModel.FK_MerchantComment_User" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Comments1" Relationship="DBModel.FK_MerchantComment_User1" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Questions" Relationship="DBModel.FK_Questions_User" FromRole="User" ToRole="Question" />
+          <NavigationProperty Name="QuestionLikes" Relationship="DBModel.FK_QuestionLikes_User" FromRole="User" ToRole="QuestionLikes" />
+          <NavigationProperty Name="QuestionsRatings" Relationship="DBModel.FK_QuestionsRating_User" FromRole="User" ToRole="QuestionsRating" />
+          <NavigationProperty Name="Roles" Relationship="DBModel.UserRole" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Answers_Questions">
-          <End Role="Question" Type="UZDBModel.Question" Multiplicity="0..1" />
-          <End Role="Answer" Type="UZDBModel.Answer" Multiplicity="*" />
+          <End Role="Question" Type="DBModel.Question" Multiplicity="0..1" />
+          <End Role="Answer" Type="DBModel.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="QuestionID" />
@@ -927,8 +1089,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Answers_User">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="0..1" />
-          <End Role="Answer" Type="UZDBModel.Answer" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="0..1" />
+          <End Role="Answer" Type="DBModel.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -939,8 +1101,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Comment_Answers">
-          <End Role="Answer" Type="UZDBModel.Answer" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Comment" Multiplicity="*" />
+          <End Role="Answer" Type="DBModel.Answer" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Answer">
               <PropertyRef Name="AnswerID" />
@@ -951,8 +1113,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Articles_User">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="0..1" />
-          <End Role="Article" Type="UZDBModel.Article" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="0..1" />
+          <End Role="Article" Type="DBModel.Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -963,8 +1125,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesLikes_Articles">
-          <End Role="Article" Type="UZDBModel.Article" Multiplicity="1" />
-          <End Role="ArticlesLikes" Type="UZDBModel.ArticlesLike" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Article" Multiplicity="1" />
+          <End Role="ArticlesLikes" Type="DBModel.ArticlesLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -975,8 +1137,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesRating_Articles">
-          <End Role="Article" Type="UZDBModel.Article" Multiplicity="1" />
-          <End Role="ArticlesRating" Type="UZDBModel.ArticlesRating" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Article" Multiplicity="1" />
+          <End Role="ArticlesRating" Type="DBModel.ArticlesRating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -987,8 +1149,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Comment_Articles">
-          <End Role="Article" Type="UZDBModel.Article" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Comment" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Article" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticlesID" />
@@ -999,8 +1161,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesLikes_User">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="1" />
-          <End Role="ArticlesLikes" Type="UZDBModel.ArticlesLike" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="1" />
+          <End Role="ArticlesLikes" Type="DBModel.ArticlesLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -1011,8 +1173,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesRating_User">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="1" />
-          <End Role="ArticlesRating" Type="UZDBModel.ArticlesRating" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="1" />
+          <End Role="ArticlesRating" Type="DBModel.ArticlesRating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -1023,8 +1185,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_City_Country">
-          <End Role="Country" Type="UZDBModel.Country" Multiplicity="0..1" />
-          <End Role="City" Type="UZDBModel.City" Multiplicity="*" />
+          <End Role="Country" Type="DBModel.Country" Multiplicity="0..1" />
+          <End Role="City" Type="DBModel.City" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="CountryID" />
@@ -1035,8 +1197,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_City">
-          <End Role="City" Type="UZDBModel.City" Multiplicity="0..1" />
-          <End Role="User" Type="UZDBModel.User" Multiplicity="*" />
+          <End Role="City" Type="DBModel.City" Multiplicity="0..1" />
+          <End Role="User" Type="DBModel.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="CityID" />
@@ -1047,8 +1209,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MerchantComment_User">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Comment" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -1059,8 +1221,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MerchantComment_User1">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="0..1" />
-          <End Role="Comment" Type="UZDBModel.Comment" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="0..1" />
+          <End Role="Comment" Type="DBModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -1070,9 +1232,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_QuestionLikes_Question">
+          <End Role="Question" Type="DBModel.Question" Multiplicity="1" />
+          <End Role="QuestionLikes" Type="DBModel.QuestionLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="QuestionLikes">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Questions_User">
-          <End Role="User" Type="UZDBModel.User" Multiplicity="0..1" />
-          <End Role="Question" Type="UZDBModel.Question" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="0..1" />
+          <End Role="Question" Type="DBModel.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -1082,34 +1256,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_QuestionsRating_Question">
+          <End Role="Question" Type="DBModel.Question" Multiplicity="1" />
+          <End Role="QuestionsRating" Type="DBModel.QuestionsRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="QuestionsRating">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionLikes_User">
+          <End Role="User" Type="DBModel.User" Multiplicity="1" />
+          <End Role="QuestionLikes" Type="DBModel.QuestionLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="QuestionLikes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsRating_User">
+          <End Role="User" Type="DBModel.User" Multiplicity="1" />
+          <End Role="QuestionsRating" Type="DBModel.QuestionsRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="QuestionsRating">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ArticlesInCategory">
-          <End Role="Article" Type="UZDBModel.Article" Multiplicity="*" />
-          <End Role="Category" Type="UZDBModel.Category" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Article" Multiplicity="*" />
+          <End Role="Category" Type="DBModel.Category" Multiplicity="*" />
         </Association>
         <Association Name="QuestionInCategory">
-          <End Role="Category" Type="UZDBModel.Category" Multiplicity="*" />
-          <End Role="Question" Type="UZDBModel.Question" Multiplicity="*" />
+          <End Role="Category" Type="DBModel.Category" Multiplicity="*" />
+          <End Role="Question" Type="DBModel.Question" Multiplicity="*" />
         </Association>
         <Association Name="TagInArticle">
-          <End Role="Article" Type="UZDBModel.Article" Multiplicity="*" />
-          <End Role="Tag" Type="UZDBModel.Tag" Multiplicity="*" />
+          <End Role="Article" Type="DBModel.Article" Multiplicity="*" />
+          <End Role="Tag" Type="DBModel.Tag" Multiplicity="*" />
         </Association>
         <Association Name="TagInQuestion">
-          <End Role="Question" Type="UZDBModel.Question" Multiplicity="*" />
-          <End Role="Tag" Type="UZDBModel.Tag" Multiplicity="*" />
+          <End Role="Question" Type="DBModel.Question" Multiplicity="*" />
+          <End Role="Tag" Type="DBModel.Tag" Multiplicity="*" />
         </Association>
         <Association Name="UserRole">
-          <End Role="Role" Type="UZDBModel.Role" Multiplicity="*" />
-          <End Role="User" Type="UZDBModel.User" Multiplicity="*" />
+          <End Role="Role" Type="DBModel.Role" Multiplicity="*" />
+          <End Role="User" Type="DBModel.User" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UZDBModelStoreContainer" CdmEntityContainer="DBEntities">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
           <EntitySetMapping Name="Answers">
-            <EntityTypeMapping TypeName="UZDBModel.Answer">
+            <EntityTypeMapping TypeName="DBModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
                 <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
                 <ScalarProperty Name="AnswerBody" ColumnName="AnswerBody" />
@@ -1123,7 +1333,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Articles">
-            <EntityTypeMapping TypeName="UZDBModel.Article">
+            <EntityTypeMapping TypeName="DBModel.Article">
               <MappingFragment StoreEntitySet="Article">
                 <ScalarProperty Name="ArticlesID" ColumnName="ArticlesID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1143,7 +1353,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ArticlesLikes">
-            <EntityTypeMapping TypeName="UZDBModel.ArticlesLike">
+            <EntityTypeMapping TypeName="DBModel.ArticlesLike">
               <MappingFragment StoreEntitySet="ArticlesLikes">
                 <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1154,7 +1364,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ArticlesRatings">
-            <EntityTypeMapping TypeName="UZDBModel.ArticlesRating">
+            <EntityTypeMapping TypeName="DBModel.ArticlesRating">
               <MappingFragment StoreEntitySet="ArticlesRating">
                 <ScalarProperty Name="ArticlesID" ColumnName="ArticlesID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1166,7 +1376,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="UZDBModel.Category">
+            <EntityTypeMapping TypeName="DBModel.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1176,7 +1386,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cities">
-            <EntityTypeMapping TypeName="UZDBModel.City">
+            <EntityTypeMapping TypeName="DBModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1187,7 +1397,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="UZDBModel.Comment">
+            <EntityTypeMapping TypeName="DBModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
                 <ScalarProperty Name="CommentID" ColumnName="CommentID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1209,7 +1419,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="UZDBModel.Country">
+            <EntityTypeMapping TypeName="DBModel.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1218,7 +1428,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="UZDBModel.Question">
+            <EntityTypeMapping TypeName="DBModel.Question">
               <MappingFragment StoreEntitySet="Question">
                 <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
                 <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
@@ -1231,8 +1441,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="QuestionLikes">
+            <EntityTypeMapping TypeName="DBModel.QuestionLike">
+              <MappingFragment StoreEntitySet="QuestionLikes">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateLike" ColumnName="DateLike" />
+                <ScalarProperty Name="CreatorIP" ColumnName="CreatorIP" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionsRatings">
+            <EntityTypeMapping TypeName="DBModel.QuestionsRating">
+              <MappingFragment StoreEntitySet="QuestionsRating">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateRating" ColumnName="DateRating" />
+                <ScalarProperty Name="CreatorIP" ColumnName="CreatorIP" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="UZDBModel.Role">
+            <EntityTypeMapping TypeName="DBModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1241,8 +1474,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tags">
-            <EntityTypeMapping TypeName="UZDBModel.Tag">
+            <EntityTypeMapping TypeName="DBModel.Tag">
               <MappingFragment StoreEntitySet="Tag">
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1251,7 +1495,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="UZDBModel.User">
+            <EntityTypeMapping TypeName="DBModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="GUID" ColumnName="GUID" />
@@ -1285,7 +1529,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ArticlesInCategory" TypeName="UZDBModel.ArticlesInCategory" StoreEntitySet="ArticlesInCategory">
+          <AssociationSetMapping Name="ArticlesInCategory" TypeName="DBModel.ArticlesInCategory" StoreEntitySet="ArticlesInCategory">
             <EndProperty Name="Article">
               <ScalarProperty Name="ArticlesID" ColumnName="ArticleID" />
             </EndProperty>
@@ -1293,7 +1537,7 @@
               <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="QuestionInCategory" TypeName="UZDBModel.QuestionInCategory" StoreEntitySet="QuestionInCategory">
+          <AssociationSetMapping Name="QuestionInCategory" TypeName="DBModel.QuestionInCategory" StoreEntitySet="QuestionInCategory">
             <EndProperty Name="Category">
               <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
             </EndProperty>
@@ -1301,7 +1545,7 @@
               <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="TagInArticle" TypeName="UZDBModel.TagInArticle" StoreEntitySet="TagInArticle">
+          <AssociationSetMapping Name="TagInArticle" TypeName="DBModel.TagInArticle" StoreEntitySet="TagInArticle">
             <EndProperty Name="Article">
               <ScalarProperty Name="ArticlesID" ColumnName="Articles_ArticlesID" />
             </EndProperty>
@@ -1309,7 +1553,7 @@
               <ScalarProperty Name="TagID" ColumnName="Tag_TagID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="TagInQuestion" TypeName="UZDBModel.TagInQuestion" StoreEntitySet="TagInQuestion">
+          <AssociationSetMapping Name="TagInQuestion" TypeName="DBModel.TagInQuestion" StoreEntitySet="TagInQuestion">
             <EndProperty Name="Question">
               <ScalarProperty Name="QuestionID" ColumnName="Questions_QuestionID" />
             </EndProperty>
@@ -1317,7 +1561,7 @@
               <ScalarProperty Name="TagID" ColumnName="Tag_TagID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="UserRole" TypeName="UZDBModel.UserRole" StoreEntitySet="UserRole">
+          <AssociationSetMapping Name="UserRole" TypeName="DBModel.UserRole" StoreEntitySet="UserRole">
             <EndProperty Name="Role">
               <ScalarProperty Name="RoleID" ColumnName="Role_RoleID" />
             </EndProperty>

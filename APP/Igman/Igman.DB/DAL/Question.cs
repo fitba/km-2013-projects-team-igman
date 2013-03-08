@@ -17,6 +17,8 @@ namespace Igman.DB.DAL
         public Question()
         {
             this.Answers = new HashSet<Answer>();
+            this.QuestionLikes = new HashSet<QuestionLike>();
+            this.QuestionsRatings = new HashSet<QuestionsRating>();
             this.Categories = new HashSet<Category>();
             this.Tags = new HashSet<Tag>();
         }
@@ -31,8 +33,18 @@ namespace Igman.DB.DAL
         public Nullable<int> NumOfViews { get; set; }
     
         public virtual ICollection<Answer> Answers { get; set; }
+        public virtual ICollection<QuestionLike> QuestionLikes { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<QuestionsRating> QuestionsRatings { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+        public override bool Equals(object obj)
+        {
+            var ex = obj as Question;
+            if (ex.QuestionTitle == this.QuestionTitle && this.QuestionID == ex.QuestionID)
+                return true;
+            else
+                return false;
+        }
     }
 }

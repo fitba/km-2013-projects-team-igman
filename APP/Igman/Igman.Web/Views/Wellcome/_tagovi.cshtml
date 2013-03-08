@@ -1,0 +1,16 @@
+﻿  @{
+      var tagovi = HttpContext.Current.Cache.Get("TopListaTagova") as List<Tag>;
+   
+   }  
+
+<div id="tagcloud"> 
+
+             @foreach (var item in tagovi)
+            {
+                 
+                 
+                  <a href="#" id="@item.TagID"  rel="@item.Questions.Count()">@item.Name</a> 
+    
+                 
+             }
+               </div> 

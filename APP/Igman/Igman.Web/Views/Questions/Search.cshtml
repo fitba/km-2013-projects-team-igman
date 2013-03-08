@@ -37,7 +37,7 @@
                     
                         @foreach (var termin in misao)
                         {
-                            <strong><a href="/Questions/Search/@termin.Name.Replace(".","")">@termin.Name</a></strong>
+                            <strong><a href="/Questions/Search/?args=@termin.Name.Replace(".","")">@termin.Name</a></strong>
                         }
                         
               

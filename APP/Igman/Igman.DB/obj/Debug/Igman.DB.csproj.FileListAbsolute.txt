@@ -77,3 +77,27 @@ C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.0\UZ-Pro
 C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.0\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.dll
 C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.0\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.pdb
 C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.0\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.dll.config
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\EntityFramework.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\EntityFramework.xml
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v2.1\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.dll.config
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\EntityFramework.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\EntityFramework.xml
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.dll
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.pdb
+C:\Users\Ivan\Documents\Visual Studio 2012\Projects\UZ-Projekat-2013_v3.0\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.dll.config
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\Igman.DB.pdb
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\EntityFramework.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Debug\EntityFramework.xml
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Debug\Igman.DB.pdb

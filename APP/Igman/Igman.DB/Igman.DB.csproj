@@ -94,7 +94,16 @@
     <Compile Include="DAL\Question.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\QuestionLike.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\QuestionsRating.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Role.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sysdiagram.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Tag.cs">

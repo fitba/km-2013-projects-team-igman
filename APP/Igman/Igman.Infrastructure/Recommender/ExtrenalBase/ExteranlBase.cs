@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml;
 
 namespace Igman.Infrastructure.Recommender.ExtrenalBase
@@ -38,7 +39,7 @@ namespace Igman.Infrastructure.Recommender.ExtrenalBase
         {
             List<WikiExtrenal> ls = new List<WikiExtrenal>();
             HttpWebRequest request
-                = WebRequest.Create("http://en.wikipedia.org/w/api.php?action=opensearch&search=" + a + "&limit=10&namespace=0&format=xml") as HttpWebRequest;
+                = WebRequest.Create("http://en.wikipedia.org/w/api.php?action=opensearch&search=" + HttpUtility.UrlEncode(a) + "&limit=10&namespace=0&format=xml") as HttpWebRequest;
             request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)";
 
             string odg;

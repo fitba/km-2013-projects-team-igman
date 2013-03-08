@@ -26,5 +26,14 @@ namespace Igman.DB.DAL
     
         public virtual ICollection<Article> Articles { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
+        public override bool Equals(object obj)
+        {
+            var ex = obj as Tag;
+
+            if (this.Name == ex.Name && this.TagID == ex.TagID)
+                return true;
+            return false;
+        }
+    
     }
 }

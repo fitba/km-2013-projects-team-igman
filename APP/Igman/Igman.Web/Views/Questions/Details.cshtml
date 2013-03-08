@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Details";
     var exteranlQuestions = TempData["ExteranlQuestions"] as List<Igman.DB.DalHelpClass.QuestionsExternal>;
+    var itemBaseRelated = TempData["RecQuestions"] as List<Igman.Infrastructure.Recommender.ItemBase.QuestionRecommender>;
+    var topLista = TempData["TopListaDetails"] as List<Question>;
+        
 }
 @Html.Partial("_questionsMenu")
 
@@ -19,7 +22,7 @@
                 <div class="stats">
                     <div class="vote">
                         <div class="votes">
-                            <span class="vote-count-post"><strong><span id="@Model.QuestionID">@Model.Likes</span></strong></span>
+                            <span class="vote-count-post"><strong><span id="@Model.QuestionID">@Model.QuestionLikes.Count</span></strong></span>
                             <div class="viewcount">likes</div>
                         </div>
                     </div>
@@ -42,7 +45,7 @@
             </div>
             <div class="summary">
 
-                <h3><a href="/questions/details?id=@Model.QuestionID">@Model.QuestionTitle</a></h3>
+                <h3><a href="/questions/details/@Model.QuestionID">@Model.QuestionTitle</a></h3>
 
                 <div class="excerpt">
 
@@ -83,7 +86,7 @@
                          
 
                         <div class="user-details">
-                            <a href="/users/490114/shtolik">@Model.User.FirstName  @Model.User.LastName</a><br>
+                            <a href="#">@Model.User.FirstName  @Model.User.LastName</a><br>
                             <span title="(@Model.User.Questions.Count) questions asked">(@Model.User.Questions.Count)</span>
                         </div>
                          
@@ -146,8 +149,9 @@
         <div class="fl" id="Right-collumn-Wrap">
 
 
-
-            <div class="Box">
+             @if(itemBaseRelated.Count!=0){
+      
+ <div class="Box">
                 <div class="Header-Box">
                     <div class="Img pull-left">
                         <img src="~/Content/Template/images/icons/appbar.list.check.png" />
@@ -155,24 +159,41 @@
                     <div class="Opis">RELATED QUESTIONS</div>
                 </div>
                 <div class="Body-Box">
-                    <div class="O-F-W">
 
-                        <ul class="grupa-wiki">
-
-
-                            @foreach (var item in ViewBag.RelatedQuestios)
-                            {
-                                <li><a href="/questions/details?id=@item.QuestionID">@item.QuestionTitle</a></li>
-                            }
-
-
-
-                        </ul>
-                    </div>
+                     <ul class="Preporuka-wikis">
+                        @foreach (var item in itemBaseRelated)
+                        {
+                    
+                            <li onclick='GetLink("/questions/details/@item.QuestionID")' rel="tooltip" title="Sličnost: @item.Score.ToString("0%")">» @Html.Raw(item.Name)</li>
+                        }
+                    </ul>
+                    
                 </div>
 
             </div>
 
+    }
+                <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">TOP QUESTIONS</div>
+            </div>
+            <div class="Body-Box">
+            <ul class="Preporuka-wikis">
+               
+                        @foreach (var item in topLista)
+                        {
+                    
+                            <li onclick='GetLink("/questions/details/@item.QuestionID")' rel="tooltip" title="@item.User.FirstName @item.User.LastName (@item.Likes)">» @Html.Raw(item.QuestionTitle)</li>
+                        }
+                    </ul>
+            </div>
+
+        </div>
+
+           
 
 
 

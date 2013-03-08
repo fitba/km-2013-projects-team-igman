@@ -60,6 +60,7 @@
     <Compile Include="Recommender\ItemBase\ArticleRecommender.cs" />
     <Compile Include="Recommender\ItemBase\ItemHelper.cs" />
     <Compile Include="Recommender\ItemBase\ItemPreporuka.cs" />
+    <Compile Include="Recommender\ItemBase\QuestionRecommender.cs" />
     <Compile Include="Recommender\ItemBase\VektorskaDuzina.cs" />
   </ItemGroup>
   <ItemGroup>

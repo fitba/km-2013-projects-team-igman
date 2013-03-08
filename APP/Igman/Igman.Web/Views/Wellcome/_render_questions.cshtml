@@ -1,0 +1,59 @@
+﻿@model  IPagedList<Question>
+
+<div class="questions" style="width:auto;">
+    @foreach (var item in Model)
+    {
+    
+    
+        <div class="question-summary-naslovna narrow" id="@item.QuestionID">
+            <div onclick="window.location.href='/questions/15266609/why-time-is-printed-same-in-code-for-ipc'" class="cp">
+                <div class="votes-naslovna">
+                    <div class="mini-counts">@item.QuestionLikes.Count</div>
+                    <div>likes</div>
+                </div>
+                @if (@item.Answers.Count == 0)
+                { 
+                <div class="status-naslovna unanswered">
+                    <div class="mini-counts">@item.Answers.Count</div>
+                    <div>answers</div>
+                </div>
+                }
+                else { 
+                <div class="status-naslovna">
+                    <div class="mini-counts">@item.Answers.Count</div>
+                    <div>answers</div>
+                </div>
+                }
+                <div class="views-naslovna">
+                    <div class="mini-counts">@item.NumOfViews</div>
+                    <div>views</div>
+                </div>
+            </div>
+            <div class="summary">
+
+                <h3><a href="/questions/Details/@item.QuestionID" class="question-hyperlink" title="@item.QuestionBody">@item.QuestionTitle</a></h3>
+                <div class="tags-naslovna t-c t-ipc">
+                    
+                      @foreach (var tag in item.Tags)
+                        {
+                            <a href="#" class="post-tag">@tag.Name</a>
+                        }
+
+                </div>
+                <div class="started-naslovna">
+                    <span title="@item.CreatedDate">@Igman.Infrastructure.Extend.ExtendMethod.ToRelativeDateString(item.CreatedDate.Value,true)</span>
+                    <a href="#">@item.User.FirstName @item.User.LastName</a> 
+                </div>
+            </div>
+        </div>
+    
+ 
+    }
+
+
+    <div id="pagedList" data-wiki-target=".questions">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+
+</div>

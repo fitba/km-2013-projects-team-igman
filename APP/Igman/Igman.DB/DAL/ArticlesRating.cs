@@ -23,5 +23,13 @@ namespace Igman.DB.DAL
     
         public virtual Article Article { get; set; }
         public virtual User User { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var ex = obj as ArticlesRating;
+            if (ex.Score == this.Score)
+                return true;
+            return false;
+        }
     }
 }

@@ -10,7 +10,7 @@
                     <div class="stats">
                         <div class="vote">
                             <div class="votes">
-                                <span class="vote-count-post"><strong><span id="@item.QuestionID">@item.Likes</span></strong></span>
+                                <span class="vote-count-post"><strong><span id="@item.QuestionID">@item.QuestionLikes.Count</span></strong></span>
                                 <div class="viewcount">likes</div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                 </a>
                             </div>
                             <div class="user-details">
-                                <a href="/users/490114/shtolik">@item.User.FirstName  @item.User.LastName</a><br>
+                                <a href="#">@item.User.FirstName  @item.User.LastName</a><br>
                                <span title="(@item.User.Questions.Count) questions asked">(@item.User.Questions.Count)</span>
                             </div>
                         </div>

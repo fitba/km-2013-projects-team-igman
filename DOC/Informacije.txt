@@ -1,0 +1,5 @@
+Testni korisnik:
+Username: a
+Password: a
+_____________________________
+Aplikacija zahtjeva internet link.

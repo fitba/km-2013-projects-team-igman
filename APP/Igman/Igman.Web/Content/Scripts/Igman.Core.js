@@ -1,5 +1,48 @@
 ﻿/// <reference path="jquery-1.7.1.intellisense.js" />
 $(document).ready(function () {
+
+
+    $("#menu1").wijmenu({
+        orientation: "horizontal"
+    });
+    $("#tagcloud a").tagcloud({
+        size: {
+            start: 12,
+            end: 28,
+            unit: 'px'
+        },
+        color: {
+            start: "#CDE",
+            end: "#FS2"
+        }
+    });
+    $infoAlert = $("<div></div>").dialog({
+        autoOpen: false,
+        title: "Greška",
+        modal: true,
+        resizable: false,
+        height: 180,
+        dialogClass: "infoDialog",
+        buttons: {
+            "Ok": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    $(".dialog_error").dialog({
+        title: "Greška",
+        resizable: false,
+        height: 180,
+        modal: true,
+        buttons: {
+            "Ok": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+
     $('#wizard').smartWizard();
     $('#star').raty({
         score: $("#rat-wiki").val(),
@@ -8,7 +51,7 @@ $(document).ready(function () {
 
             $.post("/Articles/Rating", { id: id, score: score }, function (data) {
                 if (data === "False") {
-                    alert("Več ste ocjenili ovaj članak");
+                    $infoAlert.html("Već ste ocjenili ovaj članak").dialog('open');
                     $('#star').raty({ readOnly: true, score: $("#rat-wiki").val(), noRatedMsg: 'Već ste glasali!' });
                     return;
                 }
@@ -63,7 +106,7 @@ $(document).ready(function () {
         var link = $("#tabs .youarehere").attr("href");
         var mySplitResult = link.split("=");
 
-        var link = $a.attr("href") + "&tab=" + mySplitResult[1];
+        link = $a.attr("href") + "&tab=" + mySplitResult[1];
 
         var options = {
             url: link,
@@ -86,7 +129,7 @@ $(document).ready(function () {
     var getPageSearched = function () {
         $a = $(this);
         var link = $a.attr("href");
-        
+
 
         var options = {
             url: link,
@@ -95,9 +138,9 @@ $(document).ready(function () {
         $.ajax(options).done(function (data) {
 
             var target = $a.parents("div#pagedListSearched").attr("data-questions-target");
-           console.log(target);
+            console.log(target);
             $(target).html(data);
-            
+
 
         });
         return false;
@@ -106,6 +149,22 @@ $(document).ready(function () {
     $("#content-body").on("click", "#pagedListSearched a", getPageSearched);
 
 
+    $("#tabs a").click(function () {
+        $a = $(this);
+        var options = {
+            url: $a.attr("href"),
+            type: "GET"
+        };
+        $.ajax(options).done(function (data) {
+            $(".questions").replaceWith(data);
+
+
+        });
+        $("#tabs a").removeClass("youarehere");
+        $a.addClass("youarehere");
+        return false;
+
+    });
     $("#tabs a").click(function () {
         $a = $(this);
         var options = {
@@ -152,6 +211,12 @@ $(document).ready(function () {
             type: "GET"
         };
         $.ajax(options).done(function (data) {
+
+            if (data === "False") {
+
+                $infoAlert.html("Već ste se izajsnili da volite ovo pitanje!").dialog('open');
+                return;
+            }
             var id = data.id;
             $("#" + id).text(data.likes);
         });
@@ -164,7 +229,7 @@ $(document).ready(function () {
         $.post("/Articles/Like", { id: id }, function (data) {
 
             if (data === "False") {
-                alert("Več ste se izajsnili da volite članak!")
+                $infoAlert.html("Već ste se izajsnili da volite ovaj članak!").dialog('open');
                 return;
             }
             $("#likes-wiki-num").html(data);
@@ -174,10 +239,10 @@ $(document).ready(function () {
         $(this).find(".c-chk input").attr("checked", !$(this).find(".c-chk input").attr("checked"));
         $(this).toggleClass("active");
     });
- $("#btnTransferKategrija").click(function () {
+    $("#btnTransferKategrija").click(function () {
         var str = "";
         if ($("#kategorije-izbor li").find(":checked").length <= 0) {
-            alert("Molimo odaberite barem jedanu kategoriju\nUkoliko ne želite, prekinte operaciju!");
+            $infoAlert.html("Molimo odaberite barem jedanu kategoriju\nUkoliko ne želite, prekinte operaciju!").dialog('open');
             return;
         }
         $("#kategorije-izbor li").each(function () {
@@ -210,11 +275,22 @@ $(document).ready(function () {
     $("#txtTags").keypress(function (e) {
         var kod = (e.keyCode ? e.keyCode : e.which);
         if (kod == 13) {
+            if ($(this).val() == "") {
+                $("#dialog").dialog({
+                    resizable: false,
+                    buttons: {
+                        "Ok": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                }).parent().addClass("ui-state-info"); return false;
+            }
             var str = " <li class='tgc' data-id='-1'> <div class='nzv pull-left'>" + $(this).val() + "</div><div class='sk-close pull-right' onclick='BrisiTag(this)'>×</div></li>";
             var err = false;
             $("#selektovaniTagovi li.tgc").each(function () {
                 if ($(this).find(".nzv").html() == $("#txtTags").val()) {
-                    alert("Tag je već na listi");
+
+                    $infoAlert.html("Tag je već na listi").dialog('open');
                     err = true;
                 }
             });
@@ -246,7 +322,8 @@ $(document).ready(function () {
             var err = false;
             $("#selektovaniTagovi li.tgc").each(function () {
                 if ($(this).find(".nzv").html() == obj.value) {
-                    alert("Tag je već na listi");
+
+                    $infoAlert.html("Tag je već na listi").dialog('open');
                     err = true;
                 }
             });
@@ -266,16 +343,19 @@ $(document).ready(function () {
             GetHtmlForAi(data);
         });
     });
-    $("#Preporuka-wikis li").mouseover(function () {
+    $(".Preporuka-wikis li").mouseover(function () {
         $(this).tooltip({ placement: "left" }); $(this).tooltip("show");
     });
+
     $("*").click(function () {
         $("#AI-Search-Complete").hide();
     });
     $("#btnPostKomentar").click(function () {
         var commentar = $("#txtKomenatarBox").val();
         if (!commentar) {
-            alert("Polje ne smije biti prazn!");
+
+            $infoAlert.html("Polje ne smije biti prazno!").dialog('open');
+
             $("#txtKomenatarBox").focus();
             return;
         }
@@ -283,6 +363,55 @@ $(document).ready(function () {
             $("#frmKoment").submit();
         }
     });
+
+    $(".kat-center").click(function () {
+        $("#tagcloud a").removeClass("activ_tag");
+        $(".kat-center").removeClass("activ_kat");
+        $(this).addClass("activ_kat");
+
+        var id = $(".activ_kat").attr("id");
+
+       
+        var link = "Wellcome/get_questions_by_kategory?id=" + id;
+
+      
+        var options = { url: link, type: "GET" };
+
+        $.ajax(options).done(function (data) {
+
+
+            $("#update-pitanja").html(data);
+           
+        });
+
+        return false;
+    });
+
+
+    $("#tagcloud a").click(function () {
+
+        $(".kat-center").removeClass("activ_kat");
+        $("#tagcloud a").removeClass("activ_tag");
+        $(this).addClass("activ_tag");
+
+        var id = $(this).attr("id");
+
+
+        var link = "Wellcome/get_questions_by_tag?id=" + id;
+       
+
+        var options = { url: link, type: "GET" };
+
+        $.ajax(options).done(function (data) {
+
+
+            $("#update-pitanja").html(data);
+
+        });
+
+        return false;
+    });
+
 
 });
 
@@ -316,35 +445,36 @@ function SubmitRegistartion(a) {
     var hasErorr = false;
     var tmp = $(a).find("#fn");
     if (!tmp.val()) {
-        alert("Polje za ime mora biti popunjeno!");
+        $infoAlert.html("Polje za ime mora biti popunjeno!").dialog('open');
         hasErorr = true;
+        return;
     }
     tmp = $(a).find("#ln");
     if (!tmp.val()) {
-        alert("Polje za prezime mora biti popunjeno!");
+        $infoAlert.html("Polje za prezime mora biti popunjeno!").dialog('open');
         hasErorr = true;
         return;
     }
     tmp = $(a).find("#em");
     if (!tmp.val()) {
-        alert("Polje za e-mail mora biti popunjeno!");
+        $infoAlert.html("Polje za email mora biti popunjeno!").dialog('open');
         hasErorr = true;
         return;
     }
     if (!emailReg.test(tmp.val())) {
-        alert("Unesite validnu e-mail adresu!");
+        $infoAlert.html("Unesite validnu e-mail adresu!").dialog('open');
         hasErorr = true;
         return;
     }
     tmp = $(a).find("#emr");
     if (!tmp.val()) {
-        alert("Molimo Vas da ponovite e-mail!");
+        $infoAlert.html("Molimo Vas da ponovite e-mail!").dialog('open');
         hasErorr = true;
         return;
     }
     tmp = $(a).find("#pass");
     if (!tmp.val()) {
-        alert("Molimo Vas da kreirate password!");
+        $infoAlert.html("Molimo Vas da kreirate password!").dialog('open');
         hasErorr = true;
         return;
     }
@@ -352,7 +482,7 @@ function SubmitRegistartion(a) {
     tmp = $(a).find("#em");
     tmpr = $(a).find("#emr");
     if (tmp.val() != tmpr.val()) {
-        alert("E-mail se moraju podudarati!");
+        $infoAlert.html("E-mail se moraju podudarati!").dialog('open');
         hasErorr = true;
         return;
     }
@@ -364,9 +494,11 @@ function SubmitRegistartion(a) {
 function SubmitLogin(a) {
 
     if (!$(a).find("#user").val() || !$(a).find("#pass").val()) {
-        alert("Polje za email i lozinku moraju biti popunjena.");
+
+        $infoAlert.html("Polje za email i lozinku moraju biti popunjena.").dialog('open');
         return;
     }
+
     $(a).submit();
 }
 function Registartion() {
@@ -394,11 +526,11 @@ function BrisiTag(a) {
 }
 function SnimiWikiClanak() {
     if (!$("#wiki-content").val() || $("#txtNazivWikiClanka").val() == "Naziv članka...") {
-        alert("Molimo Vas da uneste naziv za članak i njegv sadržaj!");
+        $infoAlert.html("Molimo Vas da uneste naziv za članak i njegv sadržaj!").dialog('open');
         return;
     }
     if ($("#selektovaneKategorije li.ktc").length == 0) {
-        alert("Molimo Vas da selektujete određenu kategoriju!");
+        $infoAlert.html("Molimo Vas da selektujete određenu kategoriju!").dialog('open');
         ShowDialog("#KategorijeAdd");
         return;
     }
@@ -427,15 +559,16 @@ function SnimiWikiClanak() {
 
 function SaveQuestions() {
     if ($("#txtNaslovPitanja").val() == "" || $("#questions-content").val() == "") {
-        alert("Molimo Vas da uneste naslov i njegov sadržaj!");
+        $infoAlert.html("Molimo Vas da uneste naslov i njegov sadržaj!").dialog('open');
         return;
     }
     if ($("#questions-content").val().length < 10) {
-        alert("Molimo Vas da unesete pitanje sa minimalno 10 znakova!");
+
+        $infoAlert.html("Molimo Vas da unesete pitanje sa minimalno 10 znakova!").dialog('open');
         return;
     }
     if ($("#selektovaneKategorije li.ktc").length == 0) {
-        alert("Molimo Vas da selektujete određenu kategoriju!");
+        $infoAlert.html("Molimo Vas da selektujete određenu kategoriju!").dialog('open');
         ShowDialog("#KategorijeAdd");
         return;
     }
@@ -473,7 +606,7 @@ function GetLink(a) {
 
 function SaveAnswer() {
     if ($("#answer-content").val() == "") {
-        alert("Molimo Vas da unesete odgovor!");
+        $infoAlert.html("Molimo Vas da unesete odgovor!").dialog('open');
         return;
     }
 
@@ -488,6 +621,7 @@ function SaveAnswer() {
 
 function LogOut(a) {
 
-    window.location.pathname="Home/LogOut";
+    window.location.pathname = "Home/LogOut";
     return false;
 }
+

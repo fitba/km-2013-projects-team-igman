@@ -1,8 +1,9 @@
-﻿@{
+﻿@model IPagedList<Question>
+@{
     ViewBag.Title = "Wellcome";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
-@if (TempData["user"]==null)
+@if (TempData["user"] == null)
 {
     <div class="Upozorenje-Plavo alert-block ">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -10,6 +11,28 @@
         <p>Dobrodošli na wiki igman, rad studenata II ciklusa Fakulteta informacijski tehnologija. Molimo Vas da sve prijedloge i pohvale šaljete na admir.mujkic@edu.fit.ba ili ivan.boban@edu.fit.ba</p>
     </div>
 }
+
+    <ul id="menu1">
+        <li><a href="/"><span class="ui-icon ui-icon-home wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Home</span></a></li>
+        <li><a href="/Questions"><span class="ui-icon ui-icon-help wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Questions</span></a>
+            <ul>
+                <li><a href="/Questions/Create"><span class="ui-icon ui-icon-plus wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Ask Question</span></a></li>
+                <li><a href="/Questions/Search"><span class="ui-icon ui-icon-search wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Search Question</span></a></li>
+                
+            </ul>
+        </li>
+
+        <li><a href="/Articles"><span class="ui-icon ui-icon-script wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Wiki</span></a>
+            <ul> 
+                
+                <li><a href="/Articles"><span class="ui-icon ui-icon-plus wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Create Wiki</span></a></li>
+                <li><a href="/Articles/Search"><span class="ui-icon ui-icon-search wijmo-wijmenu-icon-left"></span><span class="wijmo-wijmenu-text">Search Wiki</span></a></li>
+          
+            </ul>
+        </li>
+    </ul>
+
+
 <div id="content-body-first">
     <div class="left-side">
         <div class="Box">
@@ -20,7 +43,7 @@
                 <div class="Opis">KATEGORIJE</div>
             </div>
             <div class="Body-Box">
-                <span>Kategorije</span>
+                @Html.Partial("_kategorije")
             </div>
             <div class="Footer-Box">
                 <ul>
@@ -34,7 +57,7 @@
                     </li>
                     <li>
                         <div class="Opis">
-                         PITANJA
+                            PITANJA
                         </div>
                         <div class="Br">
                             @TempData["br_QA"]
@@ -57,28 +80,34 @@
                 <div class="Img pull-left">
                     <img src="~/Content/Template/images/icons/appbar.tag.png" />
                 </div>
-                <div class="Opis">TAG</div>
+                <div class="Opis">TAGOVI</div>
             </div>
             <div class="Body-Box">
-                <span>TAGOVI</span>
+                @Html.Partial("_tagovi")
             </div>
         </div>
     </div>
+
+
+
     <div class="right-side">
         <div class="Box">
             <div class="Header-Box">
                 <div class="Img pull-left">
                     <img src="~/Content/Template/images/icons/appbar.question.png" />
                 </div>
-                <div class="Opis">@Html.ActionLink("PITANJA", "Index", "Questions")</div>
+                <div class="Opis">PITANJA</div>
             </div>
             <div class="Body-Box" id="pitanja-box">
-                <span>
-                    
-                 PITANJA
-                            
-                </span>
+
+
+                @Html.Partial("_questions_naslovna", Model)
+
+
             </div>
         </div>
     </div>
+
+
+
 </div>
