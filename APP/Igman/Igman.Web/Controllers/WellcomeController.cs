@@ -30,6 +30,7 @@ namespace Igman.Web.Controllers
 
                 HttpContext.Cache.Insert("TopListaWiki", listaTopWiki);
                 HttpContext.Cache.Insert("TopListaPitanja", listaTopPitanja);
+                
 
                 ViewBag.Kategorija = Baza.GetKatogorije();
                 ViewBag.AllCategory = Baza.context.Categories.ToList();

@@ -38,6 +38,7 @@ namespace Igman.DB.DAL
         public virtual ICollection<QuestionsRating> QuestionsRatings { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+
         public override bool Equals(object obj)
         {
             var ex = obj as Question;

@@ -48,7 +48,7 @@ namespace Igman.DB.BLL
             string cmd = string.Format("EXEC [dbo].[usp_UserInsert] '{0}','{1}','{2}',null,null,null,null,null,'{3}',null,null,'{4}','{5}',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null", u.GUID, u.FirstName, u.LastName, u.Password, u.Email, u.LoweredEmail);
             u = context.Database.SqlQuery<User>(cmd).SingleOrDefault();
 
-            string cmdRole = string.Format("EXEC [dbo].[usp_UserRoleInsert] {0},{1}", 1, u.UserID);
+            string cmdRole = string.Format("EXEC [dbo].[usp_UserRoleInsert] {0},{1}", 2, u.UserID);
             context.Database.ExecuteSqlCommand(cmdRole);
 
             return u;
