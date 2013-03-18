@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Answer>
+@using Igman.Infrastructure.Extend;
+
+    @foreach (var item in Model)
+    {
+        <div class="odgovori">
+            <div class="answers_summary">@Html.Raw(item.AnswerBody.OcistiHtml())</div>
+
+            <div class="started fr">
+                <div class="user-info ">
+                    <div class="user-action-time">
+                        Kreirano prije
+                 <a href="#" class="started-link">
+                     <span title="@item.CreatedID" class="relativetime">@ExtendMethod.ToRelativeDateString(item.CreatedID.Value,true)</span>
+                 </a>
+
+                    </div>
+                    <div class="user-gravatar32">
+                        <a href="#">
+                            <div>
+
+                                <img src="~/Content/Template/images/avatars/@item.User.PhotoLocation" alt="" width="32" height="32" title="Ime i prezime: @item.User.FirstName @item.User.LastName  @item.User.Email  ">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="user-details">
+                        <a href="#">@item.User.FirstName @item.User.LastName</a><br>
+                        <span title="(@item.User.Questions.Count) questions asked">(@item.User.Questions.Count)</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="comment fr">
+                <a href="#" data-targetID="@item.AnswerID"><img src="~/Content/Template/images/comment.png" title="Komentiraj odgovor!" /></a>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+        
+        <form method="post" action="../CommentAnswer?id=@item.AnswerID" id="frmCommentForm">
+            <div class="comment-area disNone" id="@item.AnswerID">
+                <textarea class="comment_textarea" name="Komentar" placeholder="Unesite Vaš komentar..."></textarea>
+                <input type="button" class="btn btn-info F-11 comment_btn" value="Komentiraj" />
+            </div>
+        </form>
+
+        
+        
+
+            if (ViewBag.ListaKomentara != null)
+            {
+                var lista = ((IEnumerable<Comment>)ViewBag.ListaKomentara).Where(c => c.AnswerID == item.AnswerID).OrderByDescending(c => c.CommentID).Take(3);
+                var br = lista.Count();
+                foreach (var comment in lista)
+                {
+                <div class="accordian-comments">    
+                <span><b>@comment.CreatorName</b> » @if (comment.Body.Length > 100)
+                                                    {@comment.Body.Substring(0, 100)}
+                                                    else
+                                                    {@comment.Body} <i class="fr">@@ @comment.Created</i></span>
+                <div>@comment.Body</div> 
+
+                </div>
+                }
+            }
+    
+     
+       
+    }
+
+   
+ 
+

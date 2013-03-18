@@ -1,0 +1,62 @@
+﻿@model  IPagedList<Question>
+
+<div class="questions2">
+ @foreach (var item in Model)
+        {
+     
+            <div class="question-summary2">
+                <div class="statscontainer">
+                    <div class="statsarrow"></div>
+                    <div class="stats">
+                        <div class="vote">
+                            <div class="votes">
+                                <span class="vote-count-post"><strong><span id="@item.QuestionID">@item.Likes</span></strong></span>
+                                <div class="viewcount">likes</div>
+                            </div>
+                        </div>
+                        @if (item.Answers.Count != 0)
+                        {
+                            <div class="status answered">
+                                <strong>@item.Answers.Count</strong>answers
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="status unanswered">
+                                <strong>@item.Answers.Count</strong>answers
+                            </div>
+                        }
+                    </div>
+                    <div class="views " title="@item.NumOfViews views">
+                        Views  @item.NumOfViews
+                    </div>
+                </div>
+                <div class="summary2">
+
+                    <h3>@Html.ActionLink(@item.QuestionTitle, "Details", new { id = item.QuestionID })</h3>
+                    @foreach (var kat in item.Categories)
+                    {
+                        <a href="Wellcome/get_questions_by_kategory?id=@kat.CategoryID">@kat.Name</a> 
+                    }
+               
+
+                    <div class="tags">
+                        @foreach (var tag in item.Tags)
+                        {
+                            <a href="#" class="post-tag">@tag.Name</a>
+                        }
+                    </div>
+              
+                </div>
+
+            </div>
+
+ 
+        }
+
+
+   <div id="pagedList2" data-wiki-target=".questions2">
+        @Html.PagedListPager(Model,page=>Url.Action("get_questions_by_kategory",new{page}),
+        PagedListRenderOptions.PageNumbersOnly)
+    </div>
+</div>

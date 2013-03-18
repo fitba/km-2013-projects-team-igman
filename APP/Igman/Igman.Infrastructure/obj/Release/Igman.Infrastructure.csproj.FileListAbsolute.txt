@@ -1,0 +1,15 @@
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\Igman.Infrastructure.pdb
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\Igman.DB.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\Newtonsoft.Json.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\ServiceStack.Text.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\System.Net.Http.Formatting.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\EntityFramework.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\Igman.DB.pdb
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\Newtonsoft.Json.xml
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\ServiceStack.Text.xml
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\System.Net.Http.Formatting.xml
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\bin\Release\EntityFramework.xml
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Release\Igman.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Release\Igman.Infrastructure.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.Infrastructure\obj\Release\Igman.Infrastructure.pdb

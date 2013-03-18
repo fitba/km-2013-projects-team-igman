@@ -1,0 +1,49 @@
+﻿<div id="Registartion" class="modal hide fade modal-custom">
+    <div class="modal-header-custom">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <span><strong>Registracija na sistem.</strong></span>
+    </div>
+
+    <div class="modal-body modal-body-custom p-25">
+        <div class="Desc">
+            Molimo Vas da popunite sljedeći formular. Wiki IGMAN Team.
+        </div>
+        <div class="margin-breaker"></div>
+        @using (Html.BeginForm("Registration", "Registration", FormMethod.Post, new { id = "frmRegistartionAdd" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="fn" name="FirstName" placeholder="Ime" style="width:300px;" />
+             
+            </div>
+             <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="ln" name="LastName" placeholder="Prezime" style="width:300px;" />
+            </div>
+            
+            <div class="margin-breaker"></div>
+            
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input type="text" id="em" name="Email" placeholder="Vaš e-mail" style="width:300px;" />
+            </div>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input type="text" id="emr" name="EmailAgain" placeholder="Ponovite e-mail" style="width:300px;" />
+            </div>
+            <div class="margin-breaker"></div>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-exclamation-sign"></i></span>
+                <input type="password" id="pass" name="Password" placeholder="Vaša lozinka" style="width:300px;" />
+            </div>
+        }
+    </div>
+    <div class="body-footer-m">
+        <button class="btn btn-success btn-block R-0 F-11" type="button" onclick="SubmitRegistartion('#frmRegistartionAdd')">Registracija</button>
+    </div>
+</div>
+    @if (TempData["ExistUser"] != null)
+    {
+     <div class="dialog_error">Korisnik s tom email adresom već postoji!</div>
+    }

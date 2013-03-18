@@ -1,0 +1,30 @@
+﻿<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <div class="subheader">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+
+
+                    <label id="h-top-questions">kategorije pitanja</label>
+
+                </a>
+            </div>
+
+
+        </div>
+        <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+                <div class="Body-Box">
+                    <div class="O-F-W">
+                        <ul id="tag-wiki" class="center">
+                            @foreach (var item in ViewBag.AllCategory as List<Category>)
+                            {
+                                <li class="kat-center" id="@item.CategoryID">@item.Name</li> 
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

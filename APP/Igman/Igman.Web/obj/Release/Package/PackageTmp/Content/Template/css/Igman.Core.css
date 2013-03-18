@@ -1,0 +1,1675 @@
+﻿/*
+	Wiki Igman CSS V 1.7
+	----------------------------------------
+	(c) FIT	
+*/
+
+/*Utilitis*/ 
+
+* {
+	margin: 0;
+	padding: 0;
+   
+}
+a, a:visited, a:focus, a:active, a:hover{
+	outline:0 none !important;
+}
+.textarea, .textarea:focus {
+	width: 96.2%;
+	min-height: 250px;
+	padding: 15px;
+	box-shadow: none;
+	border: 1px solid rgb(197, 197, 197);
+	border-top: none;
+}
+
+
+
+.O-F-W {
+	overflow: auto;
+}
+
+.F-11 {
+	font-family: Tahoma !Important;
+	font-size: 12px !Important;
+}
+
+.margin-breaker {
+	margin: 20px 0;
+}
+
+ul, ol, dl {
+	list-style: none;
+	margin: 0 !Important;
+	padding: 0!Important;
+}
+
+html, body {
+	height: 100%;
+}
+
+#container {
+	min-height: 100%;
+	position: relative;
+}
+
+#body {
+	padding-bottom: 200px;
+}
+
+.modal-custom {
+	border-radius: 5px !Important;
+	border: 1px solid #DDD;
+	z-index: 99999 !Important;
+}
+
+	.modal-custom > .modal-body-custom {
+		background-color: rgb(247, 247, 247);
+	}
+
+		.modal-custom > .modal-body-custom > .Desc {
+			font-family: Tahoma;
+			font-size: 11px;
+			width: 300px;
+			word-break: break-all;
+			text-align: left;
+			margin: 0 auto;
+			color: rgb(162, 162, 162);
+		}
+
+	.modal-custom > .modal-header-custom {
+		border-radius: 4px 4px 0 0 !Important;
+		background: rgb(255,255,255);
+		background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 3%, rgba(229,229,229,1) 98%, rgba(173,173,173,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(3%,rgba(229,229,229,1)), color-stop(98%,rgba(229,229,229,1)), color-stop(100%,rgba(173,173,173,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 3%,rgba(229,229,229,1) 98%,rgba(173,173,173,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 3%,rgba(229,229,229,1) 98%,rgba(173,173,173,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 3%,rgba(229,229,229,1) 98%,rgba(173,173,173,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 3%,rgba(229,229,229,1) 98%,rgba(173,173,173,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#adadad',GradientType=0 ); /* IE6-9 */
+		padding: 10px;
+	}
+
+	.modal-custom > .body-footer-m {
+		background-color: #DDD;
+		padding: 20px;
+		border-radius: 0 0 4px 4px !Important;
+		border-top: 1px solid rgb(197, 197, 197);
+	}
+
+.W-100 {
+	width: 95%;
+}
+
+.W-U-P {
+	font-family: Tahoma;
+	font-size: 11px;
+	color: red;
+	text-align: center;
+}
+
+.p-25 {
+	padding: 25px !Important;
+}
+
+.p-15 {
+	padding: 15px !Important;
+}
+
+.form-row {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.center-content {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.Upozorenje-Plavo {
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 10px;
+	text-shadow: 0 1px 0 rgb(65, 65, 65);
+	background-color: #fcf8e3;
+	border: 1px solid rgb(69, 125, 209);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: rgb(0,140,196); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(0,140,196,1) 0%, rgba(0,88,147,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,140,196,1)), color-stop(100%,rgba(0,88,147,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(0,140,196,1) 0%,rgba(0,88,147,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(0,140,196,1) 0%,rgba(0,88,147,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(0,140,196,1) 0%,rgba(0,88,147,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(0,140,196,1) 0%,rgba(0,88,147,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008cc4', endColorstr='#005893',GradientType=0 ); /* IE6-9 */
+}
+
+	.Upozorenje-Plavo,
+	.Upozorenje-Plavo h4 {
+		color: rgb(255, 255, 255);
+	}
+
+		.Upozorenje-Plavo h4 {
+			margin: 0;
+		}
+
+		.Upozorenje-Plavo .close {
+			position: relative;
+			top: -2px;
+			right: -21px;
+			line-height: 20px;
+		}
+
+
+
+/*Header*/
+#header-top {
+	height: 41px;
+	width: 100%;
+	background-color: #1d3f53;
+	-webkit-box-shadow: 1px 5px 10px rgba(42, 32, 81, 0.85);
+	-moz-box-shadow: 1px 5px 10px rgba(42, 32, 81, 0.85);
+	box-shadow: 1px 5px 10px rgba(42, 32, 81, 0.85);
+	overflow: visible;
+	z-index: 4;
+	position: fixed;
+}
+
+.user-login {
+	font-family: Tahoma;
+	font-size: 12px;
+	color: white;
+	float: right;
+	padding-top: 11px;
+	padding-right: 15px;
+	border-right: 1px solid rgb(90, 113, 124);
+	height: 30px;
+}
+
+#MenuUser {
+	position: absolute;
+	width: 179px;
+	height: auto;
+	background-color: #1d3f53;
+	margin-left: 779px;
+	margin-top: 40px;
+	border-right: 1px solid rgb(90, 113, 124);
+	border-bottom: 1px solid rgb(90, 113, 124);
+	border-left: 1px solid rgb(90, 113, 124);
+	z-index: 1;
+}
+
+.menu-u {
+	border-top: 1px solid #6c7b92;
+	width: 129px;
+	color: white;
+	padding: 5px;
+	font-size: 11px;
+	font-family: Tahoma;
+}
+
+#MenuUser > .menu-items {
+	margin-top: -11px;
+}
+
+	#MenuUser > .menu-items > ul li {
+		color: white;
+		padding: 12px;
+		font-size: 11px;
+		font-family: Tahoma;
+		border-bottom: 1px solid rgb(114, 118, 145);
+		font-weight: 700;
+		text-align: right;
+		cursor: pointer;
+	}
+
+		#MenuUser > .menu-items > ul li:hover {
+			background-color: #6c7b92;
+		}
+
+.img-menu {
+	width: 25px;
+	height: auto;
+	float: left;
+}
+
+#Logo img {
+	margin-top: 2px;
+	width: 150px;
+	height: auto;
+}
+
+#Logo {
+	margin-right: 50px;
+}
+
+#Serach {
+	overflow: auto;
+	background-color: rgb(49, 64, 95);
+}
+
+#txtSearch-Args, #txtSearch-Args:focus {
+	padding-left: 20px;
+	width: 509px;
+	background-color: transparent;
+	color: white;
+	border: none;
+	margin: 0;
+	box-shadow: none;
+	float: left;
+	font-size: 12px;
+	height: 33px;
+}
+
+	#txtSearch-Args:focus {
+		background-color: #375179;
+	}
+
+.btn-serch {
+	padding: 8px;
+	float: right;
+	cursor: pointer;
+	border-left: 1px solid #717171;
+}
+
+	.btn-serch:hover {
+		background-color: #6c7b92;
+	}
+
+	.btn-serch img {
+		width: 24px;
+		height: 24px;
+	}
+
+.btn-navigation {
+	padding: 4px;
+	float: right;
+	cursor: pointer;
+	border-right: 1px solid #ccc;
+}
+
+	.btn-navigation:hover {
+		background-color: #6c7b92;
+	}
+
+	.btn-navigation img {
+		width: 32px;
+		height: 32px;
+	}
+
+/*Content*/
+#content-body {
+	background-color: rgba(255, 255, 255, 0.7);
+	width: 940px;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 52px;
+	padding: 52px 10px 10px 10px;
+	z-index: 1;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#content-body-first {
+	overflow: auto;
+}
+
+	#content-body-first > .full-widht {
+		width: 850px;
+		margin-top: 6px;
+		margin-left: 87px;
+	}
+
+	#content-body-first > .left-side {
+		float: left;
+		width: 371px;
+	}
+
+	#content-body-first > .right-side {
+		float: right;
+		width: 549px;
+	}
+/*BOXES*/
+.Box {
+	width: 100%;
+	height: 100%;
+	display: block;
+	-webkit-box-shadow: 0px 0px 6px rgba(50, 50, 50, 0.8);
+	-moz-box-shadow: 0px 0px 6px rgba(50, 50, 50, 0.8);
+	box-shadow: 0px 0px 6px rgba(50, 50, 50, 0.8);
+	margin-bottom: 17px;
+}
+
+	.Box > .Header-Box {
+		padding: 5px;
+		overflow: auto;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		background-color: #1d3f53;
+	}
+
+		.Box > .Header-Box > .Img {
+			margin-right: 10px;
+		}
+
+			.Box > .Header-Box > .Img img {
+				width: 25px;
+				height: auto;
+			}
+
+		.Box > .Header-Box > .Opis {
+			font-family: Tahoma;
+			font-size: 11px;
+			color: white;
+			font-weight: 600;
+			margin-top: 3px;
+		}
+
+	.Box > .Body-Box {
+		background-color: white;
+		color: #1d3f53;
+		padding: 5px;
+		font-size: 12px;
+		font-family: Tahoma;
+	}
+
+	.Box > .Footer-Box {
+		padding: 5px 7px;
+		color: rgb(192, 180, 157);
+		border-top: 1px solid rgb(204, 194, 194);
+		background-color: rgb(238, 238, 238);
+		text-align: center;
+		overflow: auto;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
+
+		.Box > .Footer-Box > ul > li {
+			float: left;
+			margin-right: 88px;
+			font-size: 12px;
+		}
+
+			.Box > .Footer-Box > ul > li:last-child {
+				margin: 0;
+			}
+
+			.Box > .Footer-Box > ul > li > .Opis {
+				font-family: Tahoma;
+				color: rgb(216, 214, 201);
+				font-weight: 700;
+			}
+
+			.Box > .Footer-Box > ul > li > .Br {
+				font-family: Tahoma;
+				color: rgb(173, 173, 167);
+				font-weight: 700;
+			}
+
+#pitanja-box {
+	overflow: auto;
+	height: 500px;
+}
+/*FOOTER*/
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 186px;
+	background-color: #1d3f53;
+	-webkit-box-shadow: 0px 0px 8px rgba(50, 50, 37, 1);
+	-moz-box-shadow: 0px 0px 8px rgba(50, 50, 37, 1);
+	box-shadow: 0px 0px 8px rgba(50, 50, 37, 1);
+	border-top: 3px solid rgb(255, 255, 255);
+}
+
+#Over-footer {
+	overflow: auto;
+	width: 980px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+	#Over-footer > #Info-footer li {
+		float: left;
+		border-right: 1px solid rgb(75, 87, 114);
+		padding: 0 20px;
+		min-height: 160px;
+		color: white;
+		width: 201px;
+		font-size: 11px;
+		line-height:16px;
+		font-variant:small-caps;
+	}
+
+		#Over-footer > #Info-footer li:last-child {
+			border: none;
+		}
+
+		#Over-footer > #Info-footer li > .over-footer {
+			overflow: auto;
+		}
+
+			#Over-footer > #Info-footer li > .over-footer > .Img {
+				float: left;
+				margin-right: 5px;
+			}
+
+				#Over-footer > #Info-footer li > .over-footer > .Img img {
+					width: 25px;
+					height: auto;
+				}
+
+			#Over-footer > #Info-footer li > .over-footer > .Opis {
+				color: white;
+				margin-top: 3px;
+				font-weight: 700;
+			}
+
+
+#beta {
+	margin-top: 19px;
+	margin-left: 29px;
+}
+
+#fit {
+	margin-top: 19px;
+	margin-left: 60px;
+}
+
+#copy {
+	text-align: left;
+	color: silver !Important;
+}
+/*#region Izbornik*/
+.Menu-content {
+	background-color: #1d3f53;
+	width: 69px;
+	margin: -12px auto 0px auto;
+	position: fixed;
+	margin-left: 5px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
+	-moz-box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
+	box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
+}
+
+	.Menu-content > ul li {
+		cursor: pointer;
+		border-bottom: 1px solid rgb(90, 113, 124);
+	}
+
+		.Menu-content > ul li:last-child {
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+
+		.Menu-content > ul li:hover {
+			background-color: #264069;
+		}
+/*#endregion*/
+/*#region Tagovi Kategroje*/
+.BoxWiki {
+	width: 98.6%;
+	height: 100%;
+	background-color: rgb(250, 250, 250);
+	border-bottom: 1px solid rgb(238, 238, 238);
+	padding: 2px;
+	overflow: auto;
+	margin: 10px 0;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+
+	.BoxWiki > .BoxWiki-Content {
+		margin-top: 2px;
+		text-align: center;
+		color: rgb(214, 214, 214);
+		font-family: Verdana;
+		font-size: 15px;
+		width: 782px;
+	}
+
+#KategorijeAdd {
+	width: 750px;
+}
+
+	#KategorijeAdd > .body-footer-m {
+		padding: 5px;
+	}
+
+#kategorije-izbor li.active {
+	background-color: #d5d5d5;
+}
+
+#kategorije-izbor li {
+	float: left;
+	margin: 2px;
+	font-family: Tahoma;
+	width: 116px;
+	cursor: pointer;
+	padding: 3px 10px 5px 10px;
+	border-radius: 3px;
+}
+
+	#kategorije-izbor li:hover {
+		background-color: #1d3f53;
+		color: white;
+	}
+
+.c-ime {
+	margin-top: 4px;
+	margin-left: 22px;
+}
+
+.kat-box-desc {
+	background-color: rgb(189, 193, 216) !Important;
+	color: rgb(255, 255, 255) !Important;
+}
+
+#selektovaneKategorije li {
+	float: left;
+	padding: 3px 10px;
+	overflow: auto;
+	background-color: #6c7b92;
+	color: white;
+	font-family: Tahoma;
+	font-size: 11px;
+	border-radius: 2px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+	#selektovaneKategorije li > .nzv {
+		margin-right: 5px;
+	}
+
+	#selektovaneKategorije li > .sk-close {
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 20px;
+		color: rgb(255, 255, 255);
+		text-shadow: 0 1px 0 rgb(0, 0, 0);
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+		cursor: pointer;
+	}
+
+		#selektovaneKategorije li > .sk-close:hover {
+			opacity: 1;
+			filter: alpha(opacity=100);
+		}
+
+#selektovaniTagovi li {
+	float: left;
+	padding: 3px 10px;
+	overflow: auto;
+	background-color: #6c7b92;
+	color: white;
+	font-family: Tahoma;
+	font-size: 11px;
+	border-radius: 2px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.Tag-Content {
+	min-height: 31px;
+	margin-top: 3px;
+	margin-bottom: -2px;
+}
+
+#selektovaniTagovi li > .nzv {
+	margin-right: 5px;
+}
+
+#selektovaniTagovi li > .sk-close {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	color: rgb(255, 255, 255);
+	text-shadow: 0 1px 0 rgb(0, 0, 0);
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	cursor: pointer;
+}
+
+	#selektovaniTagovi li > .sk-close:hover {
+		opacity: 1;
+		filter: alpha(opacity=100);
+	}
+
+.tagTextBox {
+	background-color: transparent !Important;
+	color: white;
+	border: none !Important;
+	margin: 0 !Important;
+	box-shadow: none !Important;
+	height: 200px;
+	padding-bottom: 9px !Important;
+}
+
+#txtBoxTags {
+	padding: 0 !Important;
+	margin: 0 !Important;
+	background-color: transparent !Important;
+}
+
+#Wiki-Tags {
+	width: 592px;
+	height: 150px;
+	max-height: 150px;
+	background-color: rgb(248, 248, 248);
+	position: absolute;
+	margin-top: 35px;
+	border: 1px solid rgb(204, 195, 195);
+	border-top: none;
+}
+
+#selektovaniTagovi #txtBoxTags > #txtTags {
+	font-family: Tahoma !Important;
+	font-size: 12px !Important;
+}
+
+.AutoComplite {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 200px;
+	padding: 5px 0;
+	margin: 2px 0 0 0!Important;
+	list-style: none;
+	background-color: #ffffff;
+	border: 1px solid #a9a9a9;
+	border-top: none;
+	border-bottom-right-radius: 5px !Important;
+	border-bottom-left-radius: 5px !Important;
+	-webkit-box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.75);
+}
+
+	.AutoComplite li {
+		border-bottom: 1px solid #dedede;
+	}
+
+		.AutoComplite li:last-child, .AutoComplite li:last-child > a {
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px;
+			border-bottom: none;
+		}
+
+		.AutoComplite li > a {
+			display: block;
+			padding: 7px;
+			clear: both;
+			font-weight: normal;
+			line-height: 20px;
+			color: #333333;
+			white-space: nowrap;
+		}
+
+			.AutoComplite li > a:hover,
+			.AutoComplite li > a:focus,
+			.AutoComplite:hover > a {
+				text-decoration: none;
+				color: #ffffff;
+				background-color: rgb(90, 113, 124);
+			}
+
+	.AutoComplite .active > a,
+	.AutoComplite .active > a:hover {
+		color: #ffffff;
+		text-decoration: none;
+		outline: 0;
+		background-color: rgb(90, 113, 124);
+	}
+
+/*#endregion*/
+
+/*#region Clanak */
+.frm-naziv-clanka {
+	width: 100%;
+	border-bottom: 1px solid rgb(228, 228, 228);
+	margin-bottom: 14px;
+	margin-top: 3px;
+}
+
+	.frm-naziv-clanka > .NazivClanka, .frm-naziv-clanka > .NazivClanka:focus {
+		width: 98.3%;
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		font-family: Cambria;
+		font-size: 30px;
+		height: 34px;
+		padding: 6px;
+		color: rgb(197, 197, 197);
+	}
+
+.active-wiki-focus {
+	color: black !Important;
+}
+
+.W-Pretraga {
+	width: 839px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.Box-H-W {
+	background-color: rgb(243, 243, 243) !Important;
+	border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.H-W-S {
+	padding: 10px !Important;
+}
+
+.searchWiki-button {
+	width: 743px;
+}
+
+.btn-pretraga {
+	padding: 5px 22px !Important;
+}
+
+#result-wiki-list {
+	padding: 10px !Important;
+}
+
+	#result-wiki-list li {
+		overflow: auto;
+		border-bottom: 1px solid rgb(247, 236, 236);
+		padding-bottom: 5px;
+		margin-top: 14px;
+	}
+
+		#result-wiki-list li:last-child {
+			border: none;
+		}
+
+		#result-wiki-list li > .Content-Name > a {
+			font-size: 16px !Important;
+		}
+
+		#result-wiki-list li > .Content-Prew {
+			width: 99%;
+			text-align: justify;
+			margin-top: 5px;
+		}
+
+		#result-wiki-list li > .Content-Sett {
+			font-family: Verdana;
+			text-align: right;
+			margin-top: 5px;
+			color: rgb(211, 211, 211);
+			width: 99%;
+			font-size: 11px;
+		}
+
+.pag-result {
+	padding: 10px;
+}
+
+.hit {
+	font-weight: bold;
+}
+
+.Mesg-Wiki-P {
+	font-family: Tahoma;
+	font-size: 21px;
+	text-align: center;
+	color: rgb(197, 197, 197);
+	padding: 100px;
+}
+
+.Paged-info {
+	display: none;
+}
+
+.Wiki-Result-Stat {
+	color: #949494;
+	padding: 7px 7px;
+	text-align: right;
+	border-bottom: 1px solid rgb(228, 228, 228);
+	width: 98%;
+}
+
+.active-link-wiki {
+	background-color: #264069 !Important;
+}
+
+.left-side-wiki-w {
+	width: 650px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 3px;
+}
+
+.right-side-wiki-w {
+	float: right;
+	width: 275px;
+	margin-top: 5px;
+	margin-right: 2px;
+}
+
+.Wiki-Naslov-W {
+	font-family: Cambria;
+	font-size: 20px;
+	border-bottom: 1px solid rgb(190, 190, 190);
+	padding-bottom: 12px;
+}
+
+.Wiki-Content-W {
+	margin-top: 10px;
+	width: 619px;
+	text-align: justify;
+	word-break: break-all;
+}
+
+.Statstic-Wiki-W {
+	font-family: Tahoma;
+	font-size: 11px;
+	color: rgb(175, 175, 175);
+	padding-top: 3px;
+	text-align: left;
+}
+
+.img-static-wiki-w img {
+	width: 25px;
+}
+
+.img-static-wiki-w {
+	float: left;
+	text-align: center;
+}
+
+.wiki-stat {
+	float: left;
+	width: 26.333333%;
+	text-align: center;
+}
+
+.wiki-stat-date {
+	width: 47% !Important;
+	float: right;
+}
+
+.w-wiki-like {
+	width: 100%;
+	font-family: Verdana !important;
+	font-size: 10px !important;
+	font-weight: 700;
+}
+
+	.w-wiki-like i {
+		margin-right: 12px;
+		margin-top: -1px;
+	}
+
+.btn-like-w {
+	border-top: 1px solid rgb(240, 240, 240);
+	clear: both;
+	padding-top: 7px;
+	margin-top: 29px;
+}
+
+.btn-sett-wiki-w {
+	margin-top: 5px;
+	width: 33.6%;
+}
+
+.Tags-Wiki-W {
+	font-size: 12px;
+	margin-top: 13px;
+	border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+	.Tags-Wiki-W img {
+		width: 56px;
+	}
+
+#tag-wiki li {
+	padding: 0px 10px;
+	border-radius: 3px;
+	margin-bottom: 3px;
+	background: rgb(96,108,136);
+	background: -moz-linear-gradient(top, rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,108,136,1)), color-stop(100%,rgba(63,76,107,1)));
+	background: -webkit-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+	background: -o-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+	background: -ms-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+	background: linear-gradient(to bottom, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 );
+	color: white;
+	float: left;
+	font-size: 9px;
+	font-family: Verdana;
+	margin-right: 3px;
+	cursor: pointer;
+}
+
+	#tag-wiki li:hover {
+		background: rgb(63,76,107);
+		background: -moz-linear-gradient(top, rgba(63,76,107,1) 0%, rgba(96,108,136,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(63,76,107,1)), color-stop(100%,rgba(96,108,136,1)));
+		background: -webkit-linear-gradient(top, rgba(63,76,107,1) 0%,rgba(96,108,136,1) 100%);
+		background: -o-linear-gradient(top, rgba(63,76,107,1) 0%,rgba(96,108,136,1) 100%);
+		background: -ms-linear-gradient(top, rgba(63,76,107,1) 0%,rgba(96,108,136,1) 100%);
+		background: linear-gradient(to bottom, rgba(63,76,107,1) 0%,rgba(96,108,136,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#606c88',GradientType=0 );
+	}
+	#tag-wiki li a{
+
+		color:#DDD;
+		width:100px;
+
+	}
+
+.grupa-wiki li {
+	padding: 3px;
+	margin-bottom: 1px;
+	background-color: rgb(236, 236, 236);
+	font-weight: bold;
+	color: rgb(64, 104, 155);
+}
+
+#misao-wiki li {
+	float: left;
+}
+
+.Min-400 {
+	min-height: 400px;
+}
+/*#endregion*/
+
+/*#region Fronted-AI*/
+#AI-Search-Complete {
+	width: 535px;
+	margin-top: 41px;
+	position: absolute;
+	z-index: 100;
+	background-color: white;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-webkit-box-shadow: 0px 5px 6px rgba(50, 50, 50, 0.69);
+	-moz-box-shadow: 0px 5px 6px rgba(50, 50, 50, 0.69);
+	box-shadow: 0px 5px 6px rgba(50, 50, 50, 0.69);
+}
+
+	#AI-Search-Complete > .rezultat {
+		background-color: rgb(53, 115, 151);
+		color: white;
+		padding: 5px;
+		text-align: center;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+
+	#AI-Search-Complete > .rezultat-p > #rezult-list li {
+		padding: 6px;
+		border-bottom: 1px solid rgb(221, 221, 221);
+		cursor: pointer;
+	}
+
+		#AI-Search-Complete > .rezultat-p > #rezult-list li:hover {
+			background-color: #e6e6e6;
+		}
+
+		#AI-Search-Complete > .rezultat-p > #rezult-list li > .Naslov-ai {
+			color: rgb(38, 16, 121);
+		}
+
+		#AI-Search-Complete > .rezultat-p > #rezult-list li > .Content-ai {
+			font-size: 10px;
+			font-family: Verdana;
+		}
+
+		#AI-Search-Complete > .rezultat-p > #rezult-list li > .Sett-ai {
+			font-size: 10px;
+			font-family: Verdana;
+			text-align: right;
+			color: #c2c2c2;
+		}
+/*#endregion*/
+/*#region Glasanje*/
+.rating {
+	text-align: center;
+	margin: 10px 0;
+}
+/*#endregion*/
+
+/*#region Komenatri*/
+.Komentari > .Body-Box > .Wiki-Naslov-W {
+	font-family: Tahoma;
+	font-size: 15px;
+}
+
+.imgKoment {
+	width: 16px;
+	margin-right: 10px;
+}
+
+#txtKomenatarBox {
+	width: 605px;
+	border-radius: 2px;
+}
+
+.K-W-Date {
+	color: #8e8e8e;
+	float: right;
+}
+
+.Komenat-Box-W {
+	border-bottom: 1px solid rgb(243, 243, 243);
+	padding-bottom: 17px;
+}
+
+#lista-komentara {
+	margin-top: 20px;
+}
+
+#Komenatari-Wiki li {
+	padding: 5px;
+	border-bottom: 1px solid rgb(243, 243, 243);
+	margin-bottom: 5px;
+}
+
+.Preporuka-wikis li {
+	background-color: #efefef;
+	padding: 5px;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+
+	.Preporuka-wikis li:hover {
+		background-color: #e2e2e2;
+	}
+/*#endregion*/
+
+/*--------------QA Modul-----------------*/
+
+/*PITANJA*/
+
+
+.subheader {
+	border-bottom: 1px solid #cccccc;
+	height: 40px;
+	margin-bottom: 15px;
+	clear: both;
+}
+
+.subheader a:hover{
+text-decoration:none;
+}
+
+#tabs {
+	float: right;
+	font-weight: normal;
+}
+
+	#tabs a {
+		background: inherit;
+		border: 1px solid #D1DBEA;
+		color: #777;
+		display: block;
+		float: left;
+		font-size: 90%;
+		height: 30px;
+		line-height: 28px;
+		margin: 8px 8px 0 0;
+		padding: 0 11px 0 11px;
+		text-decoration: none;
+		border-bottom: 0px;
+	}
+
+		#tabs a:hover {
+			border: 1px solid #ccc;
+			border-bottom-color: #D1DBEA;
+			line-height: 26px;
+			margin-top: 9px;
+		}
+
+#answers-submenu #tabs a, #naslovna-submenu #tabs a{
+	background: inherit;
+	border: 1px solid #FFF;
+	color: #777;
+	display: block;
+	float: left;
+	font-size: 90%;
+	height: 30px;
+	line-height: 28px;
+	margin: 8px 8px 0 0;
+	padding: 0 11px 0 11px;
+	text-decoration: none;
+	border-bottom: 0px;
+}
+
+	#answers-submenu #tabs a:hover ,#naslovna-submenu #tabs a:hover{
+		border: 1px solid #ccc;
+		border-bottom-color: #FFF;
+		line-height: 26px;
+		margin-top: 9px;
+	}
+
+
+#tabs a.youarehere {
+	background: inherit;
+	border: 1px solid #ccc;
+	border-bottom-color: #D1DBEA;
+	color: black;
+	font-size: 120%;
+	height: 36px;
+	line-height: 34px;
+	margin-top: 3px;
+	padding: 0px 11px 0px 11px;
+}
+
+
+#answers-submenu #tabs a.youarehere,#naslovna-submenu #tabs a.youarehere {
+	background: inherit;
+	border: 1px solid #ccc;
+	border-bottom-color: #FFF;
+	color: black;
+	font-size: 120%;
+	height: 36px;
+	line-height: 34px;
+	margin-top: 3px;
+	padding: 0px 11px 0px 11px;
+}
+
+#h-top-questions {
+
+    float:left;
+	font-size: 20px;
+	line-height: 40px;
+	margin-left: 15px;
+	color: #cccccc;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+/*Pitanja-samo lista naslova*/
+#question-mini-list {
+	overflow: auto;
+	margin-bottom: 30px;
+}
+
+.question-summary {
+	float: left;
+	overflow: hidden;
+	padding: 11px 0px;
+	width: 710px;
+}
+.question-summary-naslovna {
+	float: left;
+	overflow: hidden;
+	padding: 11px 0px;
+	width: 530px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom:5px;
+}
+
+.questions .question-summary {
+	border-bottom: 1px dotted #ccc;
+}
+
+
+#stats {
+	font-size: 0.8em;
+}
+
+.votes {
+	color: #555555;
+	text-align: center;
+}
+
+.narrow .votes {
+	background: transparent;
+	float: left;
+	margin: 0 3px 0 0;
+	padding: 5px;
+	width: 38px;
+	height: 38px;
+}
+
+.votes-naslovna {
+    color: #555555;
+	text-align: center;
+	background: transparent;
+	float: left;
+	margin: 0 3px 0 5px;
+	padding: 5px 3px;
+	height: 38px;
+
+}
+
+.mini-counts {
+	height: 25px;
+	font-size: 160%;
+	font-weight: normal;
+}
+
+.status {
+	margin-top: -3px;
+	padding: 4px 0 4px;
+	text-align: center;
+	font-size: 0.9em;
+}
+
+	.status strong {
+		display: block;
+		font-size: 140%;
+	}
+
+.answered {
+	background: #75845C;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+.unanswered {
+	background: transparent;
+	color: #9A4444;
+}
+
+.narrow .status {
+	float: left;
+	margin: 0 3px 0 0;
+	padding: 5px;
+	width: 48px;
+	height: 38px;
+}
+.narrow .status-naslovna {
+    text-align:center;
+	float: left;
+	margin: 0 3px 0 0;
+	padding: 5px 3px;
+	height: 38px;
+}
+
+.views {
+	color: #999;
+	text-align: center;
+}
+
+.narrow .views {
+	float: left;
+	margin: 0 7px 0 0;
+	padding: 5px 0px 5px 4px;
+	width: 40px;
+	height: 38px;
+}
+.narrow .views-naslovna {
+	float: left;
+margin: 0 7px 0 0;
+padding: 5px;
+height: 38px;
+}
+
+
+.narrow .summary {
+	width: 380px;
+}
+
+.summary {
+	float: left;
+	width: 600px;
+}
+.summary2 {
+	float: left;
+	width: 370px;
+}
+
+	.summary h3,.summary2 h2 {
+		font-size: 120%;
+		margin: 0px;
+		padding: 0px;
+		line-height: 15px;
+		margin-bottom: 5px;
+	}
+   
+
+h3 {
+	font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+	font-size: 110%;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+/*Pitanja opširnije*/
+.clear {
+	clear: both;
+}
+
+.questions {
+	width: 710px;
+	background: rgba(255,255,255,1);
+	border-radius: 5px;
+	padding-bottom: 10px;
+	float: left;
+}
+.questions-naslovna {
+	
+	background: rgba(255,255,255,1);
+	border-radius: 5px;
+	padding-bottom: 10px;
+	float: left;
+}
+.answers {
+	width: 100%;
+	background: rgba(255,255,255,1);
+	border-radius: 5px;
+}
+
+.statscontainer {
+	width: 86px;
+	float: left;
+	margin-right: 8px;
+	
+
+}
+
+.statsarrow {
+	float: right;
+	height: 13px;
+	width: 7px;
+	margin-top: 12px;
+	background-position: 0px -435px;
+	background-image: url('../images/sprites.png');
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.stats {
+	background: #eee;
+	margin: 0 0 0 7px;
+	padding: 4px 7px 6px 7px;
+	width: 58px;
+}
+
+.vote {
+	text-align: center;
+}
+
+.vote-count-post {
+	font-size: 24px;
+}
+
+.excerpt {
+	line-height: 1.2;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 5px;
+	padding-right: 15px;
+}
+
+
+#pagedList {
+	margin: 15px auto 5px auto;
+	width: 330px;
+}
+
+
+/*Pitanja menu*/
+
+#hmenus {
+	width: 738px;
+	padding: 5px 0px 5px 5px;
+	margin-top: 10px;
+	float: left;
+}
+
+.nav {
+	float: left;
+	font-size: 125%;
+}
+
+	.nav li {
+		background: #777777;
+		display: block;
+		float: left;
+		margin-right: 7px;
+	}
+
+	.nav a {
+		color: #fff;
+		display: block;
+		font-weight: bold;
+		padding: 6px 12px;
+		font-size: 14px;
+		text-decoration: none;
+	}
+
+		.nav a:hover {
+			color: #fff;
+			background-color: #264069;
+			display: block;
+			font-weight: bold;
+			padding: 6px 12px;
+			font-size: 14px;
+			text-decoration: none;
+		}
+
+	.nav .youarehere {
+		background-color: #264069;
+	}
+
+#nav-askquestion {
+	margin-right: 0px;
+}
+
+.askquestion {
+	float: right;
+}
+
+	.askquestion li {
+		background-color: #51a351;
+	}
+
+.nav-askquestion-link:hover {
+	background-color: rgb(78, 156, 84) !Important;
+}
+
+.tags {
+	line-height: 18px;
+	float: left;
+	width: 500px;
+}
+.tags-naslovna {
+	line-height: 18px;
+	float: left;
+    width: 245px;
+	
+}
+.post-tag, .post-text .post-tag, .wmd-preview a.post-tag {
+	color: #3E6D8E;
+	background-color: #E0EAF1;
+	border-bottom: 1px solid #3E6D8E;
+	border-right: 1px solid #7F9FB6;
+	padding: 3px 4px 3px 4px;
+	margin: 2px 2px 2px 0;
+	text-decoration: none;
+	font-size: 90%;
+	line-height: 2.4;
+	white-space: nowrap;
+}
+
+	a.post-tag:hover, .post-text a.post-tag:hover, .wmd-preview a.post-tag:hover {
+		background-color: #3E6D8E;
+		color: #E0EAF1;
+		border-bottom: 1px solid #37607D;
+		border-right: 1px solid #37607D;
+		text-decoration: none;
+	}
+
+.fr {
+	float: right;
+}
+
+.fl {
+	float: left;
+}
+
+.started {
+	width: 185px;
+	color: #999;
+	line-height: 18px;
+	margin-bottom: 10px;
+}
+.started-naslovna {
+width: auto;
+line-height: inherit;
+padding-top: 4px;
+white-space: nowrap;
+color: #999;
+float: right;
+}
+
+.user-info {
+	height: 35px;
+	width: 185px;
+}
+
+	.user-info .user-action-time {
+		margin-top: 2px;
+		margin-bottom: 4px;
+	}
+
+.started-link, .started-link:visited {
+	color: #999;
+}
+
+.user-info .user-gravatar32 {
+	float: left;
+	width: 32px;
+	height: 32px;
+}
+
+.user-info .user-details {
+	float: left;
+	margin-left: 5px;
+	width: 145px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.user-details {
+	color: #888;
+	line-height: 17px;
+}
+
+
+#like_btn {
+	clear: both;
+	cursor: pointer;
+}
+
+
+#Right-collumn-Wrap {
+	width: 215px;
+	border-radius: 5px;
+	margin: 6px;
+	border-bottom-right-radius: 70px;
+}
+
+#question-header {
+	font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+	width: 940px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #cccccc;
+	clear: both;
+}
+
+
+
+#related_answers {
+	padding: 10px;
+	border: 1px solid #cccccc;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 70px;
+	background: rgb(221, 226, 218);
+}
+
+#answers-wrap {
+	clear: both;
+	margin-top: 10px;
+}
+
+#pitanje-wrap {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #eaeaea;
+	width: 100%;
+}
+
+.odgovori {
+	padding: 10px 15px;
+	background-color: rgba(101, 125, 199, 0.3);
+	margin: 5px;
+	float: left;
+	width: 665px;
+	border-bottom: 3px solid #ccc;
+	border-right: 3px solid rgb(165, 158, 158);
+}
+
+.comment-area {
+	background: #cccccc;
+	margin: 10px;
+	padding: 5px;
+}
+
+.disNone {
+	display: none;
+}
+
+.comment-area textarea {
+	width: 666px;
+	height: 70px;
+}
+
+/*Dialog alert*/
+
+.infoDialog {
+	position: absolute !Important;
+	z-index: 99999 !Important;
+	color: green !Important;
+}
+
+.f-content a{
+	color:rgb(192,192,192);
+	font-size:12px;
+}
+.f-content a:hover{
+	color:rgb(192,192,192);
+}
+
+.kat-center{
+
+	width: 80px;
+margin-left: 5px;
+text-align: center;
+}
+
+.center {
+	margin: 0 auto !Important;
+width: 330px;
+}
+
+.activ_kat{
+
+ 
+background-image: url('../images/accept.png') !important;
+background-repeat: no-repeat !important;
+background-position: right !important;
+background-color: ActiveBorder !important;
+}
+
+.activ_tag{
+
+    color:green;
+    font-weight:bold;
+}

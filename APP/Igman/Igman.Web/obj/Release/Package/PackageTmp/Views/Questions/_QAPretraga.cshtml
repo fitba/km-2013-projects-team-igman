@@ -1,0 +1,55 @@
+﻿@using Igman.Infrastructure.Extend
+@model IPagedList<Question>
+@if (TempData["err"] != null)
+{
+    <div class="Mesg-Wiki-P">@TempData["err"]</div>
+}
+else
+{
+   
+     if (Model != null)
+    {
+        if (Model.Count() > 0)
+        {
+        <div class="Wiki-Result">
+            <div class="Wiki-Result-Stat">Pronađeno <strong>@TempData["br_rez"].ToString()</strong> rezultata za <strong>@TempData["stat"]</strong> sekundi</div>
+            <ul id="result-wiki-list">
+                @foreach (var q in Model)
+                {
+                    <li>
+                        <div class="Content-Name">
+                            <a href="/Questions/Details/@q.QuestionID">@q.QuestionTitle</a>
+                        </div>
+                        <div class="Content-Prew">
+                            @Html.Raw(q.QuestionBody.OcistiHtml().PretragaRadius(TempData["args"].ToString().Split(" "[0]), 350).BoldTermin(TempData["args"].ToString()))
+                        </div>
+                        <div class="Content-Sett">
+                            Vole [@q.Likes] · Pogleda [@q.NumOfViews] ·  Datum objave [@q.CreatedDate.Value.ToLongDateString()]
+                        </div>
+                    </li>
+                    
+                }
+            </ul>
+            
+
+        </div>
+        }
+        else
+        {
+        <div class="Mesg-Wiki-P">Žao nam je, za traženi termin "@TempData["args"].ToString()" nije pronađen rezultat!</div>
+        }
+    }
+    else
+    {
+        <div class="Mesg-Wiki-P">Molimo Vas unesite pojam za pretragu.</div>
+    }
+}
+@if(Model!=null){
+<div id="pagedListSearched" data-questions-target="#searched-q-area">
+
+            @Html.PagedListPager(Model, page => Url.Action("Search", new { args=@TempData["args"].ToString(),page }),
+            PagedListRenderOptions.MinimalWithItemCountText)
+
+
+        </div>
+}

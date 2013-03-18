@@ -1,0 +1,42 @@
+﻿<div id="header-top">
+    <div class="center-content">
+        <div id="Logo" class="pull-left">
+            <a href="/"><img src="~/Content/Template/Images/logo.png" /></a>
+        </div>
+        <div id="Serach" class="pull-left">
+            <input id="txtSearch-Args" type="text" placeholder="Molimo unesite termin za pretragu..." />
+            <div class="btn-serch">
+                <img src="~/Content/Template/Images/icons/appbar.magnify.png" />
+            </div>
+            @Html.Partial("FrontedUtilitis/_aiPretraga")
+        </div>
+        <div id="Navigation">
+            @if (TempData["user"] == null)
+            {
+                <div class="btn-navigation" onclick="Registartion()">
+                    <img src="~/Content/Template/Images/icons/appbar.user.add.png" onclick="Registartion()" />
+                </div>
+                <div class="btn-navigation" onclick="Logins()">
+                    <img src="~/Content/Template/Images/icons/appbar.user.png" onclick="Logins()" />
+                </div>
+            }
+            else
+            {
+                <div>
+                    <div class="btn-navigation" onclick="MenuShow('#MenuUser')">
+                        <img src="~/Content/Template/Images/icons/appbar.settings.png" />
+                    </div>
+                    @Html.Partial("Membership/_mUser")
+                </div>
+                <div class="user-login">
+                    @( (TempData["user"] as Igman.DB.DAL.User).FirstName) @( (TempData["user"] as Igman.DB.DAL.User).LastName)
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+</div>
+@Html.Partial("Membership/_registartion")
+@Html.Partial("Membership/_login")

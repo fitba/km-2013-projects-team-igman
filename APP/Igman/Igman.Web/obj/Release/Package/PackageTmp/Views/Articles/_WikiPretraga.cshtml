@@ -1,0 +1,47 @@
+﻿@using Igman.Infrastructure.Extend
+@model List<Igman.DB.DalHelpClass.ArticleSerch.ArticleSerchModel>
+@if (TempData["err"] != null)
+{
+    <div class="Mesg-Wiki-P">@TempData["err"]</div>
+}
+else
+{
+    if (Model != null)
+    {
+        if (Model.Count > 0)
+        {
+        <div class="Wiki-Result">
+            <div class="Wiki-Result-Stat">Pronađeno <strong>@Model[0].BrojRedova</strong> rezultata za <strong>@TempData["stat"]</strong> sekundi</div>
+            <ul id="result-wiki-list">
+                @foreach (var wiki in Model)
+                {
+                    <li>
+                        <div class="Content-Name">
+                            <a href="/Wiki-Show/@wiki.ArticlesID">@wiki.Name</a>
+                        </div>
+                        <div class="Content-Prew">
+                            @Html.Raw(wiki.Content.OcistiHtml().PretragaRadius(TempData["args"].ToString().Split(" "[0]), 350).BoldTermin(TempData["args"].ToString()))
+                        </div>
+                        <div class="Content-Sett">
+                            Vole [@wiki.Likes] · Pogleda [@wiki.Views] ·  Datum objave [@wiki.DatePublish.Value.ToLongDateString()]
+                        </div>
+                    </li>
+                    
+                }
+            </ul>
+            <div class="pag-result @(Model[0].BrojRedova > 2 ? "" : "hide")">
+                @Html.Pager(Model[0].BrojRedova, 2, long.Parse((ViewContext.RouteData.Values["strana"] != null ? ViewContext.RouteData.Values["strana"].ToString() : "1")), 10, "/Articles/Search/" + TempData["args"].ToString())
+            </div>
+
+        </div>
+        }
+        else
+        {
+        <div class="Mesg-Wiki-P">Žao nam je, za traženi termin "@TempData["args"].ToString()" nije pronađen rezultat!</div>
+        }
+    }
+    else
+    {
+        <div class="Mesg-Wiki-P">Molimo Vas unesite pojam za pretragu.</div>
+    }
+}

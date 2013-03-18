@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "WikiKms";
+    Layout = "~/Views/Shared/_Master.cshtml";
+
+    var wiki = TempData["w"] as Igman.DB.DAL.Article;
+    var tags = TempData["w-tag"] as List<Igman.DB.DAL.Tag>;
+    var cat = TempData["w-cat"] as List<Igman.DB.DAL.Category>;
+}
+
+<div id="content-body-first">
+    <div class="Menu-content">
+        <ul>
+            <li onclick="GetLink('/Articles')" class="active-link-wiki">
+                
+                <img src="~/Content/Template/images/icons/WikiAdd.png" />
+                 
+            </li>
+            <li onclick="GetLink('/Articles/Search')">
+                <img src="~/Content/Template/images/icons/WikiPretraga.png" />
+            </li>
+        </ul>
+    </div>
+
+    <div class="full-widht">
+        @if (TempData["wikiSuccess"] != null && (bool)TempData["wikiSuccess"] == true)
+        {
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Uspiješno !</strong> Vaš članak je uspiješno modificiran.
+            </div>
+        }
+
+        @using (Html.BeginForm("EditWiki", "Articles", FormMethod.Post, new { @class = "Box", id = "frmAddNewWiki" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("jsonTag")
+            @Html.Hidden("jsonKat")
+            @Html.Hidden("WikiId",wiki.ArticlesID)
+            <div class="Body-Box">
+                <div class="frm-naziv-clanka">
+                    <input id="txtNazivWikiClanka" class="NazivClanka" type="text" value="@wiki.Name" name="Naslov" />
+                </div>
+                <textarea class="textarea" id="wiki-content" placeholder="Vaš članak pište na ovom mjestu ..." name="Content">@wiki.Content</textarea>
+                <div class="BoxWiki" id="Wiki-Kategrije">
+
+                    <div class="BoxWiki-Content pull-left">
+                        <ul id="selektovaneKategorije">
+                            @foreach (var kategorija in cat)
+                            {
+                                <li class="ktc" data-id="@kategorija.CategoryID"> <div class="nzv pull-left">@kategorija.Name</div><div class="sk-close pull-right" onclick="BrisiContent(this)">×</div></li>
+                            }
+                            @if (cat.Count == 0)
+                            {
+                                <li class="kat-box-desc">Molimo Vas da odaberete kategorije za ovaj članak</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn F-11" id="AddKategorije" type="button" onclick="ShowDialog('#KategorijeAdd')"><i class="icon-plus-sign"></i></button>
+                    </div>
+                </div>
+                <div class="BoxWiki" id="Wiki-Tagovi">
+
+                    <div class="Tag-Content pull-left">
+                        <ul id="selektovaniTagovi" class="O-F-W">
+                            @foreach (var tag in tags)
+                            {
+                                <li class="tgc" data-id="@tag.TagID"> <div class="nzv pull-left">@tag.Name</div><div class="sk-close pull-right" onclick="BrisiTag(this)">×</div></li>
+                            }
+                            <li id="txtBoxTags">
+                                <input class="tagTextBox" id="txtTags" type="text" placeholder="Molimo unesite tagove" /></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="Footer-Box ">
+                <div class="pull-right">
+                    <button class="btn F-11" type="button" onclick="ResetWikiClanak()">Reset</button>
+                    <button class="btn btn-info F-11" type="button" onclick="SnimiWikiClanak()">Snimi članak</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@Html.Partial("_Kategorije", (List<Igman.DB.DAL.Category>)ViewBag.Kategorije)

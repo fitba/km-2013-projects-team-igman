@@ -1,0 +1,56 @@
+﻿@model IPagedList<Question>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Master.cshtml";
+    var misao = TempData["mislilac"] as List<Igman.DB.DAL.Tag>;
+}
+@using Igman.Infrastructure.Extend
+<div id="content-body-first">
+    <div class="Menu-content">
+        <ul>
+            <li onclick="GetLink('/Questions/Create')">
+
+                <img src="~/Content/Template/images/icons/QuestionAdd.png" />
+
+            </li>
+            <li onclick="GetLink('/Questions/Search')" class="active-link-wiki">
+                <img src="~/Content/Template/images/icons/QuestionPretraga.png" />
+            </li>
+        </ul>
+    </div>
+    @using (Html.BeginForm("Search", "Questions", FormMethod.Post, new { @class = "Box W-Pretraga pull-right" }))
+    {
+            
+        
+        <div class="Header-Box Box-H-W H-W-S">
+            <div class="input-append">
+                <input class="searchWiki-button" id="txtSearchWiki" name="args" placeholder="Molimo unesite termin za pretragu..." type="text">
+                <button class="btn btn-pretraga" type="submit"><i class=" icon-search"></i></button>
+            </div>
+        </div>
+            
+        <div class="Body-Box">
+            @if (misao != null && misao.Count> 0)
+            {
+                
+                <div class="Wiki-Result Min-400">Da li ste mislili na sljedeće:
+                    
+                        @foreach (var termin in misao)
+                        {
+                            <strong><a href="/Questions/Search/?args=@termin.Name.Replace(".","")">@termin.Name</a></strong>
+                        }
+                        
+              
+                </div>
+                
+            }
+            else
+            {
+                <div id="searched-q-area">
+                @Html.Partial("_QAPretraga",Model)
+
+                </div>
+            }
+        </div>
+    }
+</div>

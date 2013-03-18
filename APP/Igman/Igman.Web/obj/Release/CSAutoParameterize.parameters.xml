@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DBEntities-Web.config Connection String" description="DBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/DAL.DB.csdl|res://*/DAL.DB.ssdl|res://*/DAL.DB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=UZDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\DevKit\\Desktop\\UZ-Projekat-2013_v3\.1Final\\UZ-Projekat-2013_v3\.1Final\\UZ-Projekat-2013\\APP\\Igman\\Igman\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBEntities']/@connectionString" />
+  </parameter>
+</parameters>

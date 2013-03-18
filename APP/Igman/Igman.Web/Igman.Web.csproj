@@ -156,16 +156,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="App_Data\DB_Wiki\segments.gen" />
-    <Content Include="App_Data\DB_Wiki\segments_u" />
-    <Content Include="App_Data\DB_Wiki\_1k.fdt" />
-    <Content Include="App_Data\DB_Wiki\_1k.fdx" />
-    <Content Include="App_Data\DB_Wiki\_1k.fnm" />
-    <Content Include="App_Data\DB_Wiki\_1k.frq" />
-    <Content Include="App_Data\DB_Wiki\_1k.nrm" />
-    <Content Include="App_Data\DB_Wiki\_1k.prx" />
-    <Content Include="App_Data\DB_Wiki\_1k.tii" />
-    <Content Include="App_Data\DB_Wiki\_1k.tis" />
     <None Include="Content\Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Scripts\bootstrap-typeahead.js" />
@@ -371,7 +361,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Scripts\modernizr-2.6.2.js" />
     <Content Include="Content\Template\css\jquery-wijmo.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -428,8 +420,11 @@
     <Content Include="Views\Wellcome\_questions_naslovna.cshtml" />
     <Content Include="Views\Wellcome\_render_questions.cshtml" />
     <Content Include="Views\Wellcome\_tagovi.cshtml" />
+    <None Include="Properties\PublishProfiles\Wiki.pubxml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\DB_Wiki\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -1,0 +1,8 @@
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Release\Igman.DB.dll.config
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Release\Igman.DB.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Release\Igman.DB.pdb
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Release\EntityFramework.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\bin\Release\EntityFramework.xml
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Release\Igman.DB.csprojResolveAssemblyReference.cache
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Release\Igman.DB.dll
+C:\Users\DevKit\Desktop\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013_v3.1Final\UZ-Projekat-2013\APP\Igman\Igman.DB\obj\Release\Igman.DB.pdb

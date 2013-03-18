@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - WikiIGMAN :: UZ</title>
+    
+    @Html.Partial("Utilitis/_meta")
+    @Html.Partial("Utilitis/_css") 
+    @Scripts.Render(" ~/bundles/modernizr")  
+    @Scripts.Render("~/bundles/jquery","~/bundles/js")
+    <script src="~/Content/Scripts/Rating/js/jquery.raty.js"></script>
+ 
+
+
+</head>
+<body>  
+     
+     @Html.Partial("_header")
+    <div id="container">
+         
+        <div id="body">
+          
+            <div id="content-body">
+                
+                @RenderBody()
+            </div>
+        </div>
+        <div id="footer">
+            @Html.Partial("_footer")
+        </div>
+    </div>
+  
+</body>
+</html>

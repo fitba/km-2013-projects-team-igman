@@ -1,0 +1,21 @@
+﻿@model List<Igman.DB.DAL.Category>
+<div id="KategorijeAdd" class="modal hide fade modal-custom">
+    <div class="modal-body modal-body-custom p-25">
+        <ul id="kategorije-izbor">
+            @foreach (var kategorije in Model)
+            {
+                <li data-nk ="@kategorije.Name" data-id ="@kategorije.CategoryID">
+                    <div class="c-chk pull-left">
+                        <input id="kat_@kategorije.CategoryID" type="checkbox" /></div>
+                    <div class="c-ime">@kategorije.Name</div>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="body-footer-m O-F-W">
+        <div class="pull-right">
+            <button class="btn F-11" type="button" data-dismiss="modal">Izlaz</button>
+            <button class="btn btn-info F-11" type="button" id="btnTransferKategrija">Potvrdi</button>
+        </div>
+    </div>
+</div>

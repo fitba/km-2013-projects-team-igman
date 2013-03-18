@@ -1,0 +1,69 @@
+﻿@model IPagedList<Question>
+@{
+    ViewBag.Title = "Index";
+    var recommended = TempData["RecommenderLista"] as List<Question>;
+    var topLista = TempData["TopLista"] as List<Question>;
+ 
+}
+
+@Html.Partial("_questionsMenu", Model)
+
+
+@Html.Partial("_questions_subMenu")
+
+
+
+
+<div>
+
+    @Html.Partial("_questions", Model)
+</div>
+
+<div class="fr" id="Right-collumn-Wrap">
+
+    <div class="Box">
+        <div class="Header-Box">
+            <div class="Img pull-left">
+                <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+            </div>
+            <div class="Opis">TOP QUESTIONS</div>
+        </div>
+        <div class="Body-Box">
+            <ul class="Preporuka-wikis">
+
+                @foreach (var item in topLista)
+                {
+                    
+                    <li onclick='GetLink("/questions/details?id=@item.QuestionID")' rel="tooltip" title="@item.User.FirstName @item.User.LastName (@item.Likes)">» @Html.Raw(item.QuestionTitle)</li>
+                }
+            </ul>
+        </div>
+
+    </div>
+    @if (recommended != null)
+    {
+        <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">RELATED QUESTIONS</div>
+            </div>
+            <div class="Body-Box">
+                <ul class="Preporuka-wikis">
+
+                    @foreach (var item in recommended)
+                    {
+                    
+                        <li onclick='GetLink("/questions/details?id=@item.QuestionID")' rel="tooltip" title="Preporučuje: @item.User.FirstName @item.User.LastName">» @Html.Raw(item.QuestionTitle)</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+
+    }
+
+</div>
+
+<div class="clear"></div>

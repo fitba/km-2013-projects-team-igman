@@ -47,9 +47,11 @@ namespace Igman.Web.Controllers
         {
             if (WikiId.HasValue)
             {
+                Article a;
                 using (DBBL Baza = new DBBL())
                 {
-                    Article a = Baza.GetWikiByID(WikiId.Value);
+                    a = Baza.GetWikiByID(WikiId.Value);
+
                     a.Name = Naslov;
                     a.Content = Server.HtmlDecode(Content).Replace("'", "&#39;").Trim();
                     a.CreatorIP = this.HttpContext.Request.GetIpAdresa();
@@ -64,11 +66,13 @@ namespace Igman.Web.Controllers
                     var ListaTagova = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Json.Tag>>(jsonTag);
                     var ListaKategorija = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Json.Kategorija>>(jsonKat);
 
+                    Baza.ClearTagsAndCategiry(a.ArticlesID);
+
                     List<Igman.DB.DAL.Tag> listTempTag = SinhronyzeWithDB(ListaTagova.Where(x => x.TagID == "-1").ToList(), ListaTagova.Where(x => x.TagID != "-1").ToList());
                     List<Category> listaKategorija = SinhronyzeWithDB(ListaKategorija);
 
-                    a.Categories = listaKategorija;
-                    a.Tags = listTempTag;
+                    a.Categories = new List<Category>(listaKategorija);
+                    a.Tags = new List<Igman.DB.DAL.Tag>(listTempTag);
 
 
                     a = Baza.EditWiki(a);
@@ -82,8 +86,8 @@ namespace Igman.Web.Controllers
 
                     TempData["wikiSuccess"] = true;
                     return RedirectToRoute("Wiki-Edit", new { id = a.ArticlesID });
+
                 }
-               
             }
             return RedirectToAction("index", "Articles");
         }
@@ -274,7 +278,7 @@ namespace Igman.Web.Controllers
                         TempData["Kom"] = a.Comments.OrderByDescending(x => x.CommentID).ToList();
 
                         ExteranlBase eb = new ExteranlBase(a.Tags.ToList());
-                        
+
                         TempData["ExteranlWiki"] = eb.Preporuci();
 
                         Baza.IncremenViews(a.ArticlesID);
@@ -317,7 +321,7 @@ namespace Igman.Web.Controllers
             if (!strana.HasValue)
                 strana = 1;
             args = Formatiraj(args);
-           
+
             LuceneEngine.LuceneDbEngine ldbe = new LuceneEngine.LuceneDbEngine();
 
             List<Rezultat> ids = ldbe.GetArticleIDByArg(args, false);
@@ -340,7 +344,7 @@ namespace Igman.Web.Controllers
                 {
                     List<Igman.DB.DAL.Tag> mislilac = Baza.GetDaliSteMilili(args);
                     TempData["mislilac"] = mislilac;
-                    
+
                 }
             }
             return View();
@@ -401,9 +405,11 @@ namespace Igman.Web.Controllers
             List<Category> ltl = new List<Category>();
             foreach (var lista in ListaKategorija)
             {
-                Category a = new Category();
-                a.CategoryID = lista.KategorijaID.ToInt();
-                ltl.Add(a);
+                using (DBBL Baza = new DBBL())
+                {
+                    ltl.Add(Baza.GetCategotyById(lista.KategorijaID.ToInt()));
+                }
+
             }
             return ltl;
         }

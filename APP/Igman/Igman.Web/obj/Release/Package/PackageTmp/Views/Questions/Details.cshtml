@@ -1,0 +1,253 @@
+﻿@model Question
+@using Igman.Infrastructure.Extend;
+@{
+    ViewBag.Title = "Details";
+    var exteranlQuestions = TempData["ExteranlQuestions"] as List<Igman.DB.DalHelpClass.QuestionsExternal>;
+    var itemBaseRelated = TempData["RecQuestions"] as List<Igman.Infrastructure.Recommender.ItemBase.QuestionRecommender>;
+    var topLista = TempData["TopListaDetails"] as List<Question>;
+        
+}
+@Html.Partial("_questionsMenu")
+
+<div id="question-header">
+    <h3><a href="#" class="question-hyperlink">@Html.Raw(Model.QuestionTitle.OcistiHtml())</a></h3>
+</div>
+
+<div class="answers" style="padding: 20px 0px;">
+    <div id="pitanje-wrap">
+
+        <div class="question-summary">
+            <div class="statscontainer">
+                <div class="statsarrow"></div>
+                <div class="stats">
+                    <div class="vote">
+                        <div class="votes">
+                            <span class="vote-count-post"><strong><span id="@Model.QuestionID">@Model.QuestionLikes.Count</span></strong></span>
+                            <div class="viewcount">likes</div>
+                        </div>
+                    </div>
+                    @if (Model.Answers.Count != 0)
+                    {
+                        <div class="status answered">
+                            <strong>@Model.Answers.Count</strong>answers
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="status unanswered">
+                            <strong>@Model.Answers.Count</strong>answers
+                        </div>
+                    }
+                </div>
+                <div class="views " title="@Model.NumOfViews views">
+                    Views  @Model.NumOfViews
+                </div>
+            </div>
+            <div class="summary">
+
+                <h3><a href="/questions/details/@Model.QuestionID">@Model.QuestionTitle</a></h3>
+
+                <div class="excerpt">
+
+                    <div>
+
+                        @Html.Raw(Model.QuestionBody.OcistiHtml())
+
+                    </div>
+
+                </div>
+
+                <div class="tags">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <a href="#" class="post-tag">@tag.Name</a>
+                    }
+                </div>
+            
+                <div class="started fr">
+                    <div class="user-info ">
+                        <div class="user-action-time">
+                            Kreirano prije
+                 <a href="#" class="started-link">
+                     <span title="@Model.CreatedDate" class="relativetime">@ExtendMethod.ToRelativeDateString(Model.CreatedDate.Value, true)</span>
+                 </a>
+
+                        </div>
+                        <div class="user-gravatar32">
+                            <a href="#">
+                                <div>
+                                    @if (Model.User.PhotoLocation == null)
+                                    { <img src="~/Content/Template/images/avatars/default_avatar.jpg" alt="" width="32" height="32">}
+                                    else
+                                    {<img src="~/Content/Template/images/avatars/@Model.User.PhotoLocation" alt="" width="32" height="32" title="Ime i prezime: @Model.User.FirstName @Model.User.LastName  @Model.User.Email  ">}
+                                </div>
+                            </a>
+                        </div>
+                         
+
+                        <div class="user-details">
+                            <a href="#">@Model.User.FirstName  @Model.User.LastName</a><br>
+                            <span title="(@Model.User.Questions.Count) questions asked">(@Model.User.Questions.Count)</span>
+                        </div>
+                         
+
+                    </div>
+                        <div id="like">
+                    <a href="/Questions/Like?id=@Model.QuestionID">
+                        <img class="fr" id="like_btn" src="~/Content/Template/images/icons/like.jpg" /></a>
+                </div>
+                
+
+                </div>
+            </div>
+
+
+   <div id="answers-submenu">
+        <div class="subheader">
+            <div id="h-top-questions">
+                (@Model.Answers.Count) Answers  
+            </div>
+
+            <div id="tabs">
+                <a class="youarehere" href="../Answers?tab=TopRated&id=@ViewBag.QuestionID" title="questions that may be of interest to you based on your history and tag preferences">Top rated</a>
+                <a href="../Answers?tab=Latest&id=@ViewBag.QuestionID" title="questions with an active bounty">Latest</a>
+                <a href="../Answers?tab=Oldest&id=@ViewBag.QuestionID" title="questions with the most views, answers, and votes over the last few days">Oldest</a>
+            </div>
+        </div>
+    </div>
+
+   <div id="answers-wrap">
+
+        @Html.Partial("_odgovori", Model.Answers)
+
+    </div>
+
+    <div id="content-body-first">
+
+
+        <form method="post" action="../Answer?questionID=@ViewBag.QuestionID" id="frmAddAnswer" class="Box">
+            @Html.AntiForgeryToken()
+
+            <div class="Body-Box">
+
+                <textarea class="textarea" id="answer-content" placeholder="Vaš odgovor pište na ovom mjestu ..." name="Content"></textarea>
+
+
+            </div>
+            <div class="Footer-Box ">
+                <div class="pull-right">
+                    <button class="btn F-11" type="button" onclick="ResetAnswerClanak()">Reset</button>
+                    <button class="btn btn-info F-11" type="button" onclick="SaveAnswer()">Odgovori</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+        </div>
+
+        <div class="fl" id="Right-collumn-Wrap">
+
+
+             @if(itemBaseRelated.Count!=0){
+      
+ <div class="Box">
+                <div class="Header-Box">
+                    <div class="Img pull-left">
+                        <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                    </div>
+                    <div class="Opis">RELATED QUESTIONS</div>
+                </div>
+                <div class="Body-Box">
+
+                     <ul class="Preporuka-wikis">
+                        @foreach (var item in itemBaseRelated)
+                        {
+                    
+                            <li onclick='GetLink("/questions/details/@item.QuestionID")' rel="tooltip" title="Sličnost: @item.Score.ToString("0%")">» @Html.Raw(item.Name)</li>
+                        }
+                    </ul>
+                    
+                </div>
+
+            </div>
+
+    }
+                <div class="Box">
+            <div class="Header-Box">
+                <div class="Img pull-left">
+                    <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                </div>
+                <div class="Opis">TOP QUESTIONS</div>
+            </div>
+            <div class="Body-Box">
+            <ul class="Preporuka-wikis">
+               
+                        @foreach (var item in topLista)
+                        {
+                    
+                            <li onclick='GetLink("/questions/details/@item.QuestionID")' rel="tooltip" title="@item.User.FirstName @item.User.LastName (@item.Likes)">» @Html.Raw(item.QuestionTitle)</li>
+                        }
+                    </ul>
+            </div>
+
+        </div>
+
+           
+
+
+
+            <div class="Box">
+                <div class="Header-Box">
+                    <div class="Img pull-left">
+                        <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                    </div>
+                    <div class="Opis">KATEGORIJE</div>
+                </div>
+                <div class="Body-Box">
+                    <div class="O-F-W">
+
+                        <ul class="grupa-wiki">
+
+
+                            @foreach (var kat in Model.Categories)
+                            {
+                                <li>@kat.Name</li> 
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="Box">
+                <div class="Header-Box">
+                    <div class="Img pull-left">
+                        <img src="~/Content/Template/images/icons/appbar.list.check.png" />
+                    </div>
+                    <div class="Opis">PREORUKA PITANJA Externi</div>
+                </div>
+                <div class="Body-Box">
+                    <ul class="Preporuka-wikis">
+                        @foreach (var wiki in exteranlQuestions)
+                        {
+                            <li onclick='GetLink("http://stackoverflow.com/@wiki.question_timeline_url")'>» @wiki.title</li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+ <div class="clear"></div>
+
+    </div>
+
+ 
+ 
+</div>
+
+

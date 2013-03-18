@@ -176,11 +176,22 @@ namespace Igman.DB.BLL
         {
             context.Database.ExecuteSqlCommand("EXEC dbo.DeleteTagInCategory " + a.ArticlesID);
             context.Database.ExecuteSqlCommand("EXEC dbo.DeleteTagInArticles " + a.ArticlesID);
-            context.Database.ExecuteSqlCommand("EXEC  dbo.DeleteRating " + a.ArticlesID);
-            context.Database.ExecuteSqlCommand("EXEC  dbo.DeleteArticleComments " + a.ArticlesID);
-            context.Database.ExecuteSqlCommand("EXEC [dbo].[usp_ArticlesDelete] " + a.ArticlesID);
 
-            return AddWiki(a);
+            foreach (var cat in a.Categories.ToList())
+            {
+                context.Database.ExecuteSqlCommand("EXEC [dbo].[usp_ArticlesInCategoryInsert] "+a.ArticlesID+","+cat.CategoryID);
+                
+            }
+            foreach (var tag in a.Tags.ToList())
+            {
+                 context.Database.ExecuteSqlCommand("EXEC [dbo].[usp_TagInArticleInsert] "+a.ArticlesID+","+tag.TagID);
+               
+            }
+            context = new DBEntities();
+            Article b = context.Articles.Where(x => x.ArticlesID == a.ArticlesID).SingleOrDefault();
+            b = a;
+            context.SaveChanges();
+            return b;
         }
 
         //QA modul
@@ -339,6 +350,19 @@ namespace Igman.DB.BLL
             string cmd = string.Format("EXEC [dbo].[get_question_by_tag] {0}", id);
             List<int> l = context.Database.SqlQuery<int>(cmd).ToList();
             return l;
+        }
+
+        public void ClearTagsAndCategiry(int p)
+        {
+            Article a = context.Articles.Where(x => x.ArticlesID == p).SingleOrDefault();
+            a.Categories.Clear();
+            a.Tags.Clear();
+            context.SaveChanges();
+        }
+
+        public Category GetCategotyById(int p)
+        {
+            return context.Categories.Where(x => x.CategoryID == p).SingleOrDefault();
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿<div id="Login" class="modal hide fade modal-custom">
+    <div class="modal-header-custom">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <span><strong>Prijava na sistem.</strong></span>
+    </div>
+
+    <div class="modal-body modal-body-custom p-25">
+        <div class="Desc">
+            Molimo Vas da popunite sljedeći formular za prijavu na sistem.
+        </div>
+        <div class="margin-breaker"></div>
+        @using (Html.BeginForm("Login", "Registration", FormMethod.Post, new { id = "frmLogin" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input id="user" name="User" placeholder="Vaš e-mail" style="width: 300px;" type="text" value="" />
+            </div>
+            
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-exclamation-sign"></i></span>
+                <input id="pass" name="Pass" placeholder="Vaša lozinka" style="width: 300px;" type="password" value="" />
+            </div>
+            <div class="margin-breaker"></div>
+            <div id="Login-Warring" class="W-U-P"></div>
+        }
+    </div>
+    <div class="body-footer-m">
+        <button class="btn btn-primary btn-block R-0 F-11" type="button" onclick="SubmitLogin('#frmLogin')">Login</button>
+    </div>
+</div>
+@if (TempData["wrongPass"] != null)
+{
+    <script>
+        Logins();
+        $(document).ready(function () { $("#Login-Warring").html("Pogrešna lozinka ili email") });
+    </script> 
+}

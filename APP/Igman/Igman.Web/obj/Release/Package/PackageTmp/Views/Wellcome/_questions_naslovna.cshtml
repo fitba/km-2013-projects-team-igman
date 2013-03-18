@@ -1,0 +1,31 @@
+﻿@model  IPagedList<Question>
+<div class="subheader">
+    <div id="naslovna-submenu">
+    <div id="h-top-questions">
+        (@ViewBag.brojKomentara) Questions  
+    </div>
+
+    <div id="tabs">
+
+        <a class="youarehere" href="?tab=novo" title="Najnovija pitanja">NOVO</a>
+        <a href="?tab=popularno" title="Pitanja koja su popularna">Popularno</a>
+        <a href="?tab=najcitanije" title="Najčitanije i pitanja">Najčitanije</a>
+
+
+    </div>
+
+</div>
+</div>
+
+
+<div id="update-pitanja_okvir">
+    <div id="update-pitanja">
+
+        @Html.Partial("_render_questions", Model)
+
+
+    </div>
+
+
+
+</div>

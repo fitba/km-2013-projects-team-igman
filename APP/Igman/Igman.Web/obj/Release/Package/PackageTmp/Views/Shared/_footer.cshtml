@@ -1,0 +1,66 @@
+﻿@{
+    var TopQuestions = HttpContext.Current.Cache.Get("TopListaPitanja") as List<Question>;
+
+    var TopWiki = HttpContext.Current.Cache.Get("TopListaWiki") as List<Article>;
+   
+}
+<div id="Over-footer">
+    <ul id="Info-footer">
+        <li>
+            <div>
+                Projekat Wiki Igman je u testnoj fazi. 
+            </div>
+            <img id="beta" src="~/Content/Template/images/beta.png" />
+        </li>
+        <li>
+            <div class="over-footer">
+                <div class="Img">
+                    <img src="~/Content/Template/images/icons/appbar.checkmark.pencil.top.png" />
+                </div>
+                <div class="Opis">
+                    TOP ČLANCI
+                </div>
+            </div>
+            <div class="f-content clearfix">
+                @if (TopWiki != null)
+                {
+                    foreach (var item in TopWiki)
+                    {
+                    <div>
+                        » <a href="/Wiki-Show/@item.ArticlesID">@item.Name</a>
+                    </div>
+                    }
+                }
+            </div>
+
+        </li>
+        <li>
+            <div class="over-footer">
+                <div class="Img">
+                    <img src="~/Content/Template/images/icons/appbar.checkmark.pencil.top.png" />
+                </div>
+                <div class="Opis">
+                    TOP PITANJA
+                </div>
+            </div>
+            <div class="f-content clearfix">
+
+                @foreach (var item in TopQuestions)
+                {
+                    <div>
+                        » <a href="/questions/Details/@item.QuestionID">@item.QuestionTitle</a>
+                    </div>
+                }
+
+
+            </div>
+
+        </li>
+        <li>
+            <div>
+                © 2013 FIT<div id="copy">Fakultet informacijskih tehnologija ukoliko nije drugačije označeno. Sva prava pridržana.</div>
+            </div>
+            <img id="fit" src="~/Content/Template/images/fit.png" />
+        </li>
+    </ul>
+</div>
